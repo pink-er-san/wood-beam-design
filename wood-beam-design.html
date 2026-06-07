@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wood Beam Design — NDS 2024</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>/* supabase-js v2.45.0 UMD bundle (inlined) */
+!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports.supabase=t():e.supabase=t()}(self,(()=>(()=>{"use strict";var e,t,s,r,i={450:(e,t,s)=>{s.r(t),s.d(t,{AuthAdminApi:()=>re,AuthApiError:()=>T,AuthClient:()=>ie,AuthError:()=>w,AuthImplicitGrantRedirectError:()=>$,AuthInvalidCredentialsError:()=>A,AuthInvalidTokenResponseError:()=>P,AuthPKCEGrantCodeExchangeError:()=>x,AuthRetryableFetchError:()=>C,AuthSessionMissingError:()=>j,AuthUnknownError:()=>E,AuthWeakPasswordError:()=>I,CustomAuthError:()=>O,GoTrueAdminApi:()=>J,GoTrueClient:()=>se,NavigatorLockAcquireTimeoutError:()=>Q,isAuthApiError:()=>S,isAuthError:()=>k,isAuthRetryableFetchError:()=>R,isAuthWeakPasswordError:()=>L,lockInternals:()=>V,navigatorLock:()=>X});const r="2.64.4",i={"X-Client-Info":`gotrue-js/${r}`},n="X-Supabase-Api-Version",o={"2024-01-01":{timestamp:Date.parse("2024-01-01T00:00:00.0Z"),name:"2024-01-01"}},a=()=>"undefined"!=typeof document,c={tested:!1,writable:!1},l=()=>{if(!a())return!1;try{if("object"!=typeof globalThis.localStorage)return!1}catch(e){return!1}if(c.tested)return c.writable;const e=`lswt-${Math.random()}${Math.random()}`;try{globalThis.localStorage.setItem(e,e),globalThis.localStorage.removeItem(e),c.tested=!0,c.writable=!0}catch(e){c.tested=!0,c.writable=!1}return c.writable};function h(e){const t={},s=new URL(e);if(s.hash&&"#"===s.hash[0])try{new URLSearchParams(s.hash.substring(1)).forEach(((e,s)=>{t[s]=e}))}catch(e){}return s.searchParams.forEach(((e,s)=>{t[s]=e})),t}const u=e=>{let t;return t=e||("undefined"==typeof fetch?(...e)=>Promise.resolve().then(s.bind(s,743)).then((({default:t})=>t(...e))):fetch),(...e)=>t(...e)},d=e=>"object"==typeof e&&null!==e&&"status"in e&&"ok"in e&&"json"in e&&"function"==typeof e.json,f=async(e,t,s)=>{await e.setItem(t,JSON.stringify(s))},p=async(e,t)=>{const s=await e.getItem(t);if(!s)return null;try{return JSON.parse(s)}catch(e){return s}},g=async(e,t)=>{await e.removeItem(t)};class y{constructor(){this.promise=new y.promiseConstructor(((e,t)=>{this.resolve=e,this.reject=t}))}}function v(e){const t=e.split(".");if(3!==t.length)throw new Error("JWT is not valid: not a JWT structure");if(!/^([a-z0-9_-]{4})*($|[a-z0-9_-]{3}=?$|[a-z0-9_-]{2}(==)?$)$/i.test(t[1]))throw new Error("JWT is not valid: payload is not in base64url format");const s=t[1];return JSON.parse(function(e){const t="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";let s,r,i,n,o,a,c,l="",h=0;for(e=e.replace("-","+").replace("_","/");h<e.length;)n=t.indexOf(e.charAt(h++)),o=t.indexOf(e.charAt(h++)),a=t.indexOf(e.charAt(h++)),c=t.indexOf(e.charAt(h++)),s=n<<2|o>>4,r=(15&o)<<4|a>>2,i=(3&a)<<6|c,l+=String.fromCharCode(s),64!=a&&0!=r&&(l+=String.fromCharCode(r)),64!=c&&0!=i&&(l+=String.fromCharCode(i));return l}(s))}function m(e){return("0"+e.toString(16)).substr(-2)}async function _(e,t,s=!1){const r=function(){const e=new Uint32Array(56);if("undefined"==typeof crypto){const e="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~",t=e.length;let s="";for(let r=0;r<56;r++)s+=e.charAt(Math.floor(Math.random()*t));return s}return crypto.getRandomValues(e),Array.from(e,m).join("")}();let i=r;s&&(i+="/PASSWORD_RECOVERY"),await f(e,`${t}-code-verifier`,i);const n=await async function(e){if("undefined"==typeof crypto||void 0===crypto.subtle||"undefined"==typeof TextEncoder)return console.warn("WebCrypto API is not supported. Code challenge method will default to use plain instead of sha256."),e;const t=await async function(e){const t=(new TextEncoder).encode(e),s=await crypto.subtle.digest("SHA-256",t),r=new Uint8Array(s);return Array.from(r).map((e=>String.fromCharCode(e))).join("")}(e);return btoa(t).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"")}(r);return[n,r===n?"plain":"s256"]}y.promiseConstructor=Promise;const b=/^2[0-9]{3}-(0[1-9]|1[0-2])-(0[1-9]|1[0-9]|2[0-9]|3[0-1])$/i;class w extends Error{constructor(e,t,s){super(e),this.__isAuthError=!0,this.name="AuthError",this.status=t,this.code=s}}function k(e){return"object"==typeof e&&null!==e&&"__isAuthError"in e}class T extends w{constructor(e,t,s){super(e,t,s),this.name="AuthApiError",this.status=t,this.code=s}}function S(e){return k(e)&&"AuthApiError"===e.name}class E extends w{constructor(e,t){super(e),this.name="AuthUnknownError",this.originalError=t}}class O extends w{constructor(e,t,s,r){super(e,s,r),this.name=t,this.status=s}}class j extends O{constructor(){super("Auth session missing!","AuthSessionMissingError",400,void 0)}}class P extends O{constructor(){super("Auth session or user missing","AuthInvalidTokenResponseError",500,void 0)}}class A extends O{constructor(e){super(e,"AuthInvalidCredentialsError",400,void 0)}}class $ extends O{constructor(e,t=null){super(e,"AuthImplicitGrantRedirectError",500,void 0),this.details=null,this.details=t}toJSON(){return{name:this.name,message:this.message,status:this.status,details:this.details}}}class x extends O{constructor(e,t=null){super(e,"AuthPKCEGrantCodeExchangeError",500,void 0),this.details=null,this.details=t}toJSON(){return{name:this.name,message:this.message,status:this.status,details:this.details}}}class C extends O{constructor(e,t){super(e,"AuthRetryableFetchError",t,void 0)}}function R(e){return k(e)&&"AuthRetryableFetchError"===e.name}class I extends O{constructor(e,t,s){super(e,"AuthWeakPasswordError",t,"weak_password"),this.reasons=s}}function L(e){return k(e)&&"AuthWeakPasswordError"===e.name}const U=e=>e.msg||e.message||e.error_description||e.error||JSON.stringify(e),D=[502,503,504];async function N(e){var t;if(!d(e))throw new C(U(e),0);if(D.includes(e.status))throw new C(U(e),e.status);let s,r;try{s=await e.json()}catch(e){throw new E(U(e),e)}const i=function(e){const t=e.headers.get(n);if(!t)return null;if(!t.match(b))return null;try{return new Date(`${t}T00:00:00.0Z`)}catch(e){return null}}(e);if(i&&i.getTime()>=o["2024-01-01"].timestamp&&"object"==typeof s&&s&&"string"==typeof s.code?r=s.code:"object"==typeof s&&s&&"string"==typeof s.error_code&&(r=s.error_code),r){if("weak_password"===r)throw new I(U(s),e.status,(null===(t=s.weak_password)||void 0===t?void 0:t.reasons)||[])}else if("object"==typeof s&&s&&"object"==typeof s.weak_password&&s.weak_password&&Array.isArray(s.weak_password.reasons)&&s.weak_password.reasons.length&&s.weak_password.reasons.reduce(((e,t)=>e&&"string"==typeof t),!0))throw new I(U(s),e.status,s.weak_password.reasons);throw new T(U(s),e.status||500,r)}async function F(e,t,s,r){var i;const a=Object.assign({},null==r?void 0:r.headers);a[n]||(a[n]=o["2024-01-01"].name),(null==r?void 0:r.jwt)&&(a.Authorization=`Bearer ${r.jwt}`);const c=null!==(i=null==r?void 0:r.query)&&void 0!==i?i:{};(null==r?void 0:r.redirectTo)&&(c.redirect_to=r.redirectTo);const l=Object.keys(c).length?"?"+new URLSearchParams(c).toString():"",h=await async function(e,t,s,r,i,n){const o=((e,t,s,r)=>{const i={method:e,headers:(null==t?void 0:t.headers)||{}};return"GET"===e?i:(i.headers=Object.assign({"Content-Type":"application/json;charset=UTF-8"},null==t?void 0:t.headers),i.body=JSON.stringify(r),Object.assign(Object.assign({},i),s))})(t,r,{},n);let a;try{a=await e(s,Object.assign({},o))}catch(e){throw console.error(e),new C(U(e),0)}if(a.ok||await N(a),null==r?void 0:r.noResolveJson)return a;try{return await a.json()}catch(e){await N(e)}}(e,t,s+l,{headers:a,noResolveJson:null==r?void 0:r.noResolveJson},0,null==r?void 0:r.body);return(null==r?void 0:r.xform)?null==r?void 0:r.xform(h):{data:Object.assign({},h),error:null}}function M(e){var t;let s=null;var r;return function(e){return e.access_token&&e.refresh_token&&e.expires_in}(e)&&(s=Object.assign({},e),e.expires_at||(s.expires_at=(r=e.expires_in,Math.round(Date.now()/1e3)+r))),{data:{session:s,user:null!==(t=e.user)&&void 0!==t?t:e},error:null}}function B(e){const t=M(e);return!t.error&&e.weak_password&&"object"==typeof e.weak_password&&Array.isArray(e.weak_password.reasons)&&e.weak_password.reasons.length&&e.weak_password.message&&"string"==typeof e.weak_password.message&&e.weak_password.reasons.reduce(((e,t)=>e&&"string"==typeof t),!0)&&(t.data.weak_password=e.weak_password),t}function q(e){var t;return{data:{user:null!==(t=e.user)&&void 0!==t?t:e},error:null}}function z(e){return{data:e,error:null}}function H(e){const{action_link:t,email_otp:s,hashed_token:r,redirect_to:i,verification_type:n}=e,o=function(e,t){var s={};for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&t.indexOf(r)<0&&(s[r]=e[r]);if(null!=e&&"function"==typeof Object.getOwnPropertySymbols){var i=0;for(r=Object.getOwnPropertySymbols(e);i<r.length;i++)t.indexOf(r[i])<0&&Object.prototype.propertyIsEnumerable.call(e,r[i])&&(s[r[i]]=e[r[i]])}return s}(e,["action_link","email_otp","hashed_token","redirect_to","verification_type"]);return{data:{properties:{action_link:t,email_otp:s,hashed_token:r,redirect_to:i,verification_type:n},user:Object.assign({},o)},error:null}}function G(e){return e}class J{constructor({url:e="",headers:t={},fetch:s}){this.url=e,this.headers=t,this.fetch=u(s),this.mfa={listFactors:this._listFactors.bind(this),deleteFactor:this._deleteFactor.bind(this)}}async signOut(e,t="global"){try{return await F(this.fetch,"POST",`${this.url}/logout?scope=${t}`,{headers:this.headers,jwt:e,noResolveJson:!0}),{data:null,error:null}}catch(e){if(k(e))return{data:null,error:e};throw e}}async inviteUserByEmail(e,t={}){try{return await F(this.fetch,"POST",`${this.url}/invite`,{body:{email:e,data:t.data},headers:this.headers,redirectTo:t.redirectTo,xform:q})}catch(e){if(k(e))return{data:{user:null},error:e};throw e}}async generateLink(e){try{const{options:t}=e,s=function(e,t){var s={};for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&t.indexOf(r)<0&&(s[r]=e[r]);if(null!=e&&"function"==typeof Object.getOwnPropertySymbols){var i=0;for(r=Object.getOwnPropertySymbols(e);i<r.length;i++)t.indexOf(r[i])<0&&Object.prototype.propertyIsEnumerable.call(e,r[i])&&(s[r[i]]=e[r[i]])}return s}(e,["options"]),r=Object.assign(Object.assign({},s),t);return"newEmail"in s&&(r.new_email=null==s?void 0:s.newEmail,delete r.newEmail),await F(this.fetch,"POST",`${this.url}/admin/generate_link`,{body:r,headers:this.headers,xform:H,redirectTo:null==t?void 0:t.redirectTo})}catch(e){if(k(e))return{data:{properties:null,user:null},error:e};throw e}}async createUser(e){try{return await F(this.fetch,"POST",`${this.url}/admin/users`,{body:e,headers:this.headers,xform:q})}catch(e){if(k(e))return{data:{user:null},error:e};throw e}}async listUsers(e){var t,s,r,i,n,o,a;try{const c={nextPage:null,lastPage:0,total:0},l=await F(this.fetch,"GET",`${this.url}/admin/users`,{headers:this.headers,noResolveJson:!0,query:{page:null!==(s=null===(t=null==e?void 0:e.page)||void 0===t?void 0:t.toString())&&void 0!==s?s:"",per_page:null!==(i=null===(r=null==e?void 0:e.perPage)||void 0===r?void 0:r.toString())&&void 0!==i?i:""},xform:G});if(l.error)throw l.error;const h=await l.json(),u=null!==(n=l.headers.get("x-total-count"))&&void 0!==n?n:0,d=null!==(a=null===(o=l.headers.get("link"))||void 0===o?void 0:o.split(","))&&void 0!==a?a:[];return d.length>0&&(d.forEach((e=>{const t=parseInt(e.split(";")[0].split("=")[1].substring(0,1)),s=JSON.parse(e.split(";")[1].split("=")[1]);c[`${s}Page`]=t})),c.total=parseInt(u)),{data:Object.assign(Object.assign({},h),c),error:null}}catch(e){if(k(e))return{data:{users:[]},error:e};throw e}}async getUserById(e){try{return await F(this.fetch,"GET",`${this.url}/admin/users/${e}`,{headers:this.headers,xform:q})}catch(e){if(k(e))return{data:{user:null},error:e};throw e}}async updateUserById(e,t){try{return await F(this.fetch,"PUT",`${this.url}/admin/users/${e}`,{body:t,headers:this.headers,xform:q})}catch(e){if(k(e))return{data:{user:null},error:e};throw e}}async deleteUser(e,t=!1){try{return await F(this.fetch,"DELETE",`${this.url}/admin/users/${e}`,{headers:this.headers,body:{should_soft_delete:t},xform:q})}catch(e){if(k(e))return{data:{user:null},error:e};throw e}}async _listFactors(e){try{const{data:t,error:s}=await F(this.fetch,"GET",`${this.url}/admin/users/${e.userId}/factors`,{headers:this.headers,xform:e=>({data:{factors:e},error:null})});return{data:t,error:s}}catch(e){if(k(e))return{data:null,error:e};throw e}}async _deleteFactor(e){try{return{data:await F(this.fetch,"DELETE",`${this.url}/admin/users/${e.userId}/factors/${e.id}`,{headers:this.headers}),error:null}}catch(e){if(k(e))return{data:null,error:e};throw e}}}const K={getItem:e=>l()?globalThis.localStorage.getItem(e):null,setItem:(e,t)=>{l()&&globalThis.localStorage.setItem(e,t)},removeItem:e=>{l()&&globalThis.localStorage.removeItem(e)}};function W(e={}){return{getItem:t=>e[t]||null,setItem:(t,s)=>{e[t]=s},removeItem:t=>{delete e[t]}}}const V={debug:!!(globalThis&&l()&&globalThis.localStorage&&"true"===globalThis.localStorage.getItem("supabase.gotrue-js.locks.debug"))};class Y extends Error{constructor(e){super(e),this.isAcquireTimeout=!0}}class Q extends Y{}async function X(e,t,s){V.debug&&console.log("@supabase/gotrue-js: navigatorLock: acquire lock",e,t);const r=new globalThis.AbortController;return t>0&&setTimeout((()=>{r.abort(),V.debug&&console.log("@supabase/gotrue-js: navigatorLock acquire timed out",e)}),t),await globalThis.navigator.locks.request(e,0===t?{mode:"exclusive",ifAvailable:!0}:{mode:"exclusive",signal:r.signal},(async r=>{if(!r){if(0===t)throw V.debug&&console.log("@supabase/gotrue-js: navigatorLock: not immediately available",e),new Q(`Acquiring an exclusive Navigator LockManager lock "${e}" immediately failed`);if(V.debug)try{const e=await globalThis.navigator.locks.query();console.log("@supabase/gotrue-js: Navigator LockManager state",JSON.stringify(e,null,"  "))}catch(e){console.warn("@supabase/gotrue-js: Error when querying Navigator LockManager state",e)}return console.warn("@supabase/gotrue-js: Navigator LockManager returned a null lock when using #request without ifAvailable set to true, it appears this browser is not following the LockManager spec https://developer.mozilla.org/en-US/docs/Web/API/LockManager/request"),await s()}V.debug&&console.log("@supabase/gotrue-js: navigatorLock: acquired",e,r.name);try{return await s()}finally{V.debug&&console.log("@supabase/gotrue-js: navigatorLock: released",e,r.name)}}))}!function(){if("object"!=typeof globalThis)try{Object.defineProperty(Object.prototype,"__magic__",{get:function(){return this},configurable:!0}),__magic__.globalThis=__magic__,delete Object.prototype.__magic__}catch(e){"undefined"!=typeof self&&(self.globalThis=self)}}();const Z={url:"http://localhost:9999",storageKey:"supabase.auth.token",autoRefreshToken:!0,persistSession:!0,detectSessionInUrl:!0,headers:i,flowType:"implicit",debug:!1,hasCustomAuthorizationHeader:!1},ee=3e4;async function te(e,t,s){return await s()}class se{constructor(e){var t,s;this.memoryStorage=null,this.stateChangeEmitters=new Map,this.autoRefreshTicker=null,this.visibilityChangedCallback=null,this.refreshingDeferred=null,this.initializePromise=null,this.detectSessionInUrl=!0,this.hasCustomAuthorizationHeader=!1,this.suppressGetSessionWarning=!1,this.lockAcquired=!1,this.pendingInLock=[],this.broadcastChannel=null,this.logger=console.log,this.instanceID=se.nextInstanceID,se.nextInstanceID+=1,this.instanceID>0&&a()&&console.warn("Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.");const r=Object.assign(Object.assign({},Z),e);if(this.logDebugMessages=!!r.debug,"function"==typeof r.debug&&(this.logger=r.debug),this.persistSession=r.persistSession,this.storageKey=r.storageKey,this.autoRefreshToken=r.autoRefreshToken,this.admin=new J({url:r.url,headers:r.headers,fetch:r.fetch}),this.url=r.url,this.headers=r.headers,this.fetch=u(r.fetch),this.lock=r.lock||te,this.detectSessionInUrl=r.detectSessionInUrl,this.flowType=r.flowType,this.hasCustomAuthorizationHeader=r.hasCustomAuthorizationHeader,r.lock?this.lock=r.lock:a()&&(null===(t=null===globalThis||void 0===globalThis?void 0:globalThis.navigator)||void 0===t?void 0:t.locks)?this.lock=X:this.lock=te,this.mfa={verify:this._verify.bind(this),enroll:this._enroll.bind(this),unenroll:this._unenroll.bind(this),challenge:this._challenge.bind(this),listFactors:this._listFactors.bind(this),challengeAndVerify:this._challengeAndVerify.bind(this),getAuthenticatorAssuranceLevel:this._getAuthenticatorAssuranceLevel.bind(this)},this.persistSession?r.storage?this.storage=r.storage:l()?this.storage=K:(this.memoryStorage={},this.storage=W(this.memoryStorage)):(this.memoryStorage={},this.storage=W(this.memoryStorage)),a()&&globalThis.BroadcastChannel&&this.persistSession&&this.storageKey){try{this.broadcastChannel=new globalThis.BroadcastChannel(this.storageKey)}catch(e){console.error("Failed to create a new BroadcastChannel, multi-tab state changes will not be available",e)}null===(s=this.broadcastChannel)||void 0===s||s.addEventListener("message",(async e=>{this._debug("received broadcast notification from other tab or client",e),await this._notifyAllSubscribers(e.data.event,e.data.session,!1)}))}this.initialize()}_debug(...e){return this.logDebugMessages&&this.logger(`GoTrueClient@${this.instanceID} (${r}) ${(new Date).toISOString()}`,...e),this}async initialize(){return this.initializePromise||(this.initializePromise=(async()=>await this._acquireLock(-1,(async()=>await this._initialize())))()),await this.initializePromise}async _initialize(){try{const e=!!a()&&await this._isPKCEFlow();if(this._debug("#_initialize()","begin","is PKCE flow",e),e||this.detectSessionInUrl&&this._isImplicitGrantFlow()){const{data:t,error:s}=await this._getSessionFromURL(e);if(s)return this._debug("#_initialize()","error detecting session from URL",s),"Identity is already linked"===(null==s?void 0:s.message)||"Identity is already linked to another user"===(null==s?void 0:s.message)||await this._removeSession(),{error:s};const{session:r,redirectType:i}=t;return this._debug("#_initialize()","detected session in URL",r,"redirect type",i),await this._saveSession(r),setTimeout((async()=>{"recovery"===i?await this._notifyAllSubscribers("PASSWORD_RECOVERY",r):await this._notifyAllSubscribers("SIGNED_IN",r)}),0),{error:null}}return await this._recoverAndRefresh(),{error:null}}catch(e){return k(e)?{error:e}:{error:new E("Unexpected error during initialization",e)}}finally{await this._handleVisibilityChange(),this._debug("#_initialize()","end")}}async signInAnonymously(e){var t,s,r;try{const i=await F(this.fetch,"POST",`${this.url}/signup`,{headers:this.headers,body:{data:null!==(s=null===(t=null==e?void 0:e.options)||void 0===t?void 0:t.data)&&void 0!==s?s:{},gotrue_meta_security:{captcha_token:null===(r=null==e?void 0:e.options)||void 0===r?void 0:r.captchaToken}},xform:M}),{data:n,error:o}=i;if(o||!n)return{data:{user:null,session:null},error:o};const a=n.session,c=n.user;return n.session&&(await this._saveSession(n.session),await this._notifyAllSubscribers("SIGNED_IN",a)),{data:{user:c,session:a},error:null}}catch(e){if(k(e))return{data:{user:null,session:null},error:e};throw e}}async signUp(e){var t,s,r;try{let i;if("email"in e){const{email:s,password:r,options:n}=e;let o=null,a=null;"pkce"===this.flowType&&([o,a]=await _(this.storage,this.storageKey)),i=await F(this.fetch,"POST",`${this.url}/signup`,{headers:this.headers,redirectTo:null==n?void 0:n.emailRedirectTo,body:{email:s,password:r,data:null!==(t=null==n?void 0:n.data)&&void 0!==t?t:{},gotrue_meta_security:{captcha_token:null==n?void 0:n.captchaToken},code_challenge:o,code_challenge_method:a},xform:M})}else{if(!("phone"in e))throw new A("You must provide either an email or phone number and a password");{const{phone:t,password:n,options:o}=e;i=await F(this.fetch,"POST",`${this.url}/signup`,{headers:this.headers,body:{phone:t,password:n,data:null!==(s=null==o?void 0:o.data)&&void 0!==s?s:{},channel:null!==(r=null==o?void 0:o.channel)&&void 0!==r?r:"sms",gotrue_meta_security:{captcha_token:null==o?void 0:o.captchaToken}},xform:M})}}const{data:n,error:o}=i;if(o||!n)return{data:{user:null,session:null},error:o};const a=n.session,c=n.user;return n.session&&(await this._saveSession(n.session),await this._notifyAllSubscribers("SIGNED_IN",a)),{data:{user:c,session:a},error:null}}catch(e){if(k(e))return{data:{user:null,session:null},error:e};throw e}}async signInWithPassword(e){try{let t;if("email"in e){const{email:s,password:r,options:i}=e;t=await F(this.fetch,"POST",`${this.url}/token?grant_type=password`,{headers:this.headers,body:{email:s,password:r,gotrue_meta_security:{captcha_token:null==i?void 0:i.captchaToken}},xform:B})}else{if(!("phone"in e))throw new A("You must provide either an email or phone number and a password");{const{phone:s,password:r,options:i}=e;t=await F(this.fetch,"POST",`${this.url}/token?grant_type=password`,{headers:this.headers,body:{phone:s,password:r,gotrue_meta_security:{captcha_token:null==i?void 0:i.captchaToken}},xform:B})}}const{data:s,error:r}=t;return r?{data:{user:null,session:null},error:r}:s&&s.session&&s.user?(s.session&&(await this._saveSession(s.session),await this._notifyAllSubscribers("SIGNED_IN",s.session)),{data:Object.assign({user:s.user,session:s.session},s.weak_password?{weakPassword:s.weak_password}:null),error:r}):{data:{user:null,session:null},error:new P}}catch(e){if(k(e))return{data:{user:null,session:null},error:e};throw e}}async signInWithOAuth(e){var t,s,r,i;return await this._handleProviderSignIn(e.provider,{redirectTo:null===(t=e.options)||void 0===t?void 0:t.redirectTo,scopes:null===(s=e.options)||void 0===s?void 0:s.scopes,queryParams:null===(r=e.options)||void 0===r?void 0:r.queryParams,skipBrowserRedirect:null===(i=e.options)||void 0===i?void 0:i.skipBrowserRedirect})}async exchangeCodeForSession(e){return await this.initializePromise,this._acquireLock(-1,(async()=>this._exchangeCodeForSession(e)))}async _exchangeCodeForSession(e){const t=await p(this.storage,`${this.storageKey}-code-verifier`),[s,r]=(null!=t?t:"").split("/"),{data:i,error:n}=await F(this.fetch,"POST",`${this.url}/token?grant_type=pkce`,{headers:this.headers,body:{auth_code:e,code_verifier:s},xform:M});return await g(this.storage,`${this.storageKey}-code-verifier`),n?{data:{user:null,session:null,redirectType:null},error:n}:i&&i.session&&i.user?(i.session&&(await this._saveSession(i.session),await this._notifyAllSubscribers("SIGNED_IN",i.session)),{data:Object.assign(Object.assign({},i),{redirectType:null!=r?r:null}),error:n}):{data:{user:null,session:null,redirectType:null},error:new P}}async signInWithIdToken(e){try{const{options:t,provider:s,token:r,access_token:i,nonce:n}=e,o=await F(this.fetch,"POST",`${this.url}/token?grant_type=id_token`,{headers:this.headers,body:{provider:s,id_token:r,access_token:i,nonce:n,gotrue_meta_security:{captcha_token:null==t?void 0:t.captchaToken}},xform:M}),{data:a,error:c}=o;return c?{data:{user:null,session:null},error:c}:a&&a.session&&a.user?(a.session&&(await this._saveSession(a.session),await this._notifyAllSubscribers("SIGNED_IN",a.session)),{data:a,error:c}):{data:{user:null,session:null},error:new P}}catch(e){if(k(e))return{data:{user:null,session:null},error:e};throw e}}async signInWithOtp(e){var t,s,r,i,n;try{if("email"in e){const{email:r,options:i}=e;let n=null,o=null;"pkce"===this.flowType&&([n,o]=await _(this.storage,this.storageKey));const{error:a}=await F(this.fetch,"POST",`${this.url}/otp`,{headers:this.headers,body:{email:r,data:null!==(t=null==i?void 0:i.data)&&void 0!==t?t:{},create_user:null===(s=null==i?void 0:i.shouldCreateUser)||void 0===s||s,gotrue_meta_security:{captcha_token:null==i?void 0:i.captchaToken},code_challenge:n,code_challenge_method:o},redirectTo:null==i?void 0:i.emailRedirectTo});return{data:{user:null,session:null},error:a}}if("phone"in e){const{phone:t,options:s}=e,{data:o,error:a}=await F(this.fetch,"POST",`${this.url}/otp`,{headers:this.headers,body:{phone:t,data:null!==(r=null==s?void 0:s.data)&&void 0!==r?r:{},create_user:null===(i=null==s?void 0:s.shouldCreateUser)||void 0===i||i,gotrue_meta_security:{captcha_token:null==s?void 0:s.captchaToken},channel:null!==(n=null==s?void 0:s.channel)&&void 0!==n?n:"sms"}});return{data:{user:null,session:null,messageId:null==o?void 0:o.message_id},error:a}}throw new A("You must provide either an email or phone number.")}catch(e){if(k(e))return{data:{user:null,session:null},error:e};throw e}}async verifyOtp(e){var t,s;try{let r,i;"options"in e&&(r=null===(t=e.options)||void 0===t?void 0:t.redirectTo,i=null===(s=e.options)||void 0===s?void 0:s.captchaToken);const{data:n,error:o}=await F(this.fetch,"POST",`${this.url}/verify`,{headers:this.headers,body:Object.assign(Object.assign({},e),{gotrue_meta_security:{captcha_token:i}}),redirectTo:r,xform:M});if(o)throw o;if(!n)throw new Error("An error occurred on token verification.");const a=n.session,c=n.user;return(null==a?void 0:a.access_token)&&(await this._saveSession(a),await this._notifyAllSubscribers("recovery"==e.type?"PASSWORD_RECOVERY":"SIGNED_IN",a)),{data:{user:c,session:a},error:null}}catch(e){if(k(e))return{data:{user:null,session:null},error:e};throw e}}async signInWithSSO(e){var t,s,r;try{let i=null,n=null;return"pkce"===this.flowType&&([i,n]=await _(this.storage,this.storageKey)),await F(this.fetch,"POST",`${this.url}/sso`,{body:Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({},"providerId"in e?{provider_id:e.providerId}:null),"domain"in e?{domain:e.domain}:null),{redirect_to:null!==(s=null===(t=e.options)||void 0===t?void 0:t.redirectTo)&&void 0!==s?s:void 0}),(null===(r=null==e?void 0:e.options)||void 0===r?void 0:r.captchaToken)?{gotrue_meta_security:{captcha_token:e.options.captchaToken}}:null),{skip_http_redirect:!0,code_challenge:i,code_challenge_method:n}),headers:this.headers,xform:z})}catch(e){if(k(e))return{data:null,error:e};throw e}}async reauthenticate(){return await this.initializePromise,await this._acquireLock(-1,(async()=>await this._reauthenticate()))}async _reauthenticate(){try{return await this._useSession((async e=>{const{data:{session:t},error:s}=e;if(s)throw s;if(!t)throw new j;const{error:r}=await F(this.fetch,"GET",`${this.url}/reauthenticate`,{headers:this.headers,jwt:t.access_token});return{data:{user:null,session:null},error:r}}))}catch(e){if(k(e))return{data:{user:null,session:null},error:e};throw e}}async resend(e){try{const t=`${this.url}/resend`;if("email"in e){const{email:s,type:r,options:i}=e,{error:n}=await F(this.fetch,"POST",t,{headers:this.headers,body:{email:s,type:r,gotrue_meta_security:{captcha_token:null==i?void 0:i.captchaToken}},redirectTo:null==i?void 0:i.emailRedirectTo});return{data:{user:null,session:null},error:n}}if("phone"in e){const{phone:s,type:r,options:i}=e,{data:n,error:o}=await F(this.fetch,"POST",t,{headers:this.headers,body:{phone:s,type:r,gotrue_meta_security:{captcha_token:null==i?void 0:i.captchaToken}}});return{data:{user:null,session:null,messageId:null==n?void 0:n.message_id},error:o}}throw new A("You must provide either an email or phone number and a type")}catch(e){if(k(e))return{data:{user:null,session:null},error:e};throw e}}async getSession(){return await this.initializePromise,await this._acquireLock(-1,(async()=>this._useSession((async e=>e))))}async _acquireLock(e,t){this._debug("#_acquireLock","begin",e);try{if(this.lockAcquired){const e=this.pendingInLock.length?this.pendingInLock[this.pendingInLock.length-1]:Promise.resolve(),s=(async()=>(await e,await t()))();return this.pendingInLock.push((async()=>{try{await s}catch(e){}})()),s}return await this.lock(`lock:${this.storageKey}`,e,(async()=>{this._debug("#_acquireLock","lock acquired for storage key",this.storageKey);try{this.lockAcquired=!0;const e=t();for(this.pendingInLock.push((async()=>{try{await e}catch(e){}})()),await e;this.pendingInLock.length;){const e=[...this.pendingInLock];await Promise.all(e),this.pendingInLock.splice(0,e.length)}return await e}finally{this._debug("#_acquireLock","lock released for storage key",this.storageKey),this.lockAcquired=!1}}))}finally{this._debug("#_acquireLock","end")}}async _useSession(e){this._debug("#_useSession","begin");try{const t=await this.__loadSession();return await e(t)}finally{this._debug("#_useSession","end")}}async __loadSession(){this._debug("#__loadSession()","begin"),this.lockAcquired||this._debug("#__loadSession()","used outside of an acquired lock!",(new Error).stack);try{let e=null;const t=await p(this.storage,this.storageKey);if(this._debug("#getSession()","session from storage",t),null!==t&&(this._isValidSession(t)?e=t:(this._debug("#getSession()","session from storage is not valid"),await this._removeSession())),!e)return{data:{session:null},error:null};const s=!!e.expires_at&&e.expires_at<=Date.now()/1e3;if(this._debug("#__loadSession()",`session has${s?"":" not"} expired`,"expires_at",e.expires_at),!s){if(this.storage.isServer){let t=this.suppressGetSessionWarning;e=new Proxy(e,{get:(e,s,r)=>(t||"user"!==s||(console.warn("Using the user object as returned from supabase.auth.getSession() or from some supabase.auth.onAuthStateChange() events could be insecure! This value comes directly from the storage medium (usually cookies on the server) and many not be authentic. Use supabase.auth.getUser() instead which authenticates the data by contacting the Supabase Auth server."),t=!0,this.suppressGetSessionWarning=!0),Reflect.get(e,s,r))})}return{data:{session:e},error:null}}const{session:r,error:i}=await this._callRefreshToken(e.refresh_token);return i?{data:{session:null},error:i}:{data:{session:r},error:null}}finally{this._debug("#__loadSession()","end")}}async getUser(e){return e?await this._getUser(e):(await this.initializePromise,await this._acquireLock(-1,(async()=>await this._getUser())))}async _getUser(e){try{return e?await F(this.fetch,"GET",`${this.url}/user`,{headers:this.headers,jwt:e,xform:q}):await this._useSession((async e=>{var t,s,r;const{data:i,error:n}=e;if(n)throw n;return(null===(t=i.session)||void 0===t?void 0:t.access_token)||this.hasCustomAuthorizationHeader?await F(this.fetch,"GET",`${this.url}/user`,{headers:this.headers,jwt:null!==(r=null===(s=i.session)||void 0===s?void 0:s.access_token)&&void 0!==r?r:void 0,xform:q}):{data:{user:null},error:new j}}))}catch(e){if(k(e))return{data:{user:null},error:e};throw e}}async updateUser(e,t={}){return await this.initializePromise,await this._acquireLock(-1,(async()=>await this._updateUser(e,t)))}async _updateUser(e,t={}){try{return await this._useSession((async s=>{const{data:r,error:i}=s;if(i)throw i;if(!r.session)throw new j;const n=r.session;let o=null,a=null;"pkce"===this.flowType&&null!=e.email&&([o,a]=await _(this.storage,this.storageKey));const{data:c,error:l}=await F(this.fetch,"PUT",`${this.url}/user`,{headers:this.headers,redirectTo:null==t?void 0:t.emailRedirectTo,body:Object.assign(Object.assign({},e),{code_challenge:o,code_challenge_method:a}),jwt:n.access_token,xform:q});if(l)throw l;return n.user=c.user,await this._saveSession(n),await this._notifyAllSubscribers("USER_UPDATED",n),{data:{user:n.user},error:null}}))}catch(e){if(k(e))return{data:{user:null},error:e};throw e}}_decodeJWT(e){return v(e)}async setSession(e){return await this.initializePromise,await this._acquireLock(-1,(async()=>await this._setSession(e)))}async _setSession(e){try{if(!e.access_token||!e.refresh_token)throw new j;const t=Date.now()/1e3;let s=t,r=!0,i=null;const n=v(e.access_token);if(n.exp&&(s=n.exp,r=s<=t),r){const{session:t,error:s}=await this._callRefreshToken(e.refresh_token);if(s)return{data:{user:null,session:null},error:s};if(!t)return{data:{user:null,session:null},error:null};i=t}else{const{data:r,error:n}=await this._getUser(e.access_token);if(n)throw n;i={access_token:e.access_token,refresh_token:e.refresh_token,user:r.user,token_type:"bearer",expires_in:s-t,expires_at:s},await this._saveSession(i),await this._notifyAllSubscribers("SIGNED_IN",i)}return{data:{user:i.user,session:i},error:null}}catch(e){if(k(e))return{data:{session:null,user:null},error:e};throw e}}async refreshSession(e){return await this.initializePromise,await this._acquireLock(-1,(async()=>await this._refreshSession(e)))}async _refreshSession(e){try{return await this._useSession((async t=>{var s;if(!e){const{data:r,error:i}=t;if(i)throw i;e=null!==(s=r.session)&&void 0!==s?s:void 0}if(!(null==e?void 0:e.refresh_token))throw new j;const{session:r,error:i}=await this._callRefreshToken(e.refresh_token);return i?{data:{user:null,session:null},error:i}:r?{data:{user:r.user,session:r},error:null}:{data:{user:null,session:null},error:null}}))}catch(e){if(k(e))return{data:{user:null,session:null},error:e};throw e}}async _getSessionFromURL(e){try{if(!a())throw new $("No browser detected.");if("implicit"===this.flowType&&!this._isImplicitGrantFlow())throw new $("Not a valid implicit grant flow url.");if("pkce"==this.flowType&&!e)throw new x("Not a valid PKCE flow url.");const t=h(window.location.href);if(e){if(!t.code)throw new x("No code detected.");const{data:e,error:s}=await this._exchangeCodeForSession(t.code);if(s)throw s;const r=new URL(window.location.href);return r.searchParams.delete("code"),window.history.replaceState(window.history.state,"",r.toString()),{data:{session:e.session,redirectType:null},error:null}}if(t.error||t.error_description||t.error_code)throw new $(t.error_description||"Error in URL with unspecified error_description",{error:t.error||"unspecified_error",code:t.error_code||"unspecified_code"});const{provider_token:s,provider_refresh_token:r,access_token:i,refresh_token:n,expires_in:o,expires_at:c,token_type:l}=t;if(!(i&&o&&n&&l))throw new $("No session defined in URL");const u=Math.round(Date.now()/1e3),d=parseInt(o);let f=u+d;c&&(f=parseInt(c));const p=f-u;1e3*p<=ee&&console.warn(`@supabase/gotrue-js: Session as retrieved from URL expires in ${p}s, should have been closer to ${d}s`);const g=f-d;u-g>=120?console.warn("@supabase/gotrue-js: Session as retrieved from URL was issued over 120s ago, URL could be stale",g,f,u):u-g<0&&console.warn("@supabase/gotrue-js: Session as retrieved from URL was issued in the future? Check the device clok for skew",g,f,u);const{data:y,error:v}=await this._getUser(i);if(v)throw v;const m={provider_token:s,provider_refresh_token:r,access_token:i,expires_in:d,expires_at:f,refresh_token:n,token_type:l,user:y.user};return window.location.hash="",this._debug("#_getSessionFromURL()","clearing window.location.hash"),{data:{session:m,redirectType:t.type},error:null}}catch(e){if(k(e))return{data:{session:null,redirectType:null},error:e};throw e}}_isImplicitGrantFlow(){const e=h(window.location.href);return!(!a()||!e.access_token&&!e.error_description)}async _isPKCEFlow(){const e=h(window.location.href),t=await p(this.storage,`${this.storageKey}-code-verifier`);return!(!e.code||!t)}async signOut(e={scope:"global"}){return await this.initializePromise,await this._acquireLock(-1,(async()=>await this._signOut(e)))}async _signOut({scope:e}={scope:"global"}){return await this._useSession((async t=>{var s;const{data:r,error:i}=t;if(i)return{error:i};const n=null===(s=r.session)||void 0===s?void 0:s.access_token;if(n){const{error:t}=await this.admin.signOut(n,e);if(t&&(!S(t)||404!==t.status&&401!==t.status&&403!==t.status))return{error:t}}return"others"!==e&&(await this._removeSession(),await g(this.storage,`${this.storageKey}-code-verifier`),await this._notifyAllSubscribers("SIGNED_OUT",null)),{error:null}}))}onAuthStateChange(e){const t="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,(function(e){const t=16*Math.random()|0;return("x"==e?t:3&t|8).toString(16)})),s={id:t,callback:e,unsubscribe:()=>{this._debug("#unsubscribe()","state change callback with id removed",t),this.stateChangeEmitters.delete(t)}};return this._debug("#onAuthStateChange()","registered callback with id",t),this.stateChangeEmitters.set(t,s),(async()=>{await this.initializePromise,await this._acquireLock(-1,(async()=>{this._emitInitialSession(t)}))})(),{data:{subscription:s}}}async _emitInitialSession(e){return await this._useSession((async t=>{var s,r;try{const{data:{session:r},error:i}=t;if(i)throw i;await(null===(s=this.stateChangeEmitters.get(e))||void 0===s?void 0:s.callback("INITIAL_SESSION",r)),this._debug("INITIAL_SESSION","callback id",e,"session",r)}catch(t){await(null===(r=this.stateChangeEmitters.get(e))||void 0===r?void 0:r.callback("INITIAL_SESSION",null)),this._debug("INITIAL_SESSION","callback id",e,"error",t),console.error(t)}}))}async resetPasswordForEmail(e,t={}){let s=null,r=null;"pkce"===this.flowType&&([s,r]=await _(this.storage,this.storageKey,!0));try{return await F(this.fetch,"POST",`${this.url}/recover`,{body:{email:e,code_challenge:s,code_challenge_method:r,gotrue_meta_security:{captcha_token:t.captchaToken}},headers:this.headers,redirectTo:t.redirectTo})}catch(e){if(k(e))return{data:null,error:e};throw e}}async getUserIdentities(){var e;try{const{data:t,error:s}=await this.getUser();if(s)throw s;return{data:{identities:null!==(e=t.user.identities)&&void 0!==e?e:[]},error:null}}catch(e){if(k(e))return{data:null,error:e};throw e}}async linkIdentity(e){var t;try{const{data:s,error:r}=await this._useSession((async t=>{var s,r,i,n,o;const{data:a,error:c}=t;if(c)throw c;const l=await this._getUrlForProvider(`${this.url}/user/identities/authorize`,e.provider,{redirectTo:null===(s=e.options)||void 0===s?void 0:s.redirectTo,scopes:null===(r=e.options)||void 0===r?void 0:r.scopes,queryParams:null===(i=e.options)||void 0===i?void 0:i.queryParams,skipBrowserRedirect:!0});return await F(this.fetch,"GET",l,{headers:this.headers,jwt:null!==(o=null===(n=a.session)||void 0===n?void 0:n.access_token)&&void 0!==o?o:void 0})}));if(r)throw r;return a()&&!(null===(t=e.options)||void 0===t?void 0:t.skipBrowserRedirect)&&window.location.assign(null==s?void 0:s.url),{data:{provider:e.provider,url:null==s?void 0:s.url},error:null}}catch(t){if(k(t))return{data:{provider:e.provider,url:null},error:t};throw t}}async unlinkIdentity(e){try{return await this._useSession((async t=>{var s,r;const{data:i,error:n}=t;if(n)throw n;return await F(this.fetch,"DELETE",`${this.url}/user/identities/${e.identity_id}`,{headers:this.headers,jwt:null!==(r=null===(s=i.session)||void 0===s?void 0:s.access_token)&&void 0!==r?r:void 0})}))}catch(e){if(k(e))return{data:null,error:e};throw e}}async _refreshAccessToken(e){const t=`#_refreshAccessToken(${e.substring(0,5)}...)`;this._debug(t,"begin");try{const i=Date.now();return await(s=async s=>(s>0&&await async function(e){return await new Promise((t=>{setTimeout((()=>t(null)),e)}))}(200*Math.pow(2,s-1)),this._debug(t,"refreshing attempt",s),await F(this.fetch,"POST",`${this.url}/token?grant_type=refresh_token`,{body:{refresh_token:e},headers:this.headers,xform:M})),r=(e,t)=>{const s=200*Math.pow(2,e);return t&&R(t)&&Date.now()+s-i<ee},new Promise(((e,t)=>{(async()=>{for(let i=0;i<1/0;i++)try{const t=await s(i);if(!r(i,null))return void e(t)}catch(e){if(!r(i,e))return void t(e)}})()})))}catch(e){if(this._debug(t,"error",e),k(e))return{data:{session:null,user:null},error:e};throw e}finally{this._debug(t,"end")}var s,r}_isValidSession(e){return"object"==typeof e&&null!==e&&"access_token"in e&&"refresh_token"in e&&"expires_at"in e}async _handleProviderSignIn(e,t){const s=await this._getUrlForProvider(`${this.url}/authorize`,e,{redirectTo:t.redirectTo,scopes:t.scopes,queryParams:t.queryParams});return this._debug("#_handleProviderSignIn()","provider",e,"options",t,"url",s),a()&&!t.skipBrowserRedirect&&window.location.assign(s),{data:{provider:e,url:s},error:null}}async _recoverAndRefresh(){var e;const t="#_recoverAndRefresh()";this._debug(t,"begin");try{const s=await p(this.storage,this.storageKey);if(this._debug(t,"session from storage",s),!this._isValidSession(s))return this._debug(t,"session is not valid"),void(null!==s&&await this._removeSession());const r=Math.round(Date.now()/1e3),i=(null!==(e=s.expires_at)&&void 0!==e?e:1/0)<r+10;if(this._debug(t,`session has${i?"":" not"} expired with margin of 10s`),i){if(this.autoRefreshToken&&s.refresh_token){const{error:e}=await this._callRefreshToken(s.refresh_token);e&&(console.error(e),R(e)||(this._debug(t,"refresh failed with a non-retryable error, removing the session",e),await this._removeSession()))}}else await this._notifyAllSubscribers("SIGNED_IN",s)}catch(e){return this._debug(t,"error",e),void console.error(e)}finally{this._debug(t,"end")}}async _callRefreshToken(e){var t,s;if(!e)throw new j;if(this.refreshingDeferred)return this.refreshingDeferred.promise;const r=`#_callRefreshToken(${e.substring(0,5)}...)`;this._debug(r,"begin");try{this.refreshingDeferred=new y;const{data:t,error:s}=await this._refreshAccessToken(e);if(s)throw s;if(!t.session)throw new j;await this._saveSession(t.session),await this._notifyAllSubscribers("TOKEN_REFRESHED",t.session);const r={session:t.session,error:null};return this.refreshingDeferred.resolve(r),r}catch(e){if(this._debug(r,"error",e),k(e)){const s={session:null,error:e};return R(e)||(await this._removeSession(),await this._notifyAllSubscribers("SIGNED_OUT",null)),null===(t=this.refreshingDeferred)||void 0===t||t.resolve(s),s}throw null===(s=this.refreshingDeferred)||void 0===s||s.reject(e),e}finally{this.refreshingDeferred=null,this._debug(r,"end")}}async _notifyAllSubscribers(e,t,s=!0){const r=`#_notifyAllSubscribers(${e})`;this._debug(r,"begin",t,`broadcast = ${s}`);try{this.broadcastChannel&&s&&this.broadcastChannel.postMessage({event:e,session:t});const r=[],i=Array.from(this.stateChangeEmitters.values()).map((async s=>{try{await s.callback(e,t)}catch(e){r.push(e)}}));if(await Promise.all(i),r.length>0){for(let e=0;e<r.length;e+=1)console.error(r[e]);throw r[0]}}finally{this._debug(r,"end")}}async _saveSession(e){this._debug("#_saveSession()",e),this.suppressGetSessionWarning=!0,await f(this.storage,this.storageKey,e)}async _removeSession(){this._debug("#_removeSession()"),await g(this.storage,this.storageKey)}_removeVisibilityChangedCallback(){this._debug("#_removeVisibilityChangedCallback()");const e=this.visibilityChangedCallback;this.visibilityChangedCallback=null;try{e&&a()&&(null===window||void 0===window?void 0:window.removeEventListener)&&window.removeEventListener("visibilitychange",e)}catch(e){console.error("removing visibilitychange callback failed",e)}}async _startAutoRefresh(){await this._stopAutoRefresh(),this._debug("#_startAutoRefresh()");const e=setInterval((()=>this._autoRefreshTokenTick()),ee);this.autoRefreshTicker=e,e&&"object"==typeof e&&"function"==typeof e.unref?e.unref():"undefined"!=typeof Deno&&"function"==typeof Deno.unrefTimer&&Deno.unrefTimer(e),setTimeout((async()=>{await this.initializePromise,await this._autoRefreshTokenTick()}),0)}async _stopAutoRefresh(){this._debug("#_stopAutoRefresh()");const e=this.autoRefreshTicker;this.autoRefreshTicker=null,e&&clearInterval(e)}async startAutoRefresh(){this._removeVisibilityChangedCallback(),await this._startAutoRefresh()}async stopAutoRefresh(){this._removeVisibilityChangedCallback(),await this._stopAutoRefresh()}async _autoRefreshTokenTick(){this._debug("#_autoRefreshTokenTick()","begin");try{await this._acquireLock(0,(async()=>{try{const e=Date.now();try{return await this._useSession((async t=>{const{data:{session:s}}=t;if(!s||!s.refresh_token||!s.expires_at)return void this._debug("#_autoRefreshTokenTick()","no session");const r=Math.floor((1e3*s.expires_at-e)/ee);this._debug("#_autoRefreshTokenTick()",`access token expires in ${r} ticks, a tick lasts 30000ms, refresh threshold is 3 ticks`),r<=3&&await this._callRefreshToken(s.refresh_token)}))}catch(e){console.error("Auto refresh tick failed with error. This is likely a transient error.",e)}}finally{this._debug("#_autoRefreshTokenTick()","end")}}))}catch(e){if(!(e.isAcquireTimeout||e instanceof Y))throw e;this._debug("auto refresh token tick lock not available")}}async _handleVisibilityChange(){if(this._debug("#_handleVisibilityChange()"),!a()||!(null===window||void 0===window?void 0:window.addEventListener))return this.autoRefreshToken&&this.startAutoRefresh(),!1;try{this.visibilityChangedCallback=async()=>await this._onVisibilityChanged(!1),null===window||void 0===window||window.addEventListener("visibilitychange",this.visibilityChangedCallback),await this._onVisibilityChanged(!0)}catch(e){console.error("_handleVisibilityChange",e)}}async _onVisibilityChanged(e){const t=`#_onVisibilityChanged(${e})`;this._debug(t,"visibilityState",document.visibilityState),"visible"===document.visibilityState?(this.autoRefreshToken&&this._startAutoRefresh(),e||(await this.initializePromise,await this._acquireLock(-1,(async()=>{"visible"===document.visibilityState?await this._recoverAndRefresh():this._debug(t,"acquired the lock to recover the session, but the browser visibilityState is no longer visible, aborting")})))):"hidden"===document.visibilityState&&this.autoRefreshToken&&this._stopAutoRefresh()}async _getUrlForProvider(e,t,s){const r=[`provider=${encodeURIComponent(t)}`];if((null==s?void 0:s.redirectTo)&&r.push(`redirect_to=${encodeURIComponent(s.redirectTo)}`),(null==s?void 0:s.scopes)&&r.push(`scopes=${encodeURIComponent(s.scopes)}`),"pkce"===this.flowType){const[e,t]=await _(this.storage,this.storageKey),s=new URLSearchParams({code_challenge:`${encodeURIComponent(e)}`,code_challenge_method:`${encodeURIComponent(t)}`});r.push(s.toString())}if(null==s?void 0:s.queryParams){const e=new URLSearchParams(s.queryParams);r.push(e.toString())}return(null==s?void 0:s.skipBrowserRedirect)&&r.push(`skip_http_redirect=${s.skipBrowserRedirect}`),`${e}?${r.join("&")}`}async _unenroll(e){try{return await this._useSession((async t=>{var s;const{data:r,error:i}=t;return i?{data:null,error:i}:await F(this.fetch,"DELETE",`${this.url}/factors/${e.factorId}`,{headers:this.headers,jwt:null===(s=null==r?void 0:r.session)||void 0===s?void 0:s.access_token})}))}catch(e){if(k(e))return{data:null,error:e};throw e}}async _enroll(e){try{return await this._useSession((async t=>{var s,r;const{data:i,error:n}=t;if(n)return{data:null,error:n};const{data:o,error:a}=await F(this.fetch,"POST",`${this.url}/factors`,{body:{friendly_name:e.friendlyName,factor_type:e.factorType,issuer:e.issuer},headers:this.headers,jwt:null===(s=null==i?void 0:i.session)||void 0===s?void 0:s.access_token});return a?{data:null,error:a}:((null===(r=null==o?void 0:o.totp)||void 0===r?void 0:r.qr_code)&&(o.totp.qr_code=`data:image/svg+xml;utf-8,${o.totp.qr_code}`),{data:o,error:null})}))}catch(e){if(k(e))return{data:null,error:e};throw e}}async _verify(e){return this._acquireLock(-1,(async()=>{try{return await this._useSession((async t=>{var s;const{data:r,error:i}=t;if(i)return{data:null,error:i};const{data:n,error:o}=await F(this.fetch,"POST",`${this.url}/factors/${e.factorId}/verify`,{body:{code:e.code,challenge_id:e.challengeId},headers:this.headers,jwt:null===(s=null==r?void 0:r.session)||void 0===s?void 0:s.access_token});return o?{data:null,error:o}:(await this._saveSession(Object.assign({expires_at:Math.round(Date.now()/1e3)+n.expires_in},n)),await this._notifyAllSubscribers("MFA_CHALLENGE_VERIFIED",n),{data:n,error:o})}))}catch(e){if(k(e))return{data:null,error:e};throw e}}))}async _challenge(e){return this._acquireLock(-1,(async()=>{try{return await this._useSession((async t=>{var s;const{data:r,error:i}=t;return i?{data:null,error:i}:await F(this.fetch,"POST",`${this.url}/factors/${e.factorId}/challenge`,{headers:this.headers,jwt:null===(s=null==r?void 0:r.session)||void 0===s?void 0:s.access_token})}))}catch(e){if(k(e))return{data:null,error:e};throw e}}))}async _challengeAndVerify(e){const{data:t,error:s}=await this._challenge({factorId:e.factorId});return s?{data:null,error:s}:await this._verify({factorId:e.factorId,challengeId:t.id,code:e.code})}async _listFactors(){const{data:{user:e},error:t}=await this.getUser();if(t)return{data:null,error:t};const s=(null==e?void 0:e.factors)||[],r=s.filter((e=>"totp"===e.factor_type&&"verified"===e.status));return{data:{all:s,totp:r},error:null}}async _getAuthenticatorAssuranceLevel(){return this._acquireLock(-1,(async()=>await this._useSession((async e=>{var t,s;const{data:{session:r},error:i}=e;if(i)return{data:null,error:i};if(!r)return{data:{currentLevel:null,nextLevel:null,currentAuthenticationMethods:[]},error:null};const n=this._decodeJWT(r.access_token);let o=null;n.aal&&(o=n.aal);let a=o;return(null!==(s=null===(t=r.user.factors)||void 0===t?void 0:t.filter((e=>"verified"===e.status)))&&void 0!==s?s:[]).length>0&&(a="aal2"),{data:{currentLevel:o,nextLevel:a,currentAuthenticationMethods:n.amr||[]},error:null}}))))}}se.nextInstanceID=0;const re=J,ie=se},982:(e,t,s)=>{s.r(t),s.d(t,{FunctionRegion:()=>a,FunctionsClient:()=>c,FunctionsError:()=>r,FunctionsFetchError:()=>i,FunctionsHttpError:()=>o,FunctionsRelayError:()=>n});class r extends Error{constructor(e,t="FunctionsError",s){super(e),this.name=t,this.context=s}}class i extends r{constructor(e){super("Failed to send a request to the Edge Function","FunctionsFetchError",e)}}class n extends r{constructor(e){super("Relay Error invoking the Edge Function","FunctionsRelayError",e)}}class o extends r{constructor(e){super("Edge Function returned a non-2xx status code","FunctionsHttpError",e)}}var a;!function(e){e.Any="any",e.ApNortheast1="ap-northeast-1",e.ApNortheast2="ap-northeast-2",e.ApSouth1="ap-south-1",e.ApSoutheast1="ap-southeast-1",e.ApSoutheast2="ap-southeast-2",e.CaCentral1="ca-central-1",e.EuCentral1="eu-central-1",e.EuWest1="eu-west-1",e.EuWest2="eu-west-2",e.EuWest3="eu-west-3",e.SaEast1="sa-east-1",e.UsEast1="us-east-1",e.UsWest1="us-west-1",e.UsWest2="us-west-2"}(a||(a={}));class c{constructor(e,{headers:t={},customFetch:r,region:i=a.Any}={}){this.url=e,this.headers=t,this.region=i,this.fetch=(e=>{let t;return t=e||("undefined"==typeof fetch?(...e)=>Promise.resolve().then(s.bind(s,743)).then((({default:t})=>t(...e))):fetch),(...e)=>t(...e)})(r)}setAuth(e){this.headers.Authorization=`Bearer ${e}`}invoke(e,t={}){var s,r,a,c,l;return r=this,a=void 0,l=function*(){try{const{headers:r,method:a,body:c}=t;let l,h={},{region:u}=t;u||(u=this.region),u&&"any"!==u&&(h["x-region"]=u),c&&(r&&!Object.prototype.hasOwnProperty.call(r,"Content-Type")||!r)&&("undefined"!=typeof Blob&&c instanceof Blob||c instanceof ArrayBuffer?(h["Content-Type"]="application/octet-stream",l=c):"string"==typeof c?(h["Content-Type"]="text/plain",l=c):"undefined"!=typeof FormData&&c instanceof FormData?l=c:(h["Content-Type"]="application/json",l=JSON.stringify(c)));const d=yield this.fetch(`${this.url}/${e}`,{method:a||"POST",headers:Object.assign(Object.assign(Object.assign({},h),this.headers),r),body:l}).catch((e=>{throw new i(e)})),f=d.headers.get("x-relay-error");if(f&&"true"===f)throw new n(d);if(!d.ok)throw new o(d);let p,g=(null!==(s=d.headers.get("Content-Type"))&&void 0!==s?s:"text/plain").split(";")[0].trim();return p="application/json"===g?yield d.json():"application/octet-stream"===g?yield d.blob():"text/event-stream"===g?d:"multipart/form-data"===g?yield d.formData():yield d.text(),{data:p,error:null}}catch(e){return{data:null,error:e}}},new((c=void 0)||(c=Promise))((function(e,t){function s(e){try{n(l.next(e))}catch(e){t(e)}}function i(e){try{n(l.throw(e))}catch(e){t(e)}}function n(t){var r;t.done?e(t.value):(r=t.value,r instanceof c?r:new c((function(e){e(r)}))).then(s,i)}n((l=l.apply(r,a||[])).next())}))}}},743:(e,t,s)=>{s.r(t),s.d(t,{Headers:()=>o,Request:()=>a,Response:()=>c,default:()=>n,fetch:()=>i});var r=function(){if("undefined"!=typeof self)return self;if("undefined"!=typeof window)return window;if(void 0!==s.g)return s.g;throw new Error("unable to locate global object")}();const i=r.fetch,n=r.fetch.bind(r),o=r.Headers,a=r.Request,c=r.Response},879:function(e,t,s){var r=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});const i=r(s(743)),n=r(s(577));t.default=class{constructor(e){this.shouldThrowOnError=!1,this.method=e.method,this.url=e.url,this.headers=e.headers,this.schema=e.schema,this.body=e.body,this.shouldThrowOnError=e.shouldThrowOnError,this.signal=e.signal,this.isMaybeSingle=e.isMaybeSingle,e.fetch?this.fetch=e.fetch:"undefined"==typeof fetch?this.fetch=i.default:this.fetch=fetch}throwOnError(){return this.shouldThrowOnError=!0,this}then(e,t){void 0===this.schema||(["GET","HEAD"].includes(this.method)?this.headers["Accept-Profile"]=this.schema:this.headers["Content-Profile"]=this.schema),"GET"!==this.method&&"HEAD"!==this.method&&(this.headers["Content-Type"]="application/json");let s=(0,this.fetch)(this.url.toString(),{method:this.method,headers:this.headers,body:JSON.stringify(this.body),signal:this.signal}).then((async e=>{var t,s,r;let i=null,o=null,a=null,c=e.status,l=e.statusText;if(e.ok){if("HEAD"!==this.method){const t=await e.text();""===t||(o="text/csv"===this.headers.Accept||this.headers.Accept&&this.headers.Accept.includes("application/vnd.pgrst.plan+text")?t:JSON.parse(t))}const r=null===(t=this.headers.Prefer)||void 0===t?void 0:t.match(/count=(exact|planned|estimated)/),n=null===(s=e.headers.get("content-range"))||void 0===s?void 0:s.split("/");r&&n&&n.length>1&&(a=parseInt(n[1])),this.isMaybeSingle&&"GET"===this.method&&Array.isArray(o)&&(o.length>1?(i={code:"PGRST116",details:`Results contain ${o.length} rows, application/vnd.pgrst.object+json requires 1 row`,hint:null,message:"JSON object requested, multiple (or no) rows returned"},o=null,a=null,c=406,l="Not Acceptable"):o=1===o.length?o[0]:null)}else{const t=await e.text();try{i=JSON.parse(t),Array.isArray(i)&&404===e.status&&(o=[],i=null,c=200,l="OK")}catch(s){404===e.status&&""===t?(c=204,l="No Content"):i={message:t}}if(i&&this.isMaybeSingle&&(null===(r=null==i?void 0:i.details)||void 0===r?void 0:r.includes("0 rows"))&&(i=null,c=200,l="OK"),i&&this.shouldThrowOnError)throw new n.default(i)}return{error:i,data:o,count:a,status:c,statusText:l}}));return this.shouldThrowOnError||(s=s.catch((e=>{var t,s,r;return{error:{message:`${null!==(t=null==e?void 0:e.name)&&void 0!==t?t:"FetchError"}: ${null==e?void 0:e.message}`,details:`${null!==(s=null==e?void 0:e.stack)&&void 0!==s?s:""}`,hint:"",code:`${null!==(r=null==e?void 0:e.code)&&void 0!==r?r:""}`},data:null,count:null,status:0,statusText:""}}))),s.then(e,t)}}},435:function(e,t,s){var r=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});const i=r(s(527)),n=r(s(483)),o=s(862);class a{constructor(e,{headers:t={},schema:s,fetch:r}={}){this.url=e,this.headers=Object.assign(Object.assign({},o.DEFAULT_HEADERS),t),this.schemaName=s,this.fetch=r}from(e){const t=new URL(`${this.url}/${e}`);return new i.default(t,{headers:Object.assign({},this.headers),schema:this.schemaName,fetch:this.fetch})}schema(e){return new a(this.url,{headers:this.headers,schema:e,fetch:this.fetch})}rpc(e,t={},{head:s=!1,get:r=!1,count:i}={}){let o;const a=new URL(`${this.url}/rpc/${e}`);let c;s||r?(o=s?"HEAD":"GET",Object.entries(t).filter((([e,t])=>void 0!==t)).map((([e,t])=>[e,Array.isArray(t)?`{${t.join(",")}}`:`${t}`])).forEach((([e,t])=>{a.searchParams.append(e,t)}))):(o="POST",c=t);const l=Object.assign({},this.headers);return i&&(l.Prefer=`count=${i}`),new n.default({method:o,url:a,headers:l,schema:this.schemaName,body:c,fetch:this.fetch,allowEmpty:!1})}}t.default=a},577:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0});class s extends Error{constructor(e){super(e.message),this.name="PostgrestError",this.details=e.details,this.hint=e.hint,this.code=e.code}}t.default=s},483:function(e,t,s){var r=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});const i=r(s(486));class n extends i.default{eq(e,t){return this.url.searchParams.append(e,`eq.${t}`),this}neq(e,t){return this.url.searchParams.append(e,`neq.${t}`),this}gt(e,t){return this.url.searchParams.append(e,`gt.${t}`),this}gte(e,t){return this.url.searchParams.append(e,`gte.${t}`),this}lt(e,t){return this.url.searchParams.append(e,`lt.${t}`),this}lte(e,t){return this.url.searchParams.append(e,`lte.${t}`),this}like(e,t){return this.url.searchParams.append(e,`like.${t}`),this}likeAllOf(e,t){return this.url.searchParams.append(e,`like(all).{${t.join(",")}}`),this}likeAnyOf(e,t){return this.url.searchParams.append(e,`like(any).{${t.join(",")}}`),this}ilike(e,t){return this.url.searchParams.append(e,`ilike.${t}`),this}ilikeAllOf(e,t){return this.url.searchParams.append(e,`ilike(all).{${t.join(",")}}`),this}ilikeAnyOf(e,t){return this.url.searchParams.append(e,`ilike(any).{${t.join(",")}}`),this}is(e,t){return this.url.searchParams.append(e,`is.${t}`),this}in(e,t){const s=Array.from(new Set(t)).map((e=>"string"==typeof e&&new RegExp("[,()]").test(e)?`"${e}"`:`${e}`)).join(",");return this.url.searchParams.append(e,`in.(${s})`),this}contains(e,t){return"string"==typeof t?this.url.searchParams.append(e,`cs.${t}`):Array.isArray(t)?this.url.searchParams.append(e,`cs.{${t.join(",")}}`):this.url.searchParams.append(e,`cs.${JSON.stringify(t)}`),this}containedBy(e,t){return"string"==typeof t?this.url.searchParams.append(e,`cd.${t}`):Array.isArray(t)?this.url.searchParams.append(e,`cd.{${t.join(",")}}`):this.url.searchParams.append(e,`cd.${JSON.stringify(t)}`),this}rangeGt(e,t){return this.url.searchParams.append(e,`sr.${t}`),this}rangeGte(e,t){return this.url.searchParams.append(e,`nxl.${t}`),this}rangeLt(e,t){return this.url.searchParams.append(e,`sl.${t}`),this}rangeLte(e,t){return this.url.searchParams.append(e,`nxr.${t}`),this}rangeAdjacent(e,t){return this.url.searchParams.append(e,`adj.${t}`),this}overlaps(e,t){return"string"==typeof t?this.url.searchParams.append(e,`ov.${t}`):this.url.searchParams.append(e,`ov.{${t.join(",")}}`),this}textSearch(e,t,{config:s,type:r}={}){let i="";"plain"===r?i="pl":"phrase"===r?i="ph":"websearch"===r&&(i="w");const n=void 0===s?"":`(${s})`;return this.url.searchParams.append(e,`${i}fts${n}.${t}`),this}match(e){return Object.entries(e).forEach((([e,t])=>{this.url.searchParams.append(e,`eq.${t}`)})),this}not(e,t,s){return this.url.searchParams.append(e,`not.${t}.${s}`),this}or(e,{foreignTable:t,referencedTable:s=t}={}){const r=s?`${s}.or`:"or";return this.url.searchParams.append(r,`(${e})`),this}filter(e,t,s){return this.url.searchParams.append(e,`${t}.${s}`),this}}t.default=n},527:function(e,t,s){var r=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});const i=r(s(483));t.default=class{constructor(e,{headers:t={},schema:s,fetch:r}){this.url=e,this.headers=t,this.schema=s,this.fetch=r}select(e,{head:t=!1,count:s}={}){const r=t?"HEAD":"GET";let n=!1;const o=(null!=e?e:"*").split("").map((e=>/\s/.test(e)&&!n?"":('"'===e&&(n=!n),e))).join("");return this.url.searchParams.set("select",o),s&&(this.headers.Prefer=`count=${s}`),new i.default({method:r,url:this.url,headers:this.headers,schema:this.schema,fetch:this.fetch,allowEmpty:!1})}insert(e,{count:t,defaultToNull:s=!0}={}){const r=[];if(this.headers.Prefer&&r.push(this.headers.Prefer),t&&r.push(`count=${t}`),s||r.push("missing=default"),this.headers.Prefer=r.join(","),Array.isArray(e)){const t=e.reduce(((e,t)=>e.concat(Object.keys(t))),[]);if(t.length>0){const e=[...new Set(t)].map((e=>`"${e}"`));this.url.searchParams.set("columns",e.join(","))}}return new i.default({method:"POST",url:this.url,headers:this.headers,schema:this.schema,body:e,fetch:this.fetch,allowEmpty:!1})}upsert(e,{onConflict:t,ignoreDuplicates:s=!1,count:r,defaultToNull:n=!0}={}){const o=[`resolution=${s?"ignore":"merge"}-duplicates`];if(void 0!==t&&this.url.searchParams.set("on_conflict",t),this.headers.Prefer&&o.push(this.headers.Prefer),r&&o.push(`count=${r}`),n||o.push("missing=default"),this.headers.Prefer=o.join(","),Array.isArray(e)){const t=e.reduce(((e,t)=>e.concat(Object.keys(t))),[]);if(t.length>0){const e=[...new Set(t)].map((e=>`"${e}"`));this.url.searchParams.set("columns",e.join(","))}}return new i.default({method:"POST",url:this.url,headers:this.headers,schema:this.schema,body:e,fetch:this.fetch,allowEmpty:!1})}update(e,{count:t}={}){const s=[];return this.headers.Prefer&&s.push(this.headers.Prefer),t&&s.push(`count=${t}`),this.headers.Prefer=s.join(","),new i.default({method:"PATCH",url:this.url,headers:this.headers,schema:this.schema,body:e,fetch:this.fetch,allowEmpty:!1})}delete({count:e}={}){const t=[];return e&&t.push(`count=${e}`),this.headers.Prefer&&t.unshift(this.headers.Prefer),this.headers.Prefer=t.join(","),new i.default({method:"DELETE",url:this.url,headers:this.headers,schema:this.schema,fetch:this.fetch,allowEmpty:!1})}}},486:function(e,t,s){var r=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});const i=r(s(879));class n extends i.default{select(e){let t=!1;const s=(null!=e?e:"*").split("").map((e=>/\s/.test(e)&&!t?"":('"'===e&&(t=!t),e))).join("");return this.url.searchParams.set("select",s),this.headers.Prefer&&(this.headers.Prefer+=","),this.headers.Prefer+="return=representation",this}order(e,{ascending:t=!0,nullsFirst:s,foreignTable:r,referencedTable:i=r}={}){const n=i?`${i}.order`:"order",o=this.url.searchParams.get(n);return this.url.searchParams.set(n,`${o?`${o},`:""}${e}.${t?"asc":"desc"}${void 0===s?"":s?".nullsfirst":".nullslast"}`),this}limit(e,{foreignTable:t,referencedTable:s=t}={}){const r=void 0===s?"limit":`${s}.limit`;return this.url.searchParams.set(r,`${e}`),this}range(e,t,{foreignTable:s,referencedTable:r=s}={}){const i=void 0===r?"offset":`${r}.offset`,n=void 0===r?"limit":`${r}.limit`;return this.url.searchParams.set(i,`${e}`),this.url.searchParams.set(n,""+(t-e+1)),this}abortSignal(e){return this.signal=e,this}single(){return this.headers.Accept="application/vnd.pgrst.object+json",this}maybeSingle(){return"GET"===this.method?this.headers.Accept="application/json":this.headers.Accept="application/vnd.pgrst.object+json",this.isMaybeSingle=!0,this}csv(){return this.headers.Accept="text/csv",this}geojson(){return this.headers.Accept="application/geo+json",this}explain({analyze:e=!1,verbose:t=!1,settings:s=!1,buffers:r=!1,wal:i=!1,format:n="text"}={}){var o;const a=[e?"analyze":null,t?"verbose":null,s?"settings":null,r?"buffers":null,i?"wal":null].filter(Boolean).join("|"),c=null!==(o=this.headers.Accept)&&void 0!==o?o:"application/json";return this.headers.Accept=`application/vnd.pgrst.plan+${n}; for="${c}"; options=${a};`,this}rollback(){var e;return(null!==(e=this.headers.Prefer)&&void 0!==e?e:"").trim().length>0?this.headers.Prefer+=",tx=rollback":this.headers.Prefer="tx=rollback",this}returns(){return this}}t.default=n},862:(e,t,s)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.DEFAULT_HEADERS=void 0;const r=s(771);t.DEFAULT_HEADERS={"X-Client-Info":`postgrest-js/${r.version}`}},159:function(e,t,s){var r=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.PostgrestBuilder=t.PostgrestTransformBuilder=t.PostgrestFilterBuilder=t.PostgrestQueryBuilder=t.PostgrestClient=void 0;const i=r(s(435));t.PostgrestClient=i.default;const n=r(s(527));t.PostgrestQueryBuilder=n.default;const o=r(s(483));t.PostgrestFilterBuilder=o.default;const a=r(s(486));t.PostgrestTransformBuilder=a.default;const c=r(s(879));t.PostgrestBuilder=c.default,t.default={PostgrestClient:i.default,PostgrestQueryBuilder:n.default,PostgrestFilterBuilder:o.default,PostgrestTransformBuilder:a.default,PostgrestBuilder:c.default}},771:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.version=void 0,t.version="2.45.0"},73:(e,t,s)=>{s.r(t),s.d(t,{REALTIME_CHANNEL_STATES:()=>P,REALTIME_LISTEN_TYPES:()=>E,REALTIME_POSTGRES_CHANGES_LISTEN_EVENT:()=>S,REALTIME_PRESENCE_LISTEN_EVENTS:()=>T,REALTIME_SUBSCRIBE_STATES:()=>O,RealtimeChannel:()=>A,RealtimeClient:()=>C,RealtimePresence:()=>j});const r={"X-Client-Info":"realtime-js/2.10.2"};var i,n,o,a,c,l;!function(e){e[e.connecting=0]="connecting",e[e.open=1]="open",e[e.closing=2]="closing",e[e.closed=3]="closed"}(i||(i={})),function(e){e.closed="closed",e.errored="errored",e.joined="joined",e.joining="joining",e.leaving="leaving"}(n||(n={})),function(e){e.close="phx_close",e.error="phx_error",e.join="phx_join",e.reply="phx_reply",e.leave="phx_leave",e.access_token="access_token"}(o||(o={})),function(e){e.websocket="websocket"}(a||(a={})),function(e){e.Connecting="connecting",e.Open="open",e.Closing="closing",e.Closed="closed"}(c||(c={}));class h{constructor(){this.HEADER_LENGTH=1}decode(e,t){return e.constructor===ArrayBuffer?t(this._binaryDecode(e)):t("string"==typeof e?JSON.parse(e):{})}_binaryDecode(e){const t=new DataView(e),s=new TextDecoder;return this._decodeBroadcast(e,t,s)}_decodeBroadcast(e,t,s){const r=t.getUint8(1),i=t.getUint8(2);let n=this.HEADER_LENGTH+2;const o=s.decode(e.slice(n,n+r));n+=r;const a=s.decode(e.slice(n,n+i));return n+=i,{ref:null,topic:o,event:a,payload:JSON.parse(s.decode(e.slice(n,e.byteLength)))}}}class u{constructor(e,t){this.callback=e,this.timerCalc=t,this.timer=void 0,this.tries=0,this.callback=e,this.timerCalc=t}reset(){this.tries=0,clearTimeout(this.timer)}scheduleTimeout(){clearTimeout(this.timer),this.timer=setTimeout((()=>{this.tries=this.tries+1,this.callback()}),this.timerCalc(this.tries+1))}}!function(e){e.abstime="abstime",e.bool="bool",e.date="date",e.daterange="daterange",e.float4="float4",e.float8="float8",e.int2="int2",e.int4="int4",e.int4range="int4range",e.int8="int8",e.int8range="int8range",e.json="json",e.jsonb="jsonb",e.money="money",e.numeric="numeric",e.oid="oid",e.reltime="reltime",e.text="text",e.time="time",e.timestamp="timestamp",e.timestamptz="timestamptz",e.timetz="timetz",e.tsrange="tsrange",e.tstzrange="tstzrange"}(l||(l={}));const d=(e,t,s={})=>{var r;const i=null!==(r=s.skipTypes)&&void 0!==r?r:[];return Object.keys(t).reduce(((s,r)=>(s[r]=f(r,e,t,i),s)),{})},f=(e,t,s,r)=>{const i=t.find((t=>t.name===e)),n=null==i?void 0:i.type,o=s[e];return n&&!r.includes(n)?p(n,o):g(o)},p=(e,t)=>{if("_"===e.charAt(0)){const s=e.slice(1,e.length);return _(t,s)}switch(e){case l.bool:return y(t);case l.float4:case l.float8:case l.int2:case l.int4:case l.int8:case l.numeric:case l.oid:return v(t);case l.json:case l.jsonb:return m(t);case l.timestamp:return b(t);case l.abstime:case l.date:case l.daterange:case l.int4range:case l.int8range:case l.money:case l.reltime:case l.text:case l.time:case l.timestamptz:case l.timetz:case l.tsrange:case l.tstzrange:default:return g(t)}},g=e=>e,y=e=>{switch(e){case"t":return!0;case"f":return!1;default:return e}},v=e=>{if("string"==typeof e){const t=parseFloat(e);if(!Number.isNaN(t))return t}return e},m=e=>{if("string"==typeof e)try{return JSON.parse(e)}catch(t){return console.log(`JSON parse error: ${t}`),e}return e},_=(e,t)=>{if("string"!=typeof e)return e;const s=e.length-1,r=e[s];if("{"===e[0]&&"}"===r){let r;const i=e.slice(1,s);try{r=JSON.parse("["+i+"]")}catch(e){r=i?i.split(","):[]}return r.map((e=>p(t,e)))}return e},b=e=>"string"==typeof e?e.replace(" ","T"):e,w=e=>{let t=e;return t=t.replace(/^ws/i,"http"),t=t.replace(/(\/socket\/websocket|\/socket|\/websocket)\/?$/i,""),t.replace(/\/+$/,"")};class k{constructor(e,t,s={},r=1e4){this.channel=e,this.event=t,this.payload=s,this.timeout=r,this.sent=!1,this.timeoutTimer=void 0,this.ref="",this.receivedResp=null,this.recHooks=[],this.refEvent=null}resend(e){this.timeout=e,this._cancelRefEvent(),this.ref="",this.refEvent=null,this.receivedResp=null,this.sent=!1,this.send()}send(){this._hasReceived("timeout")||(this.startTimeout(),this.sent=!0,this.channel.socket.push({topic:this.channel.topic,event:this.event,payload:this.payload,ref:this.ref,join_ref:this.channel._joinRef()}))}updatePayload(e){this.payload=Object.assign(Object.assign({},this.payload),e)}receive(e,t){var s;return this._hasReceived(e)&&t(null===(s=this.receivedResp)||void 0===s?void 0:s.response),this.recHooks.push({status:e,callback:t}),this}startTimeout(){this.timeoutTimer||(this.ref=this.channel.socket._makeRef(),this.refEvent=this.channel._replyEventName(this.ref),this.channel._on(this.refEvent,{},(e=>{this._cancelRefEvent(),this._cancelTimeout(),this.receivedResp=e,this._matchReceive(e)})),this.timeoutTimer=setTimeout((()=>{this.trigger("timeout",{})}),this.timeout))}trigger(e,t){this.refEvent&&this.channel._trigger(this.refEvent,{status:e,response:t})}destroy(){this._cancelRefEvent(),this._cancelTimeout()}_cancelRefEvent(){this.refEvent&&this.channel._off(this.refEvent,{})}_cancelTimeout(){clearTimeout(this.timeoutTimer),this.timeoutTimer=void 0}_matchReceive({status:e,response:t}){this.recHooks.filter((t=>t.status===e)).forEach((e=>e.callback(t)))}_hasReceived(e){return this.receivedResp&&this.receivedResp.status===e}}var T,S,E,O;!function(e){e.SYNC="sync",e.JOIN="join",e.LEAVE="leave"}(T||(T={}));class j{constructor(e,t){this.channel=e,this.state={},this.pendingDiffs=[],this.joinRef=null,this.caller={onJoin:()=>{},onLeave:()=>{},onSync:()=>{}};const s=(null==t?void 0:t.events)||{state:"presence_state",diff:"presence_diff"};this.channel._on(s.state,{},(e=>{const{onJoin:t,onLeave:s,onSync:r}=this.caller;this.joinRef=this.channel._joinRef(),this.state=j.syncState(this.state,e,t,s),this.pendingDiffs.forEach((e=>{this.state=j.syncDiff(this.state,e,t,s)})),this.pendingDiffs=[],r()})),this.channel._on(s.diff,{},(e=>{const{onJoin:t,onLeave:s,onSync:r}=this.caller;this.inPendingSyncState()?this.pendingDiffs.push(e):(this.state=j.syncDiff(this.state,e,t,s),r())})),this.onJoin(((e,t,s)=>{this.channel._trigger("presence",{event:"join",key:e,currentPresences:t,newPresences:s})})),this.onLeave(((e,t,s)=>{this.channel._trigger("presence",{event:"leave",key:e,currentPresences:t,leftPresences:s})})),this.onSync((()=>{this.channel._trigger("presence",{event:"sync"})}))}static syncState(e,t,s,r){const i=this.cloneDeep(e),n=this.transformState(t),o={},a={};return this.map(i,((e,t)=>{n[e]||(a[e]=t)})),this.map(n,((e,t)=>{const s=i[e];if(s){const r=t.map((e=>e.presence_ref)),i=s.map((e=>e.presence_ref)),n=t.filter((e=>i.indexOf(e.presence_ref)<0)),c=s.filter((e=>r.indexOf(e.presence_ref)<0));n.length>0&&(o[e]=n),c.length>0&&(a[e]=c)}else o[e]=t})),this.syncDiff(i,{joins:o,leaves:a},s,r)}static syncDiff(e,t,s,r){const{joins:i,leaves:n}={joins:this.transformState(t.joins),leaves:this.transformState(t.leaves)};return s||(s=()=>{}),r||(r=()=>{}),this.map(i,((t,r)=>{var i;const n=null!==(i=e[t])&&void 0!==i?i:[];if(e[t]=this.cloneDeep(r),n.length>0){const s=e[t].map((e=>e.presence_ref)),r=n.filter((e=>s.indexOf(e.presence_ref)<0));e[t].unshift(...r)}s(t,n,r)})),this.map(n,((t,s)=>{let i=e[t];if(!i)return;const n=s.map((e=>e.presence_ref));i=i.filter((e=>n.indexOf(e.presence_ref)<0)),e[t]=i,r(t,i,s),0===i.length&&delete e[t]})),e}static map(e,t){return Object.getOwnPropertyNames(e).map((s=>t(s,e[s])))}static transformState(e){return e=this.cloneDeep(e),Object.getOwnPropertyNames(e).reduce(((t,s)=>{const r=e[s];return t[s]="metas"in r?r.metas.map((e=>(e.presence_ref=e.phx_ref,delete e.phx_ref,delete e.phx_ref_prev,e))):r,t}),{})}static cloneDeep(e){return JSON.parse(JSON.stringify(e))}onJoin(e){this.caller.onJoin=e}onLeave(e){this.caller.onLeave=e}onSync(e){this.caller.onSync=e}inPendingSyncState(){return!this.joinRef||this.joinRef!==this.channel._joinRef()}}!function(e){e.ALL="*",e.INSERT="INSERT",e.UPDATE="UPDATE",e.DELETE="DELETE"}(S||(S={})),function(e){e.BROADCAST="broadcast",e.PRESENCE="presence",e.POSTGRES_CHANGES="postgres_changes"}(E||(E={})),function(e){e.SUBSCRIBED="SUBSCRIBED",e.TIMED_OUT="TIMED_OUT",e.CLOSED="CLOSED",e.CHANNEL_ERROR="CHANNEL_ERROR"}(O||(O={}));const P=n;class A{constructor(e,t={config:{}},s){this.topic=e,this.params=t,this.socket=s,this.bindings={},this.state=n.closed,this.joinedOnce=!1,this.pushBuffer=[],this.subTopic=e.replace(/^realtime:/i,""),this.params.config=Object.assign({broadcast:{ack:!1,self:!1},presence:{key:""},private:!1},t.config),this.timeout=this.socket.timeout,this.joinPush=new k(this,o.join,this.params,this.timeout),this.rejoinTimer=new u((()=>this._rejoinUntilConnected()),this.socket.reconnectAfterMs),this.joinPush.receive("ok",(()=>{this.state=n.joined,this.rejoinTimer.reset(),this.pushBuffer.forEach((e=>e.send())),this.pushBuffer=[]})),this._onClose((()=>{this.rejoinTimer.reset(),this.socket.log("channel",`close ${this.topic} ${this._joinRef()}`),this.state=n.closed,this.socket._remove(this)})),this._onError((e=>{this._isLeaving()||this._isClosed()||(this.socket.log("channel",`error ${this.topic}`,e),this.state=n.errored,this.rejoinTimer.scheduleTimeout())})),this.joinPush.receive("timeout",(()=>{this._isJoining()&&(this.socket.log("channel",`timeout ${this.topic}`,this.joinPush.timeout),this.state=n.errored,this.rejoinTimer.scheduleTimeout())})),this._on(o.reply,{},((e,t)=>{this._trigger(this._replyEventName(t),e)})),this.presence=new j(this),this.broadcastEndpointURL=w(this.socket.endPoint)+"/api/broadcast"}subscribe(e,t=this.timeout){var s,r;if(this.socket.isConnected()||this.socket.connect(),this.joinedOnce)throw"tried to subscribe multiple times. 'subscribe' can only be called a single time per channel instance";{const{config:{broadcast:i,presence:n,private:o}}=this.params;this._onError((t=>e&&e("CHANNEL_ERROR",t))),this._onClose((()=>e&&e("CLOSED")));const a={},c={broadcast:i,presence:n,postgres_changes:null!==(r=null===(s=this.bindings.postgres_changes)||void 0===s?void 0:s.map((e=>e.filter)))&&void 0!==r?r:[],private:o};this.socket.accessToken&&(a.access_token=this.socket.accessToken),this.updateJoinPayload(Object.assign({config:c},a)),this.joinedOnce=!0,this._rejoin(t),this.joinPush.receive("ok",(({postgres_changes:t})=>{var s;if(this.socket.accessToken&&this.socket.setAuth(this.socket.accessToken),void 0!==t){const r=this.bindings.postgres_changes,i=null!==(s=null==r?void 0:r.length)&&void 0!==s?s:0,n=[];for(let s=0;s<i;s++){const i=r[s],{filter:{event:o,schema:a,table:c,filter:l}}=i,h=t&&t[s];if(!h||h.event!==o||h.schema!==a||h.table!==c||h.filter!==l)return this.unsubscribe(),void(e&&e("CHANNEL_ERROR",new Error("mismatch between server and client bindings for postgres changes")));n.push(Object.assign(Object.assign({},i),{id:h.id}))}return this.bindings.postgres_changes=n,void(e&&e("SUBSCRIBED"))}e&&e("SUBSCRIBED")})).receive("error",(t=>{e&&e("CHANNEL_ERROR",new Error(JSON.stringify(Object.values(t).join(", ")||"error")))})).receive("timeout",(()=>{e&&e("TIMED_OUT")}))}return this}presenceState(){return this.presence.state}async track(e,t={}){return await this.send({type:"presence",event:"track",payload:e},t.timeout||this.timeout)}async untrack(e={}){return await this.send({type:"presence",event:"untrack"},e)}on(e,t,s){return this._on(e,t,s)}async send(e,t={}){var s,r;if(this._canPush()||"broadcast"!==e.type)return new Promise((s=>{var r,i,n;const o=this._push(e.type,e,t.timeout||this.timeout);"broadcast"!==e.type||(null===(n=null===(i=null===(r=this.params)||void 0===r?void 0:r.config)||void 0===i?void 0:i.broadcast)||void 0===n?void 0:n.ack)||s("ok"),o.receive("ok",(()=>s("ok"))),o.receive("error",(()=>s("error"))),o.receive("timeout",(()=>s("timed out")))}));{const{event:i,payload:n}=e,o={method:"POST",headers:{Authorization:this.socket.accessToken?`Bearer ${this.socket.accessToken}`:"",apikey:this.socket.apiKey?this.socket.apiKey:"","Content-Type":"application/json"},body:JSON.stringify({messages:[{topic:this.subTopic,event:i,payload:n}]})};try{const e=await this._fetchWithTimeout(this.broadcastEndpointURL,o,null!==(s=t.timeout)&&void 0!==s?s:this.timeout);return await(null===(r=e.body)||void 0===r?void 0:r.cancel()),e.ok?"ok":"error"}catch(e){return"AbortError"===e.name?"timed out":"error"}}}updateJoinPayload(e){this.joinPush.updatePayload(e)}unsubscribe(e=this.timeout){this.state=n.leaving;const t=()=>{this.socket.log("channel",`leave ${this.topic}`),this._trigger(o.close,"leave",this._joinRef())};return this.rejoinTimer.reset(),this.joinPush.destroy(),new Promise((s=>{const r=new k(this,o.leave,{},e);r.receive("ok",(()=>{t(),s("ok")})).receive("timeout",(()=>{t(),s("timed out")})).receive("error",(()=>{s("error")})),r.send(),this._canPush()||r.trigger("ok",{})}))}async _fetchWithTimeout(e,t,s){const r=new AbortController,i=setTimeout((()=>r.abort()),s),n=await this.socket.fetch(e,Object.assign(Object.assign({},t),{signal:r.signal}));return clearTimeout(i),n}_push(e,t,s=this.timeout){if(!this.joinedOnce)throw`tried to push '${e}' to '${this.topic}' before joining. Use channel.subscribe() before pushing events`;let r=new k(this,e,t,s);return this._canPush()?r.send():(r.startTimeout(),this.pushBuffer.push(r)),r}_onMessage(e,t,s){return t}_isMember(e){return this.topic===e}_joinRef(){return this.joinPush.ref}_trigger(e,t,s){var r,i;const n=e.toLocaleLowerCase(),{close:a,error:c,leave:l,join:h}=o;if(s&&[a,c,l,h].indexOf(n)>=0&&s!==this._joinRef())return;let u=this._onMessage(n,t,s);if(t&&!u)throw"channel onMessage callbacks must return the payload, modified or unmodified";["insert","update","delete"].includes(n)?null===(r=this.bindings.postgres_changes)||void 0===r||r.filter((e=>{var t,s,r;return"*"===(null===(t=e.filter)||void 0===t?void 0:t.event)||(null===(r=null===(s=e.filter)||void 0===s?void 0:s.event)||void 0===r?void 0:r.toLocaleLowerCase())===n})).map((e=>e.callback(u,s))):null===(i=this.bindings[n])||void 0===i||i.filter((e=>{var s,r,i,o,a,c;if(["broadcast","presence","postgres_changes"].includes(n)){if("id"in e){const n=e.id,o=null===(s=e.filter)||void 0===s?void 0:s.event;return n&&(null===(r=t.ids)||void 0===r?void 0:r.includes(n))&&("*"===o||(null==o?void 0:o.toLocaleLowerCase())===(null===(i=t.data)||void 0===i?void 0:i.type.toLocaleLowerCase()))}{const s=null===(a=null===(o=null==e?void 0:e.filter)||void 0===o?void 0:o.event)||void 0===a?void 0:a.toLocaleLowerCase();return"*"===s||s===(null===(c=null==t?void 0:t.event)||void 0===c?void 0:c.toLocaleLowerCase())}}return e.type.toLocaleLowerCase()===n})).map((e=>{if("object"==typeof u&&"ids"in u){const e=u.data,{schema:t,table:s,commit_timestamp:r,type:i,errors:n}=e,o={schema:t,table:s,commit_timestamp:r,eventType:i,new:{},old:{},errors:n};u=Object.assign(Object.assign({},o),this._getPayloadRecords(e))}e.callback(u,s)}))}_isClosed(){return this.state===n.closed}_isJoined(){return this.state===n.joined}_isJoining(){return this.state===n.joining}_isLeaving(){return this.state===n.leaving}_replyEventName(e){return`chan_reply_${e}`}_on(e,t,s){const r=e.toLocaleLowerCase(),i={type:r,filter:t,callback:s};return this.bindings[r]?this.bindings[r].push(i):this.bindings[r]=[i],this}_off(e,t){const s=e.toLocaleLowerCase();return this.bindings[s]=this.bindings[s].filter((e=>{var r;return!((null===(r=e.type)||void 0===r?void 0:r.toLocaleLowerCase())===s&&A.isEqual(e.filter,t))})),this}static isEqual(e,t){if(Object.keys(e).length!==Object.keys(t).length)return!1;for(const s in e)if(e[s]!==t[s])return!1;return!0}_rejoinUntilConnected(){this.rejoinTimer.scheduleTimeout(),this.socket.isConnected()&&this._rejoin()}_onClose(e){this._on(o.close,{},e)}_onError(e){this._on(o.error,{},(t=>e(t)))}_canPush(){return this.socket.isConnected()&&this._isJoined()}_rejoin(e=this.timeout){this._isLeaving()||(this.socket._leaveOpenTopic(this.topic),this.state=n.joining,this.joinPush.resend(e))}_getPayloadRecords(e){const t={new:{},old:{}};return"INSERT"!==e.type&&"UPDATE"!==e.type||(t.new=d(e.columns,e.record)),"UPDATE"!==e.type&&"DELETE"!==e.type||(t.old=d(e.columns,e.old_record)),t}}const $=()=>{},x="undefined"!=typeof WebSocket;class C{constructor(e,t){var i;this.accessToken=null,this.apiKey=null,this.channels=[],this.endPoint="",this.httpEndpoint="",this.headers=r,this.params={},this.timeout=1e4,this.heartbeatIntervalMs=3e4,this.heartbeatTimer=void 0,this.pendingHeartbeatRef=null,this.ref=0,this.logger=$,this.conn=null,this.sendBuffer=[],this.serializer=new h,this.stateChangeCallbacks={open:[],close:[],error:[],message:[]},this._resolveFetch=e=>{let t;return t=e||("undefined"==typeof fetch?(...e)=>Promise.resolve().then(s.bind(s,743)).then((({default:t})=>t(...e))):fetch),(...e)=>t(...e)},this.endPoint=`${e}/${a.websocket}`,this.httpEndpoint=w(e),(null==t?void 0:t.transport)?this.transport=t.transport:this.transport=null,(null==t?void 0:t.params)&&(this.params=t.params),(null==t?void 0:t.headers)&&(this.headers=Object.assign(Object.assign({},this.headers),t.headers)),(null==t?void 0:t.timeout)&&(this.timeout=t.timeout),(null==t?void 0:t.logger)&&(this.logger=t.logger),(null==t?void 0:t.heartbeatIntervalMs)&&(this.heartbeatIntervalMs=t.heartbeatIntervalMs);const n=null===(i=null==t?void 0:t.params)||void 0===i?void 0:i.apikey;n&&(this.accessToken=n,this.apiKey=n),this.reconnectAfterMs=(null==t?void 0:t.reconnectAfterMs)?t.reconnectAfterMs:e=>[1e3,2e3,5e3,1e4][e-1]||1e4,this.encode=(null==t?void 0:t.encode)?t.encode:(e,t)=>t(JSON.stringify(e)),this.decode=(null==t?void 0:t.decode)?t.decode:this.serializer.decode.bind(this.serializer),this.reconnectTimer=new u((async()=>{this.disconnect(),this.connect()}),this.reconnectAfterMs),this.fetch=this._resolveFetch(null==t?void 0:t.fetch)}connect(){if(!this.conn)if(this.transport)this.conn=new this.transport(this._endPointURL(),void 0,{headers:this.headers});else{if(x)return this.conn=new WebSocket(this._endPointURL()),void this.setupConnection();this.conn=new R(this._endPointURL(),void 0,{close:()=>{this.conn=null}}),s.e(26).then(s.t.bind(s,26,23)).then((({default:e})=>{this.conn=new e(this._endPointURL(),void 0,{headers:this.headers}),this.setupConnection()}))}}disconnect(e,t){this.conn&&(this.conn.onclose=function(){},e?this.conn.close(e,null!=t?t:""):this.conn.close(),this.conn=null,this.heartbeatTimer&&clearInterval(this.heartbeatTimer),this.reconnectTimer.reset())}getChannels(){return this.channels}async removeChannel(e){const t=await e.unsubscribe();return 0===this.channels.length&&this.disconnect(),t}async removeAllChannels(){const e=await Promise.all(this.channels.map((e=>e.unsubscribe())));return this.disconnect(),e}log(e,t,s){this.logger(e,t,s)}connectionState(){switch(this.conn&&this.conn.readyState){case i.connecting:return c.Connecting;case i.open:return c.Open;case i.closing:return c.Closing;default:return c.Closed}}isConnected(){return this.connectionState()===c.Open}channel(e,t={config:{}}){const s=new A(`realtime:${e}`,t,this);return this.channels.push(s),s}push(e){const{topic:t,event:s,payload:r,ref:i}=e,n=()=>{this.encode(e,(e=>{var t;null===(t=this.conn)||void 0===t||t.send(e)}))};this.log("push",`${t} ${s} (${i})`,r),this.isConnected()?n():this.sendBuffer.push(n)}setAuth(e){this.accessToken=e,this.channels.forEach((t=>{e&&t.updateJoinPayload({access_token:e}),t.joinedOnce&&t._isJoined()&&t._push(o.access_token,{access_token:e})}))}_makeRef(){let e=this.ref+1;return e===this.ref?this.ref=0:this.ref=e,this.ref.toString()}_leaveOpenTopic(e){let t=this.channels.find((t=>t.topic===e&&(t._isJoined()||t._isJoining())));t&&(this.log("transport",`leaving duplicate topic "${e}"`),t.unsubscribe())}_remove(e){this.channels=this.channels.filter((t=>t._joinRef()!==e._joinRef()))}setupConnection(){this.conn&&(this.conn.binaryType="arraybuffer",this.conn.onopen=()=>this._onConnOpen(),this.conn.onerror=e=>this._onConnError(e),this.conn.onmessage=e=>this._onConnMessage(e),this.conn.onclose=e=>this._onConnClose(e))}_endPointURL(){return this._appendParams(this.endPoint,Object.assign({},this.params,{vsn:"1.0.0"}))}_onConnMessage(e){this.decode(e.data,(e=>{let{topic:t,event:s,payload:r,ref:i}=e;(i&&i===this.pendingHeartbeatRef||s===(null==r?void 0:r.type))&&(this.pendingHeartbeatRef=null),this.log("receive",`${r.status||""} ${t} ${s} ${i&&"("+i+")"||""}`,r),this.channels.filter((e=>e._isMember(t))).forEach((e=>e._trigger(s,r,i))),this.stateChangeCallbacks.message.forEach((t=>t(e)))}))}_onConnOpen(){this.log("transport",`connected to ${this._endPointURL()}`),this._flushSendBuffer(),this.reconnectTimer.reset(),this.heartbeatTimer&&clearInterval(this.heartbeatTimer),this.heartbeatTimer=setInterval((()=>this._sendHeartbeat()),this.heartbeatIntervalMs),this.stateChangeCallbacks.open.forEach((e=>e()))}_onConnClose(e){this.log("transport","close",e),this._triggerChanError(),this.heartbeatTimer&&clearInterval(this.heartbeatTimer),this.reconnectTimer.scheduleTimeout(),this.stateChangeCallbacks.close.forEach((t=>t(e)))}_onConnError(e){this.log("transport",e.message),this._triggerChanError(),this.stateChangeCallbacks.error.forEach((t=>t(e)))}_triggerChanError(){this.channels.forEach((e=>e._trigger(o.error)))}_appendParams(e,t){if(0===Object.keys(t).length)return e;const s=e.match(/\?/)?"&":"?";return`${e}${s}${new URLSearchParams(t)}`}_flushSendBuffer(){this.isConnected()&&this.sendBuffer.length>0&&(this.sendBuffer.forEach((e=>e())),this.sendBuffer=[])}_sendHeartbeat(){var e;if(this.isConnected()){if(this.pendingHeartbeatRef)return this.pendingHeartbeatRef=null,this.log("transport","heartbeat timeout. Attempting to re-establish connection"),void(null===(e=this.conn)||void 0===e||e.close(1e3,"hearbeat timeout"));this.pendingHeartbeatRef=this._makeRef(),this.push({topic:"phoenix",event:"heartbeat",payload:{},ref:this.pendingHeartbeatRef}),this.setAuth(this.accessToken)}}}class R{constructor(e,t,s){this.binaryType="arraybuffer",this.onclose=()=>{},this.onerror=()=>{},this.onmessage=()=>{},this.onopen=()=>{},this.readyState=i.connecting,this.send=()=>{},this.url=null,this.url=e,this.close=s.close}}},752:(e,t,s)=>{s.r(t),s.d(t,{StorageApiError:()=>n,StorageClient:()=>T,StorageError:()=>r,StorageUnknownError:()=>o,isStorageError:()=>i});class r extends Error{constructor(e){super(e),this.__isStorageError=!0,this.name="StorageError"}}function i(e){return"object"==typeof e&&null!==e&&"__isStorageError"in e}class n extends r{constructor(e,t){super(e),this.name="StorageApiError",this.status=t}toJSON(){return{name:this.name,message:this.message,status:this.status}}}class o extends r{constructor(e,t){super(e),this.name="StorageUnknownError",this.originalError=t}}const a=e=>{let t;return t=e||("undefined"==typeof fetch?(...e)=>Promise.resolve().then(s.bind(s,743)).then((({default:t})=>t(...e))):fetch),(...e)=>t(...e)};var c=function(e,t,s,r){return new(s||(s=Promise))((function(i,n){function o(e){try{c(r.next(e))}catch(e){n(e)}}function a(e){try{c(r.throw(e))}catch(e){n(e)}}function c(e){var t;e.done?i(e.value):(t=e.value,t instanceof s?t:new s((function(e){e(t)}))).then(o,a)}c((r=r.apply(e,t||[])).next())}))};const l=e=>e.msg||e.message||e.error_description||e.error||JSON.stringify(e),h=(e,t)=>c(void 0,void 0,void 0,(function*(){const r=yield(i=void 0,a=void 0,c=void 0,h=function*(){return"undefined"==typeof Response?(yield Promise.resolve().then(s.bind(s,743))).Response:Response},new(c||(c=Promise))((function(e,t){function s(e){try{n(h.next(e))}catch(e){t(e)}}function r(e){try{n(h.throw(e))}catch(e){t(e)}}function n(t){var i;t.done?e(t.value):(i=t.value,i instanceof c?i:new c((function(e){e(i)}))).then(s,r)}n((h=h.apply(i,a||[])).next())})));var i,a,c,h;e instanceof r?e.json().then((s=>{t(new n(l(s),e.status||500))})).catch((e=>{t(new o(l(e),e))})):t(new o(l(e),e))})),u=(e,t,s,r)=>{const i={method:e,headers:(null==t?void 0:t.headers)||{}};return"GET"===e?i:(i.headers=Object.assign({"Content-Type":"application/json"},null==t?void 0:t.headers),i.body=JSON.stringify(r),Object.assign(Object.assign({},i),s))};function d(e,t,s,r,i,n){return c(this,void 0,void 0,(function*(){return new Promise(((o,a)=>{e(s,u(t,r,i,n)).then((e=>{if(!e.ok)throw e;return(null==r?void 0:r.noResolveJson)?e:e.json()})).then((e=>o(e))).catch((e=>h(e,a)))}))}))}function f(e,t,s,r){return c(this,void 0,void 0,(function*(){return d(e,"GET",t,s,r)}))}function p(e,t,s,r,i){return c(this,void 0,void 0,(function*(){return d(e,"POST",t,r,i,s)}))}function g(e,t,s,r,i){return c(this,void 0,void 0,(function*(){return d(e,"DELETE",t,r,i,s)}))}var y=function(e,t,s,r){return new(s||(s=Promise))((function(i,n){function o(e){try{c(r.next(e))}catch(e){n(e)}}function a(e){try{c(r.throw(e))}catch(e){n(e)}}function c(e){var t;e.done?i(e.value):(t=e.value,t instanceof s?t:new s((function(e){e(t)}))).then(o,a)}c((r=r.apply(e,t||[])).next())}))};const v={limit:100,offset:0,sortBy:{column:"name",order:"asc"}},m={cacheControl:"3600",contentType:"text/plain;charset=UTF-8",upsert:!1};class _{constructor(e,t={},s,r){this.url=e,this.headers=t,this.bucketId=s,this.fetch=a(r)}uploadOrUpdate(e,t,s,r){return y(this,void 0,void 0,(function*(){try{let i;const n=Object.assign(Object.assign({},m),r),o=Object.assign(Object.assign({},this.headers),"POST"===e&&{"x-upsert":String(n.upsert)});"undefined"!=typeof Blob&&s instanceof Blob?(i=new FormData,i.append("cacheControl",n.cacheControl),i.append("",s)):"undefined"!=typeof FormData&&s instanceof FormData?(i=s,i.append("cacheControl",n.cacheControl)):(i=s,o["cache-control"]=`max-age=${n.cacheControl}`,o["content-type"]=n.contentType);const a=this._removeEmptyFolders(t),c=this._getFinalPath(a),l=yield this.fetch(`${this.url}/object/${c}`,Object.assign({method:e,body:i,headers:o},(null==n?void 0:n.duplex)?{duplex:n.duplex}:{})),h=yield l.json();return l.ok?{data:{path:a,id:h.Id,fullPath:h.Key},error:null}:{data:null,error:h}}catch(e){if(i(e))return{data:null,error:e};throw e}}))}upload(e,t,s){return y(this,void 0,void 0,(function*(){return this.uploadOrUpdate("POST",e,t,s)}))}uploadToSignedUrl(e,t,s,r){return y(this,void 0,void 0,(function*(){const n=this._removeEmptyFolders(e),o=this._getFinalPath(n),a=new URL(this.url+`/object/upload/sign/${o}`);a.searchParams.set("token",t);try{let e;const t=Object.assign({upsert:m.upsert},r),i=Object.assign(Object.assign({},this.headers),{"x-upsert":String(t.upsert)});"undefined"!=typeof Blob&&s instanceof Blob?(e=new FormData,e.append("cacheControl",t.cacheControl),e.append("",s)):"undefined"!=typeof FormData&&s instanceof FormData?(e=s,e.append("cacheControl",t.cacheControl)):(e=s,i["cache-control"]=`max-age=${t.cacheControl}`,i["content-type"]=t.contentType);const o=yield this.fetch(a.toString(),{method:"PUT",body:e,headers:i}),c=yield o.json();return o.ok?{data:{path:n,fullPath:c.Key},error:null}:{data:null,error:c}}catch(e){if(i(e))return{data:null,error:e};throw e}}))}createSignedUploadUrl(e,t){return y(this,void 0,void 0,(function*(){try{let s=this._getFinalPath(e);const i=Object.assign({},this.headers);(null==t?void 0:t.upsert)&&(i["x-upsert"]="true");const n=yield p(this.fetch,`${this.url}/object/upload/sign/${s}`,{},{headers:i}),o=new URL(this.url+n.url),a=o.searchParams.get("token");if(!a)throw new r("No token returned by API");return{data:{signedUrl:o.toString(),path:e,token:a},error:null}}catch(e){if(i(e))return{data:null,error:e};throw e}}))}update(e,t,s){return y(this,void 0,void 0,(function*(){return this.uploadOrUpdate("PUT",e,t,s)}))}move(e,t,s){return y(this,void 0,void 0,(function*(){try{return{data:yield p(this.fetch,`${this.url}/object/move`,{bucketId:this.bucketId,sourceKey:e,destinationKey:t,destinationBucket:null==s?void 0:s.destinationBucket},{headers:this.headers}),error:null}}catch(e){if(i(e))return{data:null,error:e};throw e}}))}copy(e,t,s){return y(this,void 0,void 0,(function*(){try{return{data:{path:(yield p(this.fetch,`${this.url}/object/copy`,{bucketId:this.bucketId,sourceKey:e,destinationKey:t,destinationBucket:null==s?void 0:s.destinationBucket},{headers:this.headers})).Key},error:null}}catch(e){if(i(e))return{data:null,error:e};throw e}}))}createSignedUrl(e,t,s){return y(this,void 0,void 0,(function*(){try{let r=this._getFinalPath(e),i=yield p(this.fetch,`${this.url}/object/sign/${r}`,Object.assign({expiresIn:t},(null==s?void 0:s.transform)?{transform:s.transform}:{}),{headers:this.headers});const n=(null==s?void 0:s.download)?`&download=${!0===s.download?"":s.download}`:"";return i={signedUrl:encodeURI(`${this.url}${i.signedURL}${n}`)},{data:i,error:null}}catch(e){if(i(e))return{data:null,error:e};throw e}}))}createSignedUrls(e,t,s){return y(this,void 0,void 0,(function*(){try{const r=yield p(this.fetch,`${this.url}/object/sign/${this.bucketId}`,{expiresIn:t,paths:e},{headers:this.headers}),i=(null==s?void 0:s.download)?`&download=${!0===s.download?"":s.download}`:"";return{data:r.map((e=>Object.assign(Object.assign({},e),{signedUrl:e.signedURL?encodeURI(`${this.url}${e.signedURL}${i}`):null}))),error:null}}catch(e){if(i(e))return{data:null,error:e};throw e}}))}download(e,t){return y(this,void 0,void 0,(function*(){const s=void 0!==(null==t?void 0:t.transform)?"render/image/authenticated":"object",r=this.transformOptsToQueryString((null==t?void 0:t.transform)||{}),n=r?`?${r}`:"";try{const t=this._getFinalPath(e),r=yield f(this.fetch,`${this.url}/${s}/${t}${n}`,{headers:this.headers,noResolveJson:!0});return{data:yield r.blob(),error:null}}catch(e){if(i(e))return{data:null,error:e};throw e}}))}getPublicUrl(e,t){const s=this._getFinalPath(e),r=[],i=(null==t?void 0:t.download)?`download=${!0===t.download?"":t.download}`:"";""!==i&&r.push(i);const n=void 0!==(null==t?void 0:t.transform)?"render/image":"object",o=this.transformOptsToQueryString((null==t?void 0:t.transform)||{});""!==o&&r.push(o);let a=r.join("&");return""!==a&&(a=`?${a}`),{data:{publicUrl:encodeURI(`${this.url}/${n}/public/${s}${a}`)}}}remove(e){return y(this,void 0,void 0,(function*(){try{return{data:yield g(this.fetch,`${this.url}/object/${this.bucketId}`,{prefixes:e},{headers:this.headers}),error:null}}catch(e){if(i(e))return{data:null,error:e};throw e}}))}list(e,t,s){return y(this,void 0,void 0,(function*(){try{const r=Object.assign(Object.assign(Object.assign({},v),t),{prefix:e||""});return{data:yield p(this.fetch,`${this.url}/object/list/${this.bucketId}`,r,{headers:this.headers},s),error:null}}catch(e){if(i(e))return{data:null,error:e};throw e}}))}_getFinalPath(e){return`${this.bucketId}/${e}`}_removeEmptyFolders(e){return e.replace(/^\/|\/$/g,"").replace(/\/+/g,"/")}transformOptsToQueryString(e){const t=[];return e.width&&t.push(`width=${e.width}`),e.height&&t.push(`height=${e.height}`),e.resize&&t.push(`resize=${e.resize}`),e.format&&t.push(`format=${e.format}`),e.quality&&t.push(`quality=${e.quality}`),t.join("&")}}const b={"X-Client-Info":"storage-js/2.6.0"};var w=function(e,t,s,r){return new(s||(s=Promise))((function(i,n){function o(e){try{c(r.next(e))}catch(e){n(e)}}function a(e){try{c(r.throw(e))}catch(e){n(e)}}function c(e){var t;e.done?i(e.value):(t=e.value,t instanceof s?t:new s((function(e){e(t)}))).then(o,a)}c((r=r.apply(e,t||[])).next())}))};class k{constructor(e,t={},s){this.url=e,this.headers=Object.assign(Object.assign({},b),t),this.fetch=a(s)}listBuckets(){return w(this,void 0,void 0,(function*(){try{return{data:yield f(this.fetch,`${this.url}/bucket`,{headers:this.headers}),error:null}}catch(e){if(i(e))return{data:null,error:e};throw e}}))}getBucket(e){return w(this,void 0,void 0,(function*(){try{return{data:yield f(this.fetch,`${this.url}/bucket/${e}`,{headers:this.headers}),error:null}}catch(e){if(i(e))return{data:null,error:e};throw e}}))}createBucket(e,t={public:!1}){return w(this,void 0,void 0,(function*(){try{return{data:yield p(this.fetch,`${this.url}/bucket`,{id:e,name:e,public:t.public,file_size_limit:t.fileSizeLimit,allowed_mime_types:t.allowedMimeTypes},{headers:this.headers}),error:null}}catch(e){if(i(e))return{data:null,error:e};throw e}}))}updateBucket(e,t){return w(this,void 0,void 0,(function*(){try{const s=yield function(e,t,s,r,i){return c(this,void 0,void 0,(function*(){return d(e,"PUT",t,r,undefined,s)}))}(this.fetch,`${this.url}/bucket/${e}`,{id:e,name:e,public:t.public,file_size_limit:t.fileSizeLimit,allowed_mime_types:t.allowedMimeTypes},{headers:this.headers});return{data:s,error:null}}catch(e){if(i(e))return{data:null,error:e};throw e}}))}emptyBucket(e){return w(this,void 0,void 0,(function*(){try{return{data:yield p(this.fetch,`${this.url}/bucket/${e}/empty`,{},{headers:this.headers}),error:null}}catch(e){if(i(e))return{data:null,error:e};throw e}}))}deleteBucket(e){return w(this,void 0,void 0,(function*(){try{return{data:yield g(this.fetch,`${this.url}/bucket/${e}`,{},{headers:this.headers}),error:null}}catch(e){if(i(e))return{data:null,error:e};throw e}}))}}class T extends k{constructor(e,t={},s){super(e,t,s)}from(e){return new _(this.url,this.headers,e,this.fetch)}}},296:function(e,t,s){var r=this&&this.__awaiter||function(e,t,s,r){return new(s||(s=Promise))((function(i,n){function o(e){try{c(r.next(e))}catch(e){n(e)}}function a(e){try{c(r.throw(e))}catch(e){n(e)}}function c(e){var t;e.done?i(e.value):(t=e.value,t instanceof s?t:new s((function(e){e(t)}))).then(o,a)}c((r=r.apply(e,t||[])).next())}))};Object.defineProperty(t,"__esModule",{value:!0});const i=s(982),n=s(159),o=s(73),a=s(752),c=s(678),l=s(716),h=s(610),u=s(283);t.default=class{constructor(e,t,s){var r,i,o;if(this.supabaseUrl=e,this.supabaseKey=t,!e)throw new Error("supabaseUrl is required.");if(!t)throw new Error("supabaseKey is required.");const a=(0,h.stripTrailingSlash)(e);this.realtimeUrl=`${a}/realtime/v1`.replace(/^http/i,"ws"),this.authUrl=`${a}/auth/v1`,this.storageUrl=`${a}/storage/v1`,this.functionsUrl=`${a}/functions/v1`;const u=`sb-${new URL(this.authUrl).hostname.split(".")[0]}-auth-token`,d={db:c.DEFAULT_DB_OPTIONS,realtime:c.DEFAULT_REALTIME_OPTIONS,auth:Object.assign(Object.assign({},c.DEFAULT_AUTH_OPTIONS),{storageKey:u}),global:c.DEFAULT_GLOBAL_OPTIONS},f=(0,h.applySettingDefaults)(null!=s?s:{},d);this.storageKey=null!==(r=f.auth.storageKey)&&void 0!==r?r:"",this.headers=null!==(i=f.global.headers)&&void 0!==i?i:{},f.accessToken?(this.accessToken=f.accessToken,this.auth=new Proxy({},{get:(e,t)=>{throw new Error(`@supabase/supabase-js: Supabase Client is configured with the accessToken option, accessing supabase.auth.${String(t)} is not possible`)}})):this.auth=this._initSupabaseAuthClient(null!==(o=f.auth)&&void 0!==o?o:{},this.headers,f.global.fetch),this.fetch=(0,l.fetchWithAuth)(t,this._getAccessToken.bind(this),f.global.fetch),this.realtime=this._initRealtimeClient(Object.assign({headers:this.headers},f.realtime)),this.rest=new n.PostgrestClient(`${a}/rest/v1`,{headers:this.headers,schema:f.db.schema,fetch:this.fetch}),f.accessToken||this._listenForAuthEvents()}get functions(){return new i.FunctionsClient(this.functionsUrl,{headers:this.headers,customFetch:this.fetch})}get storage(){return new a.StorageClient(this.storageUrl,this.headers,this.fetch)}from(e){return this.rest.from(e)}schema(e){return this.rest.schema(e)}rpc(e,t={},s={}){return this.rest.rpc(e,t,s)}channel(e,t={config:{}}){return this.realtime.channel(e,t)}getChannels(){return this.realtime.getChannels()}removeChannel(e){return this.realtime.removeChannel(e)}removeAllChannels(){return this.realtime.removeAllChannels()}_getAccessToken(){var e,t;return r(this,void 0,void 0,(function*(){if(this.accessToken)return yield this.accessToken();const{data:s}=yield this.auth.getSession();return null!==(t=null===(e=s.session)||void 0===e?void 0:e.access_token)&&void 0!==t?t:null}))}_initSupabaseAuthClient({autoRefreshToken:e,persistSession:t,detectSessionInUrl:s,storage:r,storageKey:i,flowType:n,debug:o},a,c){var l;const h={Authorization:`Bearer ${this.supabaseKey}`,apikey:`${this.supabaseKey}`};return new u.SupabaseAuthClient({url:this.authUrl,headers:Object.assign(Object.assign({},h),a),storageKey:i,autoRefreshToken:e,persistSession:t,detectSessionInUrl:s,storage:r,flowType:n,debug:o,fetch:c,hasCustomAuthorizationHeader:null!==(l="Authorization"in this.headers)&&void 0!==l&&l})}_initRealtimeClient(e){return new o.RealtimeClient(this.realtimeUrl,Object.assign(Object.assign({},e),{params:Object.assign({apikey:this.supabaseKey},null==e?void 0:e.params)}))}_listenForAuthEvents(){return this.auth.onAuthStateChange(((e,t)=>{this._handleTokenChanged(e,"CLIENT",null==t?void 0:t.access_token)}))}_handleTokenChanged(e,t,s){"TOKEN_REFRESHED"!==e&&"SIGNED_IN"!==e||this.changedAccessToken===s?"SIGNED_OUT"===e&&(this.realtime.setAuth(this.supabaseKey),"STORAGE"==t&&this.auth.signOut(),this.changedAccessToken=void 0):(this.realtime.setAuth(null!=s?s:null),this.changedAccessToken=s)}}},341:function(e,t,s){var r=this&&this.__createBinding||(Object.create?function(e,t,s,r){void 0===r&&(r=s);var i=Object.getOwnPropertyDescriptor(t,s);i&&!("get"in i?!t.__esModule:i.writable||i.configurable)||(i={enumerable:!0,get:function(){return t[s]}}),Object.defineProperty(e,r,i)}:function(e,t,s,r){void 0===r&&(r=s),e[r]=t[s]}),i=this&&this.__exportStar||function(e,t){for(var s in e)"default"===s||Object.prototype.hasOwnProperty.call(t,s)||r(t,e,s)},n=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.createClient=t.SupabaseClient=t.FunctionRegion=t.FunctionsError=t.FunctionsRelayError=t.FunctionsFetchError=t.FunctionsHttpError=void 0;const o=n(s(296));i(s(450),t);var a=s(982);Object.defineProperty(t,"FunctionsHttpError",{enumerable:!0,get:function(){return a.FunctionsHttpError}}),Object.defineProperty(t,"FunctionsFetchError",{enumerable:!0,get:function(){return a.FunctionsFetchError}}),Object.defineProperty(t,"FunctionsRelayError",{enumerable:!0,get:function(){return a.FunctionsRelayError}}),Object.defineProperty(t,"FunctionsError",{enumerable:!0,get:function(){return a.FunctionsError}}),Object.defineProperty(t,"FunctionRegion",{enumerable:!0,get:function(){return a.FunctionRegion}}),i(s(73),t);var c=s(296);Object.defineProperty(t,"SupabaseClient",{enumerable:!0,get:function(){return n(c).default}}),t.createClient=(e,t,s)=>new o.default(e,t,s)},283:(e,t,s)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.SupabaseAuthClient=void 0;const r=s(450);class i extends r.AuthClient{constructor(e){super(e)}}t.SupabaseAuthClient=i},678:(e,t,s)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.DEFAULT_REALTIME_OPTIONS=t.DEFAULT_AUTH_OPTIONS=t.DEFAULT_DB_OPTIONS=t.DEFAULT_GLOBAL_OPTIONS=t.DEFAULT_HEADERS=void 0;const r=s(506);let i="";i="undefined"!=typeof Deno?"deno":"undefined"!=typeof document?"web":"undefined"!=typeof navigator&&"ReactNative"===navigator.product?"react-native":"node",t.DEFAULT_HEADERS={"X-Client-Info":`supabase-js-${i}/${r.version}`},t.DEFAULT_GLOBAL_OPTIONS={headers:t.DEFAULT_HEADERS},t.DEFAULT_DB_OPTIONS={schema:"public"},t.DEFAULT_AUTH_OPTIONS={autoRefreshToken:!0,persistSession:!0,detectSessionInUrl:!0,flowType:"implicit"},t.DEFAULT_REALTIME_OPTIONS={}},716:function(e,t,s){var r=this&&this.__createBinding||(Object.create?function(e,t,s,r){void 0===r&&(r=s);var i=Object.getOwnPropertyDescriptor(t,s);i&&!("get"in i?!t.__esModule:i.writable||i.configurable)||(i={enumerable:!0,get:function(){return t[s]}}),Object.defineProperty(e,r,i)}:function(e,t,s,r){void 0===r&&(r=s),e[r]=t[s]}),i=this&&this.__setModuleDefault||(Object.create?function(e,t){Object.defineProperty(e,"default",{enumerable:!0,value:t})}:function(e,t){e.default=t}),n=this&&this.__importStar||function(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var s in e)"default"!==s&&Object.prototype.hasOwnProperty.call(e,s)&&r(t,e,s);return i(t,e),t},o=this&&this.__awaiter||function(e,t,s,r){return new(s||(s=Promise))((function(i,n){function o(e){try{c(r.next(e))}catch(e){n(e)}}function a(e){try{c(r.throw(e))}catch(e){n(e)}}function c(e){var t;e.done?i(e.value):(t=e.value,t instanceof s?t:new s((function(e){e(t)}))).then(o,a)}c((r=r.apply(e,t||[])).next())}))};Object.defineProperty(t,"__esModule",{value:!0}),t.fetchWithAuth=t.resolveHeadersConstructor=t.resolveFetch=void 0;const a=n(s(743));t.resolveFetch=e=>{let t;return t=e||("undefined"==typeof fetch?a.default:fetch),(...e)=>t(...e)},t.resolveHeadersConstructor=()=>"undefined"==typeof Headers?a.Headers:Headers,t.fetchWithAuth=(e,s,r)=>{const i=(0,t.resolveFetch)(r),n=(0,t.resolveHeadersConstructor)();return(t,r)=>o(void 0,void 0,void 0,(function*(){var o;const a=null!==(o=yield s())&&void 0!==o?o:e;let c=new n(null==r?void 0:r.headers);return c.has("apikey")||c.set("apikey",e),c.has("Authorization")||c.set("Authorization",`Bearer ${a}`),i(t,Object.assign(Object.assign({},r),{headers:c}))}))}},610:function(e,t){var s=this&&this.__awaiter||function(e,t,s,r){return new(s||(s=Promise))((function(i,n){function o(e){try{c(r.next(e))}catch(e){n(e)}}function a(e){try{c(r.throw(e))}catch(e){n(e)}}function c(e){var t;e.done?i(e.value):(t=e.value,t instanceof s?t:new s((function(e){e(t)}))).then(o,a)}c((r=r.apply(e,t||[])).next())}))};Object.defineProperty(t,"__esModule",{value:!0}),t.applySettingDefaults=t.isBrowser=t.stripTrailingSlash=t.uuid=void 0,t.uuid=function(){return"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,(function(e){var t=16*Math.random()|0;return("x"==e?t:3&t|8).toString(16)}))},t.stripTrailingSlash=function(e){return e.replace(/\/$/,"")},t.isBrowser=()=>"undefined"!=typeof window,t.applySettingDefaults=function(e,t){const{db:r,auth:i,realtime:n,global:o}=e,{db:a,auth:c,realtime:l,global:h}=t,u={db:Object.assign(Object.assign({},a),r),auth:Object.assign(Object.assign({},c),i),realtime:Object.assign(Object.assign({},l),n),global:Object.assign(Object.assign({},h),o),accessToken:()=>s(this,void 0,void 0,(function*(){return""}))};return e.accessToken?u.accessToken=e.accessToken:delete u.accessToken,u}},506:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.version=void 0,t.version="2.45.0"}},n={};function o(e){var t=n[e];if(void 0!==t)return t.exports;var s=n[e]={exports:{}};return i[e].call(s.exports,s,s.exports,o),s.exports}return o.m=i,t=Object.getPrototypeOf?e=>Object.getPrototypeOf(e):e=>e.__proto__,o.t=function(s,r){if(1&r&&(s=this(s)),8&r)return s;if("object"==typeof s&&s){if(4&r&&s.__esModule)return s;if(16&r&&"function"==typeof s.then)return s}var i=Object.create(null);o.r(i);var n={};e=e||[null,t({}),t([]),t(t)];for(var a=2&r&&s;"object"==typeof a&&!~e.indexOf(a);a=t(a))Object.getOwnPropertyNames(a).forEach((e=>n[e]=()=>s[e]));return n.default=()=>s,o.d(i,n),i},o.d=(e,t)=>{for(var s in t)o.o(t,s)&&!o.o(e,s)&&Object.defineProperty(e,s,{enumerable:!0,get:t[s]})},o.f={},o.e=e=>Promise.all(Object.keys(o.f).reduce(((t,s)=>(o.f[s](e,t),t)),[])),o.u=e=>e+".supabase.js",o.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||new Function("return this")()}catch(e){if("object"==typeof window)return window}}(),o.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),s={},r="supabase:",o.l=(e,t,i,n)=>{if(s[e])s[e].push(t);else{var a,c;if(void 0!==i)for(var l=document.getElementsByTagName("script"),h=0;h<l.length;h++){var u=l[h];if(u.getAttribute("src")==e||u.getAttribute("data-webpack")==r+i){a=u;break}}a||(c=!0,(a=document.createElement("script")).charset="utf-8",a.timeout=120,o.nc&&a.setAttribute("nonce",o.nc),a.setAttribute("data-webpack",r+i),a.src=e),s[e]=[t];var d=(t,r)=>{a.onerror=a.onload=null,clearTimeout(f);var i=s[e];if(delete s[e],a.parentNode&&a.parentNode.removeChild(a),i&&i.forEach((e=>e(r))),t)return t(r)},f=setTimeout(d.bind(null,void 0,{type:"timeout",target:a}),12e4);a.onerror=d.bind(null,a.onerror),a.onload=d.bind(null,a.onload),c&&document.head.appendChild(a)}},o.r=e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},(()=>{var e;o.g.importScripts&&(e=o.g.location+"");var t=o.g.document;if(!e&&t&&(t.currentScript&&(e=t.currentScript.src),!e)){var s=t.getElementsByTagName("script");if(s.length)for(var r=s.length-1;r>-1&&!e;)e=s[r--].src}if(!e)throw new Error("Automatic publicPath is not supported in this browser");e=e.replace(/#.*$/,"").replace(/\?.*$/,"").replace(/\/[^\/]+$/,"/"),o.p=e})(),(()=>{var e={179:0};o.f.j=(t,s)=>{var r=o.o(e,t)?e[t]:void 0;if(0!==r)if(r)s.push(r[2]);else{var i=new Promise(((s,i)=>r=e[t]=[s,i]));s.push(r[2]=i);var n=o.p+o.u(t),a=new Error;o.l(n,(s=>{if(o.o(e,t)&&(0!==(r=e[t])&&(e[t]=void 0),r)){var i=s&&("load"===s.type?"missing":s.type),n=s&&s.target&&s.target.src;a.message="Loading chunk "+t+" failed.\n("+i+": "+n+")",a.name="ChunkLoadError",a.type=i,a.request=n,r[1](a)}}),"chunk-"+t,t)}};var t=(t,s)=>{var r,i,[n,a,c]=s,l=0;if(n.some((t=>0!==e[t]))){for(r in a)o.o(a,r)&&(o.m[r]=a[r]);c&&c(o)}for(t&&t(s);l<n.length;l++)i=n[l],o.o(e,i)&&e[i]&&e[i][0](),e[i]=0},s=self.webpackChunksupabase=self.webpackChunksupabase||[];s.forEach(t.bind(null,0)),s.push=t.bind(null,s.push.bind(s))})(),o(341)})()));
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;font-size:13px;background:#f0f2f5;color:#1a1a1a;min-height:100vh}
+.app{display:grid;grid-template-columns:320px 1fr;grid-template-rows:auto 1fr;min-height:100vh}
+.topbar{grid-column:1/-1;background:#1f4e79;color:#fff;padding:10px 20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.topbar h1{font-size:15px;font-weight:700;letter-spacing:.3px}
+.topbar .sub{font-size:11px;opacity:.7;flex:1}
+.tbtn{background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);border-radius:4px;padding:5px 11px;font-size:12px;cursor:pointer;display:flex;align-items:center;gap:5px;white-space:nowrap}
+.tbtn:hover{background:rgba(255,255,255,0.28)}
+.tbtn.green{background:#375623;border-color:#4a7a30}
+.tbtn.green:hover{background:#4a7a30}
+.sidebar{background:#fff;border-right:1px solid #dde3ec;overflow-y:auto}
+.main{overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:14px}
+.panel{background:#fff;border:1px solid #dde3ec;border-radius:6px;overflow:hidden}
+.phdr{padding:7px 12px;font-size:12px;font-weight:700;letter-spacing:.3px;color:#fff}
+.phdr.blue{background:#2e75b6}.phdr.red{background:#c00000}.phdr.dark{background:#1f4e79}.phdr.green{background:#375623}.phdr.orange{background:#c55a11}
+.pbody{padding:12px}
+.shdr{background:#d6e4f0;color:#1f4e79;font-size:11px;font-weight:700;padding:5px 12px;margin:0 -12px 10px;letter-spacing:.4px;text-transform:uppercase}
+.field{display:flex;align-items:center;margin-bottom:7px;gap:4px}
+.field label{flex:1;font-size:12px;color:#444;min-width:0}
+.field input,.field select{width:110px;padding:3px 6px;border:1px solid #c8d6e5;border-radius:4px;font-size:12px;background:#fffde7;color:#00008b;font-weight:700;outline:none}
+.field input:focus,.field select:focus{border-color:#2e75b6;box-shadow:0 0 0 2px rgba(46,117,182,.15)}
+.field .unit{width:36px;font-size:11px;color:#888;text-align:right;flex-shrink:0}
+.av{background:#f2f2f2!important;color:#006400!important;font-weight:400!important}
+.tabs{display:flex;border-bottom:1px solid #dde3ec;overflow-x:auto}
+.tab{padding:8px 13px;font-size:12px;cursor:pointer;border-bottom:2px solid transparent;color:#666;white-space:nowrap}
+.tab.active{color:#1f4e79;border-bottom-color:#1f4e79;font-weight:700}
+.tc{display:none}.tc.active{display:block}
+table.rt{width:100%;border-collapse:collapse;font-size:12px}
+table.rt th{background:#4472c4;color:#fff;padding:5px 8px;text-align:center;font-weight:700;font-size:11px}
+table.rt td{padding:5px 8px;border-bottom:1px solid #eef;text-align:center}
+table.rt tr:nth-child(even) td{background:#eef4fb}
+table.rt tr.gov td{background:#fff3cd!important;font-weight:700}
+table.rt tr.gov-pass td{background:#c6efce!important;font-weight:700}
+table.rt tr.gov-fail td{background:#ffc7ce!important;font-weight:700}
+.badge{display:inline-block;padding:2px 7px;border-radius:3px;font-size:11px;font-weight:700}
+.badge.pass{background:#c6efce;color:#375623}
+.badge.fail{background:#ffc7ce;color:#9c0006}
+.badge.gov{background:#fff3cd;color:#7d5a00}
+.sc{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.scard{background:#f0f2f5;border-radius:5px;padding:8px 10px;text-align:center}
+.scard .sv{font-size:17px;font-weight:700;color:#1f4e79}
+.scard .sl{font-size:10px;color:#666;margin-top:2px}
+.overall{text-align:center;padding:10px;border-radius:5px;font-size:14px;font-weight:700;margin-top:8px}
+.overall.pass{background:#c6efce;color:#375623}
+.overall.fail{background:#ffc7ce;color:#9c0006}
+.sr{display:grid;grid-template-columns:110px 80px 80px 60px 70px;gap:4px;align-items:center;margin-bottom:5px}
+.sr.hdr{font-size:10px;font-weight:700;color:#555;margin-bottom:4px}
+.sr input,.sr select{padding:3px 5px;border:1px solid #c8d6e5;border-radius:4px;font-size:11px;width:100%}
+.sr input.ai{background:#f2f2f2;color:#006400;font-style:italic}
+.rv{font-size:11px;font-weight:700;color:#006400;text-align:center}
+.cw{position:relative;width:100%;height:190px}
+.ct{font-size:11px;font-weight:700;color:#1f4e79;margin-bottom:4px;text-transform:uppercase;letter-spacing:.3px}
+.eq{font-size:11px;padding:5px 8px;border-radius:4px;margin-top:6px}
+.eq.ok{background:#c6efce;color:#375623}
+.eq.err{background:#ffc7ce;color:#9c0006}
+.ld{width:10px;height:10px;border-radius:2px;display:inline-block;margin-right:3px;vertical-align:middle}
+.nb{background:#fff8e1;border-left:3px solid #f9a825;padding:6px 8px;font-size:11px;color:#5d4037;border-radius:0 4px 4px 0;margin-top:6px}
+.nb.blue{background:#e3f0ff;border-left-color:#2e75b6;color:#1a3a5c}
+.div{height:1px;background:#eee;margin:8px -12px}
+.tr{position:relative;display:inline-block;width:36px;height:20px;flex-shrink:0}
+.tr input{opacity:0;width:0;height:0}
+.sl2{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#ccc;border-radius:20px;transition:.2s}
+.sl2:before{position:absolute;content:"";height:14px;width:14px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.2s}
+input:checked+.sl2{background:#2e75b6}
+input:checked+.sl2:before{transform:translateX(16px)}
+.toggle-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.toggle-row .lbl{font-size:12px;color:#444;flex:1}
+.pf{display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.pf label{font-size:11px;color:#888;width:70px;flex-shrink:0}
+.pf input{flex:1;padding:3px 6px;border:1px solid #c8d6e5;border-radius:4px;font-size:12px;background:#fffde7;color:#1a1a1a;outline:none}
+.combo-tag{display:inline-block;padding:1px 5px;border-radius:3px;font-size:10px;font-weight:700;background:#e3f0ff;color:#1a3a5c;margin-right:3px}
+.combo-tag.gov{background:#fff3cd;color:#7d5a00}
+
+/* ── PRINT STYLES ─────────────────────────────────────────────── */
+@media print{
+  @page{size:letter landscape;margin:0.45in}
+  body{background:#fff;font-size:11px}
+  .app{display:block}
+  .topbar .tbtn,.tabs,.sidebar{display:none}
+  .main{padding:0;gap:8px;overflow:visible}
+  .panel{break-inside:avoid;border:1px solid #ccc}
+  .tc{display:block!important}
+  .cw{height:130px}
+  .sc{grid-template-columns:repeat(6,1fr)}
+  #tab-diagrams .cw, #tab-deflection .cw{height:110px}
+  #print-report{display:block!important}
+  #screen-only{display:none!important}
+  .overall{padding:6px;font-size:12px}
+  .phdr{padding:5px 10px;font-size:11px}
+  .pbody{padding:8px 10px}
+  .shdr{padding:3px 10px;margin:0 -10px 6px;font-size:10px}
+  table.rt td,table.rt th{padding:3px 6px;font-size:10px}
+  .scard .sv{font-size:14px}
+}
+#print-report{display:none}
+
+/* ── MOBILE  (≤ 767px) ──────────────────────────────────────── */
+@media (max-width: 767px) {
+  body { font-size: 14px; }
+
+  /* Stack layout vertically */
+  .app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* Top bar: tighter, wrap buttons below title */
+  .topbar {
+    padding: 10px 14px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .topbar h1 { font-size: 14px; }
+  .topbar .sub { display: none; }
+  .tbtn { padding: 7px 12px; font-size: 13px; flex: 1; justify-content: center; }
+
+  /* Sidebar becomes a normal scrollable block */
+  .sidebar {
+    border-right: none;
+    border-bottom: 2px solid #dde3ec;
+    overflow-y: visible;
+  }
+
+  /* Accordion-style collapsible panels in sidebar */
+  .mob-accordion .phdr {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    padding: 11px 14px;
+    font-size: 13px;
+  }
+  .mob-accordion .phdr::after {
+    content: '▾';
+    font-size: 14px;
+    transition: transform .2s;
+    flex-shrink: 0;
+  }
+  .mob-accordion .phdr.collapsed::after { transform: rotate(-90deg); }
+  .mob-accordion .pbody { padding: 12px 14px; }
+  .mob-accordion .pbody.collapsed { display: none; }
+
+  /* Full-width fields */
+  .field { flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+  .field label { width: 100%; font-size: 13px; color: #333; margin-bottom: 2px; }
+  .field input, .field select {
+    width: 100%;
+    max-width: 100%;
+    padding: 9px 10px;
+    font-size: 15px;
+    border-radius: 6px;
+    height: 42px;
+  }
+  .field .unit { width: auto; font-size: 12px; padding-top: 2px; }
+
+  /* Project info fields */
+  .pf { flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+  .pf label { width: 100%; font-size: 12px; margin-bottom: 1px; }
+  .pf input { width: 100%; padding: 8px 10px; font-size: 14px; height: 40px; border-radius: 6px; }
+
+  /* Dividers */
+  .shdr { margin: 0 -14px 10px; padding: 6px 14px; }
+
+  /* Main area: full width, no side padding */
+  .main { padding: 12px; gap: 12px; }
+
+  /* Support rows: card-based layout instead of grid */
+  .sr.hdr { display: none; }
+  .sr {
+    display: flex;
+    flex-direction: column;
+    background: #f8fafd;
+    border: 1px solid #dde3ec;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    gap: 8px;
+  }
+  .sr > div:first-child {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1f4e79;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #e8eef6;
+  }
+  .sr-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+  }
+  .sr-grid-label { font-size: 11px; color: #888; margin-bottom: 2px; }
+  .sr input, .sr select {
+    width: 100%;
+    padding: 7px 8px;
+    font-size: 13px;
+    height: 38px;
+    border-radius: 5px;
+  }
+  .rv { font-size: 13px; font-weight: 700; color: #006400; text-align: left; padding-top: 2px; }
+
+  /* Load combos table: scrollable horizontally */
+  #lcTable { font-size: 11px; }
+  #lcTable th, #lcTable td { padding: 4px 6px; }
+  .panel > div:has(#lcTable) { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .lc-scroll-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  /* Charts taller on mobile for readability */
+  .cw { height: 220px; }
+
+  /* Summary cards: 3 across on mobile */
+  .sc { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .scard .sv { font-size: 15px; }
+  .scard .sl { font-size: 10px; }
+
+  /* Results tables: scroll horizontally */
+  .rt-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table.rt { min-width: 480px; }
+  table.rt th, table.rt td { padding: 5px 6px; font-size: 11px; }
+
+  /* Tabs: make them scroll horizontally if needed */
+  .tabs { overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+  .tab { padding: 10px 14px; font-size: 13px; }
+
+  /* Toggle row */
+  .toggle-row { margin-bottom: 10px; }
+  .toggle-row .lbl { font-size: 13px; }
+
+  /* Overall badge */
+  .overall { font-size: 13px; padding: 10px; }
+
+  /* Note boxes */
+  .nb { font-size: 12px; }
+
+  /* Panel headers */
+  .phdr { font-size: 13px; }
+
+  /* Section sub-headers */
+  .shdr { font-size: 11px; }
+
+  /* Span summary chips */
+  #spanSummary span { font-size: 11px !important; }
+
+  /* eq check */
+  .eq { font-size: 12px; }
+}
+
+
+/* Project Manager */
+.pm-item {
+  display:flex;align-items:center;gap:8px;padding:10px 12px;
+  border:1px solid #dde3ec;border-radius:6px;margin-bottom:8px;
+  background:#fff;transition:background .1s;
+}
+.pm-item:hover { background:#f0f6ff; }
+.pm-item-info { flex:1;min-width:0; }
+.pm-item-name { font-size:13px;font-weight:700;color:#1f4e79;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
+.pm-item-meta { font-size:11px;color:#888;margin-top:2px; }
+.pm-btn { border:none;border-radius:4px;padding:5px 10px;font-size:12px;cursor:pointer;font-weight:600; }
+.pm-btn-load { background:#d6e4f0;color:#1f4e79; }
+.pm-btn-load:hover { background:#b3d1ea; }
+.pm-btn-del { background:#ffc7ce;color:#9c0006; }
+.pm-btn-del:hover { background:#f4a7af; }
+.pm-empty { text-align:center;padding:28px 0;color:#aaa;font-size:13px; }
+@media (max-width:767px) {
+  #pmOverlay > div { border-radius:0;width:100%;max-height:100vh;height:100vh; }
+}
+
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <span style="font-size:16px">&#x1FAB5;</span>
+  <h1>Wood Beam Design</h1>
+  <span class="sub">AWC NDS 2024 &middot; CBC 2025 &middot; ASCE 7-22 Load Combinations &middot; Three-Moment Equation</span>
+  <button class="tbtn" onclick="openProjectManager()">&#128193; Projects</button>
+  <button class="tbtn" onclick="copyShareLink()">&#128279; Share</button>
+  <button class="tbtn green" onclick="printReport()">&#128438; PDF Report</button>
+</div>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="screen-only">
+
+  <div class="panel" style="border:none;border-radius:0">
+    <div class="phdr dark">Project info</div>
+    <div class="pbody">
+      <div class="pf"><label>Project</label><input type="text" id="projName" placeholder="e.g. Residence at 123 Main St"></div>
+      <div class="pf"><label>Beam mark</label><input type="text" id="beamMark" placeholder="e.g. B-1"></div>
+      <div class="pf"><label>Engineer</label><input type="text" id="engName" placeholder="Name / firm"></div>
+      <div class="pf"><label>Date</label><input type="text" id="projDate"></div>
+    </div>
+  </div>
+
+  <div class="panel" style="border:none;border-radius:0;border-top:1px solid #dde3ec">
+    <div class="phdr dark">1 &mdash; Loads (unfactored)</div>
+    <div class="pbody">
+      <div class="field"><label>Total beam length</label><input type="number" id="spanL" value="16" min="1" max="120" step="0.5"><span class="unit">ft</span></div>
+      <div class="field"><label>Dead load wD</label><input type="number" id="wD" value="200" min="0" step="10"><span class="unit">plf</span></div>
+      <div class="field"><label>Live load wL</label><input type="number" id="wL" value="400" min="0" step="10"><span class="unit">plf</span></div>
+      <div class="field"><label>Roof live load wLr</label><input type="number" id="wLr" value="0" min="0" step="10"><span class="unit">plf</span></div>
+      <div class="field"><label>Wind load wW</label><input type="number" id="wW" value="0" min="0" step="10"><span class="unit">plf</span></div>
+      <div class="field"><label>Seismic load wE</label><input type="number" id="wE" value="0" min="0" step="10"><span class="unit">plf</span></div>
+      <div class="field"><label>Snow load wS</label><input type="number" id="wS" value="0" min="0" step="10"><span class="unit">plf</span></div>
+      <div class="shdr">Load duration factor (C<sub>D</sub>)</div>
+      <div class="toggle-row">
+        <span class="lbl">Override C<sub>D</sub> for all combos</span>
+        <label class="tr"><input type="checkbox" id="cdOverride"><span class="sl2"></span></label>
+      </div>
+      <div class="field" id="cdOverrideRow" style="display:none">
+        <label>C<sub>D</sub> override value</label>
+        <select id="cdOverrideVal" style="width:160px">
+          <option value="0.9">0.90 &mdash; permanent</option>
+          <option value="1.0">1.00 &mdash; 10 yr (floor L)</option>
+          <option value="1.15">1.15 &mdash; 2 mo (snow)</option>
+          <option value="1.25">1.25 &mdash; 7 day</option>
+          <option value="1.6">1.60 &mdash; wind / seismic</option>
+          <option value="2.0">2.00 &mdash; impact</option>
+        </select>
+      </div>
+      <div class="nb" id="cdNote" style="display:none;margin-bottom:4px"></div>
+      <div class="shdr">Load combination method</div>
+      <div class="field">
+        <label>Code basis</label>
+        <select id="lcMethod" style="width:140px">
+          <option value="ASD_IBC">ASD — IBC/ASCE 7</option>
+          <option value="ASD_NDS">ASD — NDS Basic</option>
+        </select>
+      </div>
+      <div class="field"><label>LL defl. limit L /</label><input type="number" id="dLL" value="360" min="60" max="600" step="10"></div>
+      <div class="field"><label>Total defl. limit L /</label><input type="number" id="dTot" value="240" min="60" max="480" step="10"></div>
+    </div>
+  </div>
+
+  <div class="panel" style="border:none;border-radius:0;border-top:1px solid #dde3ec">
+    <div class="phdr dark">2 &mdash; Member</div>
+    <div class="pbody">
+      <div class="field"><label>Nominal size</label><select id="nomSize" style="width:140px"></select></div>
+      <div class="field"><label>Dressed width b</label><input class="av" id="bDress" readonly><span class="unit">in</span></div>
+      <div class="field"><label>Dressed depth d</label><input class="av" id="dDress" readonly><span class="unit">in</span></div>
+      <div class="field"><label>Plies</label><input type="number" id="plies" value="1" min="1" max="6"></div>
+      <div class="div"></div>
+      <div class="field"><label>A (in&sup2;)</label><input class="av" id="secA" readonly></div>
+      <div class="field"><label>S (in&sup3;)</label><input class="av" id="secS" readonly></div>
+      <div class="field"><label>I (in&sup4;)</label><input class="av" id="secI" readonly></div>
+    </div>
+  </div>
+
+  <div class="panel" style="border:none;border-radius:0;border-top:1px solid #dde3ec">
+    <div class="phdr dark">3 &mdash; Design values</div>
+    <div class="pbody">
+      <div class="field"><label>Species / grade</label><select id="rdvKey" style="width:180px"></select></div>
+      <div class="shdr">Reference values (auto)</div>
+      <div class="field"><label>Fb</label><input class="av" id="Fb" readonly><span class="unit">psi</span></div>
+      <div class="field"><label>Fv</label><input class="av" id="Fv" readonly><span class="unit">psi</span></div>
+      <div class="field"><label>Fc&perp;</label><input class="av" id="FcPerp" readonly><span class="unit">psi</span></div>
+      <div class="field"><label>E</label><input class="av" id="Eref" readonly><span class="unit">ksi</span></div>
+      <div class="field"><label>E<sub>min</sub></label><input class="av" id="Emin" readonly><span class="unit">ksi</span></div>
+      <div class="shdr">Adjustment factors</div>
+      <div class="field"><label>CM &mdash; wet service</label><input type="number" id="CM" value="1.0" min="0.5" max="1" step="0.01"></div>
+      <div class="field"><label>Ct &mdash; temperature</label><input type="number" id="Ct" value="1.0" min="0.5" max="1" step="0.01"></div>
+      <div class="field"><label>CF &mdash; size factor</label><input type="number" id="CF" value="1.0" min="0.5" max="1.5" step="0.01"></div>
+      <div class="field"><label>Cr &mdash; repetitive</label><input type="number" id="Cr" value="1.0" min="1" max="1.15" step="0.01"></div>
+      <div class="field"><label>CL &mdash; beam stability</label><input type="number" id="CL" value="1.0" min="0.01" max="1" step="0.01"></div>
+      <div class="field"><label>CV &mdash; volume (glulam)</label><input type="number" id="CV" value="1.0" min="0.01" max="1" step="0.01"></div>
+      <div class="field"><label>Cb &mdash; bearing area</label><input type="number" id="Cb" value="1.0" min="1" max="1.5" step="0.01"></div>
+      <div class="field"><label>Bearing length lb</label><input type="number" id="lb" value="1.5" min="0.5" max="12" step="0.25"><span class="unit">in</span></div>
+      <div class="shdr">Shear (NDS &sect;3.4.3.1)</div>
+      <div class="toggle-row">
+        <span class="lbl">Apply d-offset shear reduction</span>
+        <label class="tr"><input type="checkbox" id="useShearRedux" checked><span class="sl2"></span></label>
+      </div>
+      <div class="field"><label>Critical section V</label><input class="av" id="Vcrit" readonly><span class="unit">lb</span></div>
+      <div class="field"><label>Raw max V</label><input class="av" id="Vraw" readonly><span class="unit">lb</span></div>
+      <div class="nb" id="shearNote"></div>
+    </div>
+  </div>
+
+</div><!-- /sidebar -->
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- Support Config -->
+  <div class="panel">
+    <div class="phdr red">Support configuration &mdash; up to 5 supports (2 ends + 3 interior)</div>
+    <div class="pbody">
+      <div class="sr hdr"><div>Support</div><div>Location (ft)</div><div>Type</div><div>Active</div><div>Reaction</div></div>
+      <div id="supportRows"></div>
+      <div id="spanSummary" style="margin-top:8px;font-size:11px;color:#555"></div>
+      <div id="eqCheck" class="eq ok"></div>
+    </div>
+  </div>
+
+  <!-- Load Combinations -->
+  <div class="panel">
+    <div class="phdr orange">Load combinations &mdash; <span id="lcMethodLabel">ASD (IBC/ASCE 7-22)</span></div>
+    <div class="pbody">
+      <div class="nb blue" style="margin-bottom:8px" id="lcNote"></div>
+      <table class="rt" id="lcTable"></table>
+    </div>
+  </div>
+
+  <!-- Tabs: Checks / Diagrams / Deflection -->
+  <div class="panel">
+    <div class="tabs">
+      <div class="tab active" onclick="showTab('results',this)">Design checks</div>
+      <div class="tab" onclick="showTab('diagrams',this)">Shear &amp; moment</div>
+      <div class="tab" onclick="showTab('deflection',this)">Deflection</div>
+    </div>
+
+    <div class="tc active" id="tab-results">
+      <div class="pbody">
+        <div id="projHeader" style="font-size:11px;color:#666;margin-bottom:8px"></div>
+        <div class="sc" id="summaryCards"></div>
+        <div class="shdr">Adjusted design values (governing combination)</div>
+        <table class="rt" id="adjTable"></table>
+        <div class="shdr" style="margin-top:10px">Stress &amp; deflection checks</div>
+        <table class="rt" id="checkTable"></table>
+        <div class="overall" id="overallBadge"></div>
+        <div style="font-size:10px;color:#aaa;margin-top:6px;text-align:right">NDS 2024 &middot; CBC 2025 &middot; ASCE 7-22 &middot; Three-Moment Eq. &middot; NDS &sect;3.4.3.1</div>
+      </div>
+    </div>
+
+    <div class="tc" id="tab-diagrams">
+      <div class="pbody">
+        <div class="ct">Shear force diagram &mdash; V (lbs) &mdash; <span id="diagComboLabel" style="font-weight:normal;color:#888"></span></div>
+        <div class="cw"><canvas id="chartV"></canvas></div>
+        <div style="margin-top:12px" class="ct">Bending moment diagram &mdash; M (ft-lb)</div>
+        <div class="cw"><canvas id="chartM"></canvas></div>
+      </div>
+    </div>
+
+    <div class="tc" id="tab-deflection">
+      <div class="pbody">
+        <div style="display:flex;gap:12px;font-size:11px;margin-bottom:4px">
+          <span><span class="ld" style="background:#70ad47"></span>Live load &Delta;</span>
+          <span><span class="ld" style="background:#ed7d31"></span>Total &Delta;</span>
+        </div>
+        <div class="ct">Deflection diagram &mdash; &Delta; (in, downward positive)</div>
+        <div class="cw" style="height:220px"><canvas id="chartD"></canvas></div>
+        <div id="deflSummary" style="margin-top:10px;font-size:12px"></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+</div><!-- /app -->
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   DATA TABLES
+═══════════════════════════════════════════════════════════════ */
+const SECTIONS=[
+  ["2x4",1.5,3.5],["2x6",1.5,5.5],["2x8",1.5,7.25],["2x10",1.5,9.25],
+  ["2x12",1.5,11.25],["2x14",1.5,13.25],["3x6",2.5,5.5],["3x8",2.5,7.25],
+  ["3x10",2.5,9.25],["3x12",2.5,11.25],["3x14",2.5,13.25],["4x6",3.5,5.5],
+  ["4x8",3.5,7.25],["4x10",3.5,9.25],["4x12",3.5,11.25],["4x14",3.5,13.25],
+  ["4x16",3.5,15.25],["6x6",5.5,5.5],["6x8",5.5,7.5],["6x10",5.5,9.5],
+  ["6x12",5.5,11.5],["6x14",5.5,13.5],["6x16",5.5,15.5],["6x18",5.5,17.5],
+  ["6x20",5.5,19.5],["8x8",7.5,7.5],["8x10",7.5,9.5],["8x12",7.5,11.5],
+  ["8x14",7.5,13.5],["8x16",7.5,15.5],["8x18",7.5,17.5],["8x20",7.5,19.5],
+  ["10x10",9.5,9.5],["10x12",9.5,11.5],["10x14",9.5,13.5],["10x16",9.5,15.5],
+  ["12x12",11.5,11.5],["12x14",11.5,13.5],["12x16",11.5,15.5],
+  ["14x14",13.5,13.5],["16x16",15.5,15.5],
+];
+const RDV=[
+  ["DF-L | Sel Structural | B&S",2400,170,625,1600,580],
+  ["DF-L | No. 1 | B&S",1500,170,625,1600,580],
+  ["DF-L | No. 2 | B&S",1200,170,625,1300,470],
+  ["DF-L | Sel Structural | P&T",1500,170,625,1600,580],
+  ["DF-L | No. 1 | P&T",1200,170,625,1600,580],
+  ["DF-L | No. 2 | P&T",900,170,625,1300,470],
+  ["DF-L | Sel Structural | Dim",1500,180,625,1900,690],
+  ["DF-L | No. 1 | Dim",1000,180,625,1700,620],
+  ["DF-L | No. 2 | Dim",900,180,625,1600,580],
+  ["HF | Sel Structural | B&S",1400,140,405,1300,470],
+  ["HF | No. 1 | B&S",925,140,405,1300,470],
+  ["HF | No. 2 | B&S",750,140,405,1100,400],
+  ["HF | Sel Structural | P&T",1000,140,405,1300,470],
+  ["HF | No. 1 | P&T",800,140,405,1300,470],
+  ["HF | Sel Structural | Dim",1400,150,405,1500,550],
+  ["HF | No. 1 | Dim",975,150,405,1500,550],
+  ["HF | No. 2 | Dim",850,150,405,1300,470],
+  ["SP | Sel Structural | B&S",2150,175,565,1600,580],
+  ["SP | No. 1 | B&S",1450,175,565,1400,510],
+  ["SP | No. 2 | B&S",1150,175,565,1200,440],
+  ["GLB | 24F-V4 | DF",2400,265,650,1800,950],
+  ["GLB | 24F-V8 | DF",2400,265,650,1800,950],
+  ["GLB | 24F-E4 | DF",2400,265,650,1800,950],
+  ["GLB | 20F-V3 | HF",2000,210,500,1600,830],
+  ["GLB | 26F-V4 | SP",2600,300,740,1900,980],
+  ["GLB | 30F-V6 | SP",3000,300,740,2000,1000],
+];
+
+/* ═══════════════════════════════════════════════════════════════
+   LOAD COMBINATION DEFINITIONS
+   Each combo: { label, expr(D,L,Lr,W,E,S) -> w, CD }
+   ASD IBC/ASCE 7-22 §2.4 (basic ASD load combinations)
+   ASD NDS basic (NDS Table N1 note)
+═══════════════════════════════════════════════════════════════ */
+const LC_ASD_IBC=[
+  {id:"D",       label:"D",                CD:0.9,  expr:(D,L,Lr,W,E,S)=>D},
+  {id:"DL",      label:"D + L",            CD:1.0,  expr:(D,L,Lr,W,E,S)=>D+L},
+  {id:"DLr",     label:"D + Lr",           CD:1.15, expr:(D,L,Lr,W,E,S)=>D+Lr},
+  {id:"DS",      label:"D + S",            CD:1.15, expr:(D,L,Lr,W,E,S)=>D+S},
+  {id:"DLLr",    label:"D + L + Lr",       CD:1.0,  expr:(D,L,Lr,W,E,S)=>D+L+Lr},
+  {id:"DLS",     label:"D + L + S",        CD:1.0,  expr:(D,L,Lr,W,E,S)=>D+L+S},
+  {id:"DW",      label:"D + W",            CD:1.6,  expr:(D,L,Lr,W,E,S)=>D+W},
+  {id:"DWL",     label:"D + W + L",        CD:1.6,  expr:(D,L,Lr,W,E,S)=>D+W+L},
+  {id:"DWLLr",   label:"D + W + L + Lr/2", CD:1.6,  expr:(D,L,Lr,W,E,S)=>D+W+L+0.5*Lr},
+  {id:"DWLSh",   label:"D + W + L + S/2",  CD:1.6,  expr:(D,L,Lr,W,E,S)=>D+W+L+0.5*S},
+  {id:"DE",      label:"D + 0.7E",          CD:1.6,  expr:(D,L,Lr,W,E,S)=>D+0.7*E},
+  {id:"DEL",     label:"D + 0.7E + L",      CD:1.6,  expr:(D,L,Lr,W,E,S)=>D+0.7*E+L},
+  {id:"DELS",    label:"D + 0.7E + L + S/2",CD:1.6,  expr:(D,L,Lr,W,E,S)=>D+0.7*E+L+0.5*S},
+];
+const LC_ASD_NDS=[
+  {id:"D",    label:"D only",       CD:0.9,  expr:(D,L,Lr,W,E,S)=>D},
+  {id:"DL",   label:"D + L",        CD:1.0,  expr:(D,L,Lr,W,E,S)=>D+L},
+  {id:"DS",   label:"D + S",        CD:1.15, expr:(D,L,Lr,W,E,S)=>D+S},
+  {id:"DW",   label:"D + W",        CD:1.6,  expr:(D,L,Lr,W,E,S)=>D+W},
+  {id:"DE",   label:"D + 0.7E",     CD:1.6,  expr:(D,L,Lr,W,E,S)=>D+0.7*E},
+  {id:"DLW",  label:"D + L + W",    CD:1.6,  expr:(D,L,Lr,W,E,S)=>D+L+W},
+  {id:"DLWE", label:"D + L + 0.7E", CD:1.6,  expr:(D,L,Lr,W,E,S)=>D+L+0.7*E},
+];
+
+/* ═══════════════════════════════════════════════════════════════
+   SUPPORT STATE
+═══════════════════════════════════════════════════════════════ */
+const SDEFS=[
+  {name:"S1 \u2014 Left end",  lF:true, aF:true, dL:0,   dT:"Pin",   dA:true},
+  {name:"S2 \u2014 Int. 1",   lF:false,aF:false,dL:8,   dT:"Roller",dA:false},
+  {name:"S3 \u2014 Int. 2",   lF:false,aF:false,dL:12,  dT:"Roller",dA:false},
+  {name:"S4 \u2014 Int. 3",   lF:false,aF:false,dL:18,  dT:"Roller",dA:false},
+  {name:"S5 \u2014 Right end", lF:true, aF:true, dL:null,dT:"Pin",   dA:true},
+];
+let supports=[
+  {loc:0, type:"Pin",   active:true},
+  {loc:8, type:"Roller",active:false},
+  {loc:12,type:"Roller",active:false},
+  {loc:18,type:"Roller",active:false},
+  {loc:null,type:"Pin", active:true},
+];
+let chartV=null,chartM=null,chartD=null;
+
+/* ═══════════════════════════════════════════════════════════════
+   HELPERS
+═══════════════════════════════════════════════════════════════ */
+function g(id){return document.getElementById(id)}
+function v(id){return parseFloat(g(id).value)||0}
+function badge(dc){var p=dc<=1;return '<span class="badge '+(p?'pass':'fail')+'">'+(p?'&#x2713; PASS':'&#x2717; FAIL')+' ('+(dc*100).toFixed(0)+'%)</span>';}
+
+function populateSectionDropdown(){
+  var sel=g('nomSize');
+  SECTIONS.forEach(function(s){var o=document.createElement('option');o.value=s[0];o.textContent=s[0];if(s[0]==='6x12')o.selected=true;sel.appendChild(o);});
+}
+function populateRdvDropdown(){
+  var sel=g('rdvKey');
+  RDV.forEach(function(r){var o=document.createElement('option');o.value=r[0];o.textContent=r[0];if(r[0]==='DF-L | Sel Structural | B&S')o.selected=true;sel.appendChild(o);});
+}
+function updateSectionProps(){
+  var sec=SECTIONS.find(function(s){return s[0]===g('nomSize').value;});
+  if(!sec)return;
+  var b=sec[1],d=sec[2],p=Math.max(1,parseInt(g('plies').value)||1);
+  g('bDress').value=b.toFixed(3);g('dDress').value=d.toFixed(3);
+  g('secA').value=(b*d*p).toFixed(3);g('secS').value=(b*d*d*p/6).toFixed(3);g('secI').value=(b*d*d*d*p/12).toFixed(3);
+}
+function updateRdv(){
+  var row=RDV.find(function(r){return r[0]===g('rdvKey').value;});
+  if(!row)return;
+  g('Fb').value=row[1];g('Fv').value=row[2];g('FcPerp').value=row[3];g('Eref').value=row[4];g('Emin').value=row[5];
+}
+
+function buildSupportRows(){
+  var L=v('spanL'),cont=g('supportRows');cont.innerHTML='';
+  SDEFS.forEach(function(def,i){
+    var sup=supports[i];
+    var row=document.createElement('div');row.className='sr';
+    var nm=document.createElement('div');nm.style.cssText='font-size:11px;font-weight:700;color:#1f4e79';nm.textContent=def.name;
+    var locEl=document.createElement('input');locEl.type='number';locEl.step='0.5';
+    if(def.lF){locEl.className='ai';locEl.readOnly=true;locEl.value=(i===4?L:sup.loc).toFixed(1);}
+    else{locEl.value=sup.loc;locEl.addEventListener('change',function(){supports[i].loc=parseFloat(locEl.value)||0;recalc();});}
+    var typeEl=document.createElement('select');
+    ['Pin','Roller','Fixed'].forEach(function(t){var o=document.createElement('option');o.value=t;o.textContent=t;if(t===sup.type)o.selected=true;typeEl.appendChild(o);});
+    if(def.lF)typeEl.style.background='#f2f2f2';
+    typeEl.addEventListener('change',function(){supports[i].type=typeEl.value;recalc();});
+    var actEl=document.createElement('select');
+    ['Yes','No'].forEach(function(t){var o=document.createElement('option');o.value=t;o.textContent=t;if((sup.active?'Yes':'No')===t)o.selected=true;actEl.appendChild(o);});
+    if(def.aF){actEl.value='Yes';actEl.style.background='#f2f2f2';actEl.disabled=true;}
+    actEl.addEventListener('change',function(){supports[i].active=actEl.value==='Yes';recalc();});
+    var rxnEl=document.createElement('div');rxnEl.className='rv';rxnEl.id='rxn'+i;rxnEl.textContent='--';
+    row.appendChild(nm);row.appendChild(locEl);row.appendChild(typeEl);row.appendChild(actEl);row.appendChild(rxnEl);
+    cont.appendChild(row);
+  });
+}
+
+function getActivePts(){
+  var L=v('spanL'),active=[];
+  supports.forEach(function(s,i){if(!s.active)return;var loc=i===4?L:(i===0?0:s.loc);active.push({loc:loc,idx:i});});
+  active.sort(function(a,b){return a.loc-b.loc;});return active;
+}
+
+function solveMoments(pts,w){
+  var n=pts.length;if(n<2)return{M:[],reactions:[],spans:[]};
+  var spans=[];for(var i=0;i<n-1;i++)spans.push(pts[i+1].loc-pts[i].loc);
+  var nInt=n-2,M=new Array(n).fill(0);
+  if(nInt===1){var L1=spans[0],L2=spans[1];M[1]=-w/4*(Math.pow(L1,3)+Math.pow(L2,3))/(2*(L1+L2));}
+  else if(nInt===2){
+    var L1=spans[0],L2=spans[1],L3=spans[2];
+    var Q1=-w/4*(Math.pow(L1,3)+Math.pow(L2,3)),Q2=-w/4*(Math.pow(L2,3)+Math.pow(L3,3));
+    var a11=2*(L1+L2),a12=L2,a21=L2,a22=2*(L2+L3),det=a11*a22-a12*a21;
+    if(Math.abs(det)>1e-9){M[1]=(Q1*a22-Q2*a12)/det;M[2]=(a11*Q2-a21*Q1)/det;}
+  } else if(nInt===3){
+    var L1=spans[0],L2=spans[1],L3=spans[2],L4=spans[3];
+    var Q1=-w/4*(Math.pow(L1,3)+Math.pow(L2,3)),Q2=-w/4*(Math.pow(L2,3)+Math.pow(L3,3)),Q3=-w/4*(Math.pow(L3,3)+Math.pow(L4,3));
+    var c1=2*(L1+L2),d1=L2,c2=2*(L2+L3),d2=L3,c3=2*(L3+L4);
+    var sub1=d1/c1,c2p=c2-sub1*d1,Q2p=Q2-sub1*Q1;
+    var sub2=Math.abs(c2p)>1e-9?L3/c2p:0;
+    var c3p=c3-sub2*d2,Q3p=Q3-sub2*Q2p;
+    M[3]=Math.abs(c3p)>1e-9?Q3p/c3p:0;
+    M[2]=Math.abs(c2p)>1e-9?(Q2p-d2*M[3])/c2p:0;
+    M[1]=(Q1-d1*M[2])/c1;
+  }
+  var reactions=new Array(n).fill(0);
+  for(var i=0;i<spans.length;i++){
+    var Li=spans[i];if(Li<=0)continue;
+    var Vr=w*Li/2+(M[i+1]-M[i])/Li,Vl=w*Li-Vr;
+    reactions[i]+=Vl;reactions[i+1]+=Vr;
+  }
+  return{M:M,reactions:reactions,spans:spans};
+}
+
+function getSMF(pts,reactions,w,N){
+  N=N||81;var L=pts[pts.length-1].loc,xs=[],Vs=[],Ms=[];
+  for(var i=0;i<N;i++){
+    var x=L*i/(N-1);xs.push(x);var V=0,Mo=0;
+    reactions.forEach(function(r,ri){if(x>=pts[ri].loc){V+=r;Mo+=r*(x-pts[ri].loc);}});
+    V-=w*x;Mo-=w*x*x/2;Vs.push(V);Ms.push(Mo);
+  }
+  return{xs:xs,Vs:Vs,Ms:Ms};
+}
+
+function getCritV(pts,reactions,w,d_in){
+  var d_ft=d_in/12,maxVc=0;
+  reactions.forEach(function(R){if(R<=0)return;var Vc=Math.max(0,R-w*d_ft);if(Vc>maxVc)maxVc=Vc;});
+  return maxVc;
+}
+
+function getDefl(xs,Ms,EI,L){
+  var N=xs.length,theta=new Array(N).fill(0),delta=new Array(N).fill(0);
+  for(var i=1;i<N;i++){
+    var dx=(xs[i]-xs[i-1])*12,kL=Ms[i-1]*12/EI,kR=Ms[i]*12/EI;
+    theta[i]=theta[i-1]+(kL+kR)/2*dx;
+    delta[i]=delta[i-1]+(theta[i-1]+theta[i])/2*dx;
+  }
+  var dL=delta[N-1];for(var i=0;i<N;i++)delta[i]-=dL*(xs[i]/L);
+  return delta;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MAIN RECALC
+═══════════════════════════════════════════════════════════════ */
+var lastResults={};
+
+function recalc(){
+  var L=v('spanL');
+  var wD=v('wD'),wL=v('wL'),wLr=v('wLr'),wW=v('wW'),wE=v('wE'),wS=v('wS');
+  var CM=v('CM'),Ct=v('Ct'),CF=v('CF'),Cr=v('Cr'),CLv=v('CL'),CV=v('CV'),Cb=v('Cb'),lbv=v('lb');
+  var dLLlim=v('dLL'),dTotLim=v('dTot');
+  var useRedux=g('useShearRedux').checked;
+  var lcMethod=g('lcMethod').value;
+  var cdOverrideOn=g('cdOverride').checked;
+  var cdOverrideVal=parseFloat(g('cdOverrideVal').value)||1.0;
+  // Update CD override UI
+  g('cdOverrideRow').style.display=cdOverrideOn?'flex':'none';
+  if(cdOverrideOn){
+    var cdNames={0.9:'permanent (0.90)',1.0:'10-year (1.00)',1.15:'2-month snow (1.15)',1.25:'7-day (1.25)',1.6:'wind/seismic (1.60)',2.0:'impact (2.00)'};
+    g('cdNote').style.display='block';
+    g('cdNote').innerHTML='<b>C<sub>D</sub> locked to '+cdOverrideVal.toFixed(2)+'</b> ('+( cdNames[cdOverrideVal]||'custom')+') for all combinations. Per-combo C<sub>D</sub> values are overridden.';
+  } else {
+    g('cdNote').style.display='none';
+  }
+
+  var bv=parseFloat(g('bDress').value)||5.5,dv=parseFloat(g('dDress').value)||11.5;
+  var p=parseInt(g('plies').value)||1;
+  var A=bv*dv*p,S=bv*dv*dv*p/6,I=bv*dv*dv*dv*p/12;
+
+  var Fb=parseFloat(g('Fb').value)||1500,Fv=parseFloat(g('Fv').value)||170;
+  var FcPerp=parseFloat(g('FcPerp').value)||625,E_ksi=parseFloat(g('Eref').value)||1600;
+  var E_psi=E_ksi*1000;
+  var EP_psi=E_psi*CM*Ct;
+  var EI=EP_psi*I;
+
+  supports[4].loc=L;
+  var activePts=getActivePts();
+  if(activePts.length<2){g('eqCheck').className='eq err';g('eqCheck').textContent='Need at least 2 active supports.';return;}
+
+  buildSupportRows();
+
+  /* ── Determine load combinations ── */
+  var combos=lcMethod==='ASD_IBC'?LC_ASD_IBC:LC_ASD_NDS;
+  g('lcMethodLabel').textContent=lcMethod==='ASD_IBC'?'ASD (IBC/ASCE 7-22)':'ASD (NDS Basic)';
+
+  /* Evaluate each combo's w and adjusted Fb/Fv capacity */
+  var comboResults=combos.map(function(c){
+    var w=c.expr(wD,wL,wLr,wW,wE,wS);
+    var CD=cdOverrideOn?cdOverrideVal:c.CD;
+    var FbP_c=Fb*CD*CM*Ct*CF*Cr*Math.min(CLv,CV);
+    var FvP_c=Fv*CD*CM*Ct;
+    var FcPerpP_c=FcPerp*CM*Ct*Cb;
+    // Solve for this w
+    var sol=solveMoments(activePts,w);
+    var rxns=sol.reactions;
+    var smf=getSMF(activePts,rxns,w,81);
+    var maxVraw=Math.max.apply(null,smf.Vs.map(Math.abs));
+    var maxVcrit=getCritV(activePts,rxns,w,dv);
+    var maxVdesign=useRedux?maxVcrit:maxVraw;
+    var maxM=Math.max.apply(null,smf.Ms.map(Math.abs));
+    var delta=getDefl(smf.xs,smf.Ms,EI,L);
+    var maxD=Math.max.apply(null,delta.map(Math.abs));
+    var wLfrac=(wL+wLr)/Math.max(w,0.001);
+    var deltaLL=delta.map(function(d){return d*wLfrac;});
+    var maxDLL=Math.max.apply(null,deltaLL.map(Math.abs));
+    var spanLengths=activePts.slice(0,-1).map(function(_,i){return activePts[i+1].loc-activePts[i].loc;});
+    var maxSpan=Math.max.apply(null,spanLengths.concat([0.1]));
+    var allowDLL=maxSpan*12/dLLlim,allowDTot=maxSpan*12/dTotLim;
+    var fb=maxM*12/S,fv=1.5*maxVdesign/A;
+    var maxRxn=Math.max.apply(null,rxns);
+    var fcPerp=maxRxn/(bv*lbv);
+    var dcBend=FbP_c>0?fb/FbP_c:999,dcShear=FvP_c>0?fv/FvP_c:999,dcBear=FcPerpP_c>0?fcPerp/FcPerpP_c:999;
+    var dcDLL=allowDLL>0?maxDLL/allowDLL:999,dcDTot=allowDTot>0?maxD/allowDTot:999;
+    var maxDC=Math.max(dcBend,dcShear,dcBear,dcDLL,dcDTot);
+    return{id:c.id,label:c.label,CD:CD,w:w,
+      FbP:FbP_c,FvP:FvP_c,FcPerpP:FcPerpP_c,EP:EP_psi,
+      fb:fb,fv:fv,fcPerp:fcPerp,maxM:maxM,maxVdesign:maxVdesign,maxVraw:maxVraw,maxVcrit:maxVcrit,
+      maxD:maxD,maxDLL:maxDLL,allowDLL:allowDLL,allowDTot:allowDTot,
+      dcBend:dcBend,dcShear:dcShear,dcBear:dcBear,dcDLL:dcDLL,dcDTot:dcDTot,maxDC:maxDC,
+      rxns:rxns,smf:smf,delta:delta,deltaLL:deltaLL,spanLengths:spanLengths
+    };
+  });
+
+  /* Governing combo = largest maxDC */
+  var govIdx=0;comboResults.forEach(function(r,i){if(r.maxDC>comboResults[govIdx].maxDC)govIdx=i;});
+  var gov=comboResults[govIdx];
+
+  /* Also find governing combo for deflection (usually D+L) */
+  var govDeflIdx=0;comboResults.forEach(function(r,i){if(r.maxDLL>comboResults[govDeflIdx].maxDLL)govDeflIdx=i;});
+
+  lastResults={gov:gov,all:comboResults,govIdx:govIdx,activePts:activePts,useRedux:useRedux,dv:dv,
+    A:A,S:S,I:I,bv:bv,lbv:lbv,dLLlim:dLLlim,dTotLim:dTotLim,E_ksi:E_ksi,Fb:Fb,Fv:Fv,FcPerp:FcPerp};
+
+  /* ── Solve reactions for governing combo (for display) ── */
+  var govSol=solveMoments(activePts,gov.w);
+  var totalRxn=govSol.reactions.reduce(function(a,b){return a+b;},0);
+  var totalLoad=gov.w*L;
+  var eqErr=Math.abs(totalRxn-totalLoad);
+  activePts.forEach(function(pt,i){var el=g('rxn'+pt.idx);if(el)el.textContent=govSol.reactions[i]!=null?Math.round(govSol.reactions[i])+' lb':'--';});
+  var eqEl=g('eqCheck');
+  eqEl.className=eqErr<1?'eq ok':'eq err';
+  eqEl.textContent=eqErr<1?'\u2713 Equilibrium OK \u2014 \u03A3R = '+Math.round(totalRxn)+' lb \u2248 w\u00B7L = '+Math.round(totalLoad)+' lb (governing combo)'
+    :'\u26A0 Equilibrium error = '+eqErr.toFixed(1)+' lb \u2014 check support locations';
+
+  var spanLens=gov.spanLengths;
+  g('spanSummary').innerHTML=spanLens.filter(function(s){return s>0;}).map(function(s,i){
+    return '<span style="background:#d6e4f0;border-radius:3px;padding:2px 6px;margin-right:4px;font-size:10px">Span '+(i+1)+': '+s.toFixed(1)+' ft</span>';
+  }).join('')+'<span style="font-size:10px;color:#888;margin-left:4px">'+activePts.length+' supports active</span>';
+
+  /* ── Shear note ── */
+  var red=gov.maxVraw>0?((1-gov.maxVcrit/gov.maxVraw)*100):0;
+  g('Vraw').value=Math.round(gov.maxVraw);g('Vcrit').value=Math.round(gov.maxVcrit);
+  g('shearNote').innerHTML=useRedux
+    ?'<b>NDS \u00A73.4.3.1 active:</b> V<sub>crit</sub> = '+Math.round(gov.maxVcrit)+' lb ('+red.toFixed(1)+'% reduction vs. '+Math.round(gov.maxVraw)+' lb raw). d = '+dv+'" from support face. Governing combo: '+gov.label+'.'
+    :'<b>Reduction OFF:</b> Using raw max shear '+Math.round(gov.maxVraw)+' lb ('+gov.label+'). Toggle on for NDS \u00A73.4.3.1.';
+
+  /* ── Load Combination Table ── */
+  var lcNote=g('lcNote');
+  if(lcMethod==='ASD_IBC'){
+    lcNote.innerHTML='<b>ASCE 7-22 \u00A72.4</b> basic ASD load combinations. CD is set per NDS Table N1 for the controlling load in each combination. Combinations with zero net load are shown but may be excluded by judgment.';
+  } else {
+    lcNote.innerHTML='<b>NDS 2024 Appendix N</b> basic ASD combinations. Simpler set; omit seismic/wind combos if loads are zero.';
+  }
+
+  var cdOvTag=cdOverrideOn?'<span style="background:#fff3cd;color:#7d5a00;border-radius:3px;padding:1px 4px;font-size:10px"> override</span>':'';
+  var lcHtml="<tr><th>Combo</th><th>w (plf)</th><th>C<sub>D</sub>"+cdOvTag+"</th><th>Max M (ft-lb)</th><th>Max V (lb)</th><th>fb / F'b</th><th>fv / F'v</th><th>fc⊥/F'c⊥</th><th>ΔLL check</th><th>Governing</th></tr>";
+  comboResults.forEach(function(r,i){
+    var isGov=(i===govIdx);
+    var cls=isGov?(r.maxDC<=1?'gov-pass':'gov-fail'):'';
+    var govTag=isGov?'<span class="badge gov">\u2605 GOV</span>':'';
+    var passAll=r.maxDC<=1;
+    lcHtml+='<tr class="'+cls+'"><td>'+r.label+'</td><td>'+r.w.toFixed(0)+'</td><td>'+r.CD.toFixed(2)+'</td>'
+      +'<td>'+(r.maxM/1000).toFixed(1)+'k\u00B7ft</td><td>'+Math.round(r.maxVdesign)+'</td>'
+      +'<td style="'+(r.dcBend>1?'color:#9c0006':'color:#375623')+'">'+r.fb.toFixed(0)+' / '+r.FbP.toFixed(0)+' ('+(r.dcBend*100).toFixed(0)+'%)</td>'
+      +'<td style="'+(r.dcShear>1?'color:#9c0006':'color:#375623')+'">'+r.fv.toFixed(0)+' / '+r.FvP.toFixed(0)+' ('+(r.dcShear*100).toFixed(0)+'%)</td>'
+      +'<td style="'+(r.dcBear>1?'color:#9c0006':'color:#375623')+'">'+r.fcPerp.toFixed(0)+' / '+r.FcPerpP.toFixed(0)+' ('+(r.dcBear*100).toFixed(0)+'%)</td>'
+      +'<td style="'+(r.dcDLL>1?'color:#9c0006':'color:#375623')+'">'+r.maxDLL.toFixed(3)+'" / '+r.allowDLL.toFixed(3)+'" ('+(r.dcDLL*100).toFixed(0)+'%)</td>'
+      +'<td>'+govTag+(passAll?'<span class="badge pass">\u2713</span>':'<span class="badge fail">\u2717</span>')+'</td></tr>';
+  });
+  g('lcTable').innerHTML=lcHtml;
+
+  /* ── Design Checks (governing) ── */
+  var pn=g('projName').value,bm=g('beamMark').value,en=g('engName').value,pd=g('projDate').value;
+  g('projHeader').innerHTML=[pn&&('<b>'+pn+'</b>'),bm&&('Beam: '+bm),en&&(en),pd&&(pd)].filter(Boolean).join(' &nbsp;&middot;&nbsp; ');
+
+  g('summaryCards').innerHTML=
+    '<div class="scard"><div class="sv">'+(gov.maxM/1000).toFixed(1)+'<span style="font-size:11px">k\u00B7ft</span></div><div class="sl">Max moment</div></div>'+
+    '<div class="scard"><div class="sv">'+(gov.maxVdesign/1000).toFixed(1)+'<span style="font-size:11px">k</span></div><div class="sl">Design shear'+(useRedux?' (\u00A73.4.3.1)':'')+'</div></div>'+
+    '<div class="scard"><div class="sv">'+gov.maxD.toFixed(3)+'<span style="font-size:11px">in</span></div><div class="sl">Max deflection</div></div>';
+
+  var cdOvHdr=cdOverrideOn?('<b>'+cdOverrideVal.toFixed(2)+'</b> <span style="background:#fff3cd;color:#7d5a00;border-radius:3px;padding:1px 4px;font-size:9px">override</span>'):gov.CD.toFixed(2);
+  g('adjTable').innerHTML='<tr><th>Value</th><th>Reference</th><th>Adj. factors (CD='+cdOvHdr+')</th><th>F\'  (psi)</th></tr>'
+    +'<tr><td>F\'b</td><td>'+Fb+' psi</td><td>CD\u00B7CM\u00B7Ct\u00B7CF\u00B7Cr\u00B7min(CL,CV)</td><td>'+gov.FbP.toFixed(0)+'</td></tr>'
+    +'<tr><td>F\'v</td><td>'+Fv+' psi</td><td>CD\u00B7CM\u00B7Ct</td><td>'+gov.FvP.toFixed(0)+'</td></tr>'
+    +'<tr><td>F\'c\u22A5</td><td>'+FcPerp+' psi</td><td>CM\u00B7Ct\u00B7Cb</td><td>'+gov.FcPerpP.toFixed(0)+'</td></tr>'
+    +'<tr><td>E\'</td><td>'+E_ksi+' ksi</td><td>CM\u00B7Ct</td><td>'+(gov.EP/1000).toFixed(0)+' ksi</td></tr>';
+
+  var shLbl=useRedux?'fv = 1.5\u00D7'+Math.round(gov.maxVcrit)+'/'+A.toFixed(1)+' = '+gov.fv.toFixed(0)+' psi (\u00A73.4.3.1)':'fv = '+gov.fv.toFixed(0)+' psi';
+  var rows=[
+    ['Bending ('+gov.label+')','fb = '+gov.fb.toFixed(0)+' psi','F\'b = '+gov.FbP.toFixed(0)+' psi',gov.dcBend],
+    ['Shear ('+gov.label+')',shLbl,'F\'v = '+gov.FvP.toFixed(0)+' psi',gov.dcShear],
+    ['Bearing ('+gov.label+')','fc\u22A5 = '+gov.fcPerp.toFixed(0)+' psi','F\'c\u22A5 = '+gov.FcPerpP.toFixed(0)+' psi',gov.dcBear],
+    ['LL Deflection','\u0394LL = '+gov.maxDLL.toFixed(3)+'"','L/'+dLLlim+' = '+gov.allowDLL.toFixed(3)+'"',gov.dcDLL],
+    ['Total Deflection','\u0394tot = '+gov.maxD.toFixed(3)+'"','L/'+dTotLim+' = '+gov.allowDTot.toFixed(3)+'"',gov.dcDTot],
+  ];
+  g('checkTable').innerHTML='<tr><th>Check</th><th>Actual</th><th>Allowable</th><th>D/C</th><th>Status</th></tr>'+
+    rows.map(function(r){return '<tr><td><b>'+r[0]+'</b></td><td style="text-align:left">'+r[1]+'</td><td>'+r[2]+'</td><td>'+(r[3]*100).toFixed(1)+'%</td><td>'+badge(r[3])+'</td></tr>';}).join('');
+
+  var allPass=gov.dcBend<=1&&gov.dcShear<=1&&gov.dcBear<=1&&gov.dcDLL<=1&&gov.dcDTot<=1;
+  var ob=g('overallBadge');ob.className='overall '+(allPass?'pass':'fail');
+  ob.textContent=allPass?'\u2713  ALL CHECKS PASS \u2014 NDS 2024 (Governing: '+gov.label+', CD='+gov.CD.toFixed(2)+')':'\u2717  ONE OR MORE CHECKS FAIL \u2014 REVISE MEMBER (Governing: '+gov.label+')';
+
+  g('deflSummary').innerHTML=
+    '<table class="rt" style="width:auto">'
+    +'<tr><th>Load</th><th>Max \u0394 (in)</th><th>Allow. (in)</th><th>D/C</th><th>Status</th></tr>'
+    +'<tr><td>Live (LL+Lr)</td><td>'+gov.maxDLL.toFixed(4)+'</td><td>'+gov.allowDLL.toFixed(4)+'</td><td>'+(gov.dcDLL*100).toFixed(1)+'%</td><td>'+badge(gov.dcDLL)+'</td></tr>'
+    +'<tr><td>Total</td><td>'+gov.maxD.toFixed(4)+'</td><td>'+gov.allowDTot.toFixed(4)+'</td><td>'+(gov.dcDTot*100).toFixed(1)+'%</td><td>'+badge(gov.dcDTot)+'</td></tr>'
+    +'</table>';
+
+  g('diagComboLabel').textContent='Governing combo: '+gov.label+' (w = '+gov.w.toFixed(0)+' plf, CD = '+gov.CD.toFixed(2)+')';
+  updateCharts(gov.smf.xs,gov.smf.Vs,gov.smf.Ms,gov.deltaLL,gov.delta);
+  updateURL();
+}
+
+function updateCharts(xs,Vs,Ms,dLL,dTot){
+  var labels=xs.map(function(x){return x.toFixed(2);});
+  var gc='rgba(0,0,0,0.06)';
+  function opts(yL,yU){return{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return yL+': '+parseFloat(c.raw).toFixed(1)+' '+yU;}}}},scales:{x:{grid:{color:gc},ticks:{maxTicksLimit:10}},y:{grid:{color:gc},title:{display:true,text:yL}}}};}
+  function ds(data,color,fill){return{data:data,borderColor:color,backgroundColor:fill?color.replace('rgb','rgba').replace(')',',0.12)'):'transparent',borderWidth:2,pointRadius:0,tension:0.3,fill:!!fill};}
+  if(chartV)chartV.destroy();
+  chartV=new Chart(g('chartV').getContext('2d'),{type:'line',data:{labels:labels,datasets:[ds(Vs,'rgb(192,0,0)')]},options:opts('V','lb')});
+  if(chartM)chartM.destroy();
+  chartM=new Chart(g('chartM').getContext('2d'),{type:'line',data:{labels:labels,datasets:[ds(Ms,'rgb(46,117,182)',true)]},options:opts('M','ft-lb')});
+  if(chartD)chartD.destroy();
+  chartD=new Chart(g('chartD').getContext('2d'),{type:'line',data:{labels:labels,datasets:[Object.assign(ds(dLL,'rgb(112,173,71)'),{label:'\u0394LL'}),Object.assign(ds(dTot,'rgb(237,125,49)'),{label:'\u0394tot'})]},options:opts('\u0394','in')});
+}
+
+function showTab(name,el){
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
+  document.querySelectorAll('.tc').forEach(function(t){t.classList.remove('active');});
+  el.classList.add('active');g('tab-'+name).classList.add('active');
+  if(name==='diagrams'||name==='deflection')setTimeout(function(){[chartV,chartM,chartD].forEach(function(c){if(c)c.resize();});},10);
+}
+
+function printReport(){
+  // Show all tabs before printing
+  document.querySelectorAll('.tc').forEach(function(t){t.style.display='block';});
+  // Resize charts to ensure they render
+  setTimeout(function(){
+    [chartV,chartM,chartD].forEach(function(c){if(c)c.resize();});
+    setTimeout(function(){
+      window.print();
+      // Restore tab visibility
+      document.querySelectorAll('.tc').forEach(function(t){t.style.display='';});
+      document.querySelectorAll('.tc.active').forEach(function(t){t.style.display='block';});
+    },300);
+  },100);
+}
+
+/* ── URL state ── */
+function updateURL(){
+  try{
+    var s={L:v('spanL'),wD:v('wD'),wL:v('wL'),wLr:v('wLr'),wW:v('wW'),wE:v('wE'),wS:v('wS'),
+      dLL:v('dLL'),dTot:v('dTot'),lc:g('lcMethod').value,
+      nom:g('nomSize').value,plies:v('plies'),rdv:g('rdvKey').value,
+      CM:v('CM'),Ct:v('Ct'),CF:v('CF'),Cr:v('Cr'),CL:v('CL'),CV:v('CV'),Cb:v('Cb'),lb:v('lb'),
+      redux:g('useShearRedux').checked?1:0,
+      cdov:g('cdOverride').checked?1:0,cdoval:g('cdOverrideVal').value,
+      s2l:supports[1].loc,s2t:supports[1].type,s2a:supports[1].active?1:0,
+      s3l:supports[2].loc,s3t:supports[2].type,s3a:supports[2].active?1:0,
+      s4l:supports[3].loc,s4t:supports[3].type,s4a:supports[3].active?1:0,
+      pn:g('projName').value,bm:g('beamMark').value,en:g('engName').value,pd:g('projDate').value};
+    var p=new URLSearchParams();
+    Object.keys(s).forEach(function(k){if(s[k]!==undefined&&s[k]!=='')p.set(k,s[k]);});
+    history.replaceState(null,'','?'+p.toString());
+  }catch(e){}
+}
+
+function loadFromURL(){
+  try{
+    var p=new URLSearchParams(window.location.search);if(!p.has('L'))return false;
+    var set=function(id,key){if(p.has(key))g(id).value=p.get(key);};
+    set('spanL','L');set('wD','wD');set('wL','wL');set('wLr','wLr');set('wW','wW');set('wE','wE');set('wS','wS');
+    set('dLL','dLL');set('dTot','dTot');
+    if(p.has('lc'))g('lcMethod').value=p.get('lc');
+    if(p.has('nom')){g('nomSize').value=p.get('nom');updateSectionProps();}
+    set('plies','plies');
+    if(p.has('rdv')){g('rdvKey').value=p.get('rdv');updateRdv();}
+    set('CM','CM');set('Ct','Ct');set('CF','CF');set('Cr','Cr');set('CL','CL');set('CV','CV');set('Cb','Cb');set('lb','lb');
+    if(p.has('redux'))g('useShearRedux').checked=p.get('redux')==='1';
+    if(p.has('cdov'))g('cdOverride').checked=p.get('cdov')==='1';
+    if(p.has('cdoval'))g('cdOverrideVal').value=p.get('cdoval');
+    if(p.has('s2l'))supports[1].loc=parseFloat(p.get('s2l'));
+    if(p.has('s2t'))supports[1].type=p.get('s2t');if(p.has('s2a'))supports[1].active=p.get('s2a')==='1';
+    if(p.has('s3l'))supports[2].loc=parseFloat(p.get('s3l'));
+    if(p.has('s3t'))supports[2].type=p.get('s3t');if(p.has('s3a'))supports[2].active=p.get('s3a')==='1';
+    if(p.has('s4l'))supports[3].loc=parseFloat(p.get('s4l'));
+    if(p.has('s4t'))supports[3].type=p.get('s4t');if(p.has('s4a'))supports[3].active=p.get('s4a')==='1';
+    set('projName','pn');set('beamMark','bm');set('engName','en');set('projDate','pd');
+    updateSectionProps();return true;
+  }catch(e){return false;}
+}
+
+function copyShareLink(){
+  updateURL();var url=window.location.href;
+  if(navigator.clipboard){navigator.clipboard.writeText(url).then(function(){alert('Link copied!\n\nAnyone with this link will see the same configuration.');});}
+  else{prompt('Copy this link:',url);}
+}
+
+function init(){
+  populateSectionDropdown();populateRdvDropdown();
+  updateSectionProps();updateRdv();
+  loadFromURL();buildSupportRows();
+  g('projDate').value=new Date().toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'});
+  recalc();
+  g('nomSize').addEventListener('change',function(){updateSectionProps();recalc();});
+  g('rdvKey').addEventListener('change',function(){updateRdv();recalc();});
+  g('useShearRedux').addEventListener('change',recalc);
+  g('lcMethod').addEventListener('change',recalc);
+  g('cdOverride').addEventListener('change',recalc);
+  g('cdOverrideVal').addEventListener('change',recalc);
+  ['plies','spanL','wD','wL','wLr','wW','wE','wS','dLL','dTot','CM','Ct','CF','Cr','CL','CV','Cb','lb'].forEach(function(id){
+    g(id).addEventListener('input',function(){if(id==='spanL'||id==='plies')buildSupportRows();if(id==='plies')updateSectionProps();recalc();});
+  });
+  ['projName','beamMark','engName','projDate'].forEach(function(id){g(id).addEventListener('input',recalc);});
+  // Mobile accordions — run after DOM is ready
+  setTimeout(initMobileAccordions, 0);
+}
+init();
+
+/* ── Mobile accordion init ── */
+function initMobileAccordions() {
+  if (window.innerWidth > 767) return;
+  var panels = document.querySelectorAll('.sidebar .panel');
+  panels.forEach(function(panel, idx) {
+    panel.classList.add('mob-accordion');
+    var hdr = panel.querySelector('.phdr');
+    var body = panel.querySelector('.pbody');
+    if (!hdr || !body) return;
+    // Collapse all except first (Project Info)
+    if (idx > 0) {
+      hdr.classList.add('collapsed');
+      body.classList.add('collapsed');
+    }
+    hdr.addEventListener('click', function() {
+      var isCollapsed = body.classList.contains('collapsed');
+      body.classList.toggle('collapsed', !isCollapsed);
+      hdr.classList.toggle('collapsed', !isCollapsed);
+    });
+  });
+
+  // Wrap support rows in mobile-friendly grid sub-elements
+  rebuildSupportRowsMobile();
+
+  // Wrap load combo table in scroll div
+  var lcT = document.getElementById('lcTable');
+  if (lcT && !lcT.parentElement.classList.contains('lc-scroll-wrap')) {
+    var wrap = document.createElement('div');
+    wrap.className = 'lc-scroll-wrap';
+    lcT.parentNode.insertBefore(wrap, lcT);
+    wrap.appendChild(lcT);
+  }
+
+  // Wrap results tables
+  ['adjTable','checkTable'].forEach(function(id) {
+    var t = document.getElementById(id);
+    if (t && !t.parentElement.classList.contains('rt-scroll')) {
+      var wrap = document.createElement('div');
+      wrap.className = 'rt-scroll';
+      t.parentNode.insertBefore(wrap, t);
+      wrap.appendChild(t);
+    }
+  });
+}
+
+function rebuildSupportRowsMobile() {
+  if (window.innerWidth > 767) return;
+  var rows = document.querySelectorAll('#supportRows .sr');
+  rows.forEach(function(row) {
+    // Already rebuilt
+    if (row.querySelector('.sr-grid')) return;
+    var children = Array.from(row.children);
+    if (children.length < 5) return;
+    // children: [name-div, loc-input, type-select, active-select, rxn-div]
+    var name = children[0];
+    var locEl = children[1];
+    var typeEl = children[2];
+    var actEl = children[3];
+    var rxnEl = children[4];
+
+    var grid = document.createElement('div');
+    grid.className = 'sr-grid';
+
+    function wrap(label, el) {
+      var d = document.createElement('div');
+      var lbl = document.createElement('div');
+      lbl.className = 'sr-grid-label';
+      lbl.textContent = label;
+      d.appendChild(lbl);
+      d.appendChild(el);
+      return d;
+    }
+
+    grid.appendChild(wrap('Location (ft)', locEl));
+    grid.appendChild(wrap('Type', typeEl));
+    grid.appendChild(wrap('Active', actEl));
+
+    var rxnWrap = document.createElement('div');
+    var rxnLbl = document.createElement('div');
+    rxnLbl.className = 'sr-grid-label';
+    rxnLbl.textContent = 'Reaction';
+    rxnWrap.appendChild(rxnLbl);
+    rxnWrap.appendChild(rxnEl);
+
+    row.appendChild(grid);
+    row.appendChild(rxnWrap);
+  });
+}
+
+// Override buildSupportRows to also apply mobile layout after build
+var _origBuildSupportRows = buildSupportRows;
+buildSupportRows = function() {
+  _origBuildSupportRows();
+  if (window.innerWidth <= 767) {
+    rebuildSupportRowsMobile();
+  }
+};
+/* ═══════════════════════════════════════════════════════════════
+   PROJECT MANAGER  — Supabase cloud storage
+═══════════════════════════════════════════════════════════════ */
+
+// Supabase client — lazy init to ensure SDK is ready
+var _sb = null;
+function getSB() {
+  if(!_sb) {
+    if(!window.supabase || !window.supabase.createClient) {
+      throw new Error('Supabase SDK not loaded. Check your internet connection.');
+    }
+    _sb = window.supabase.createClient(
+      'https://qsafejglaldhhtmvyowl.supabase.co',
+      'sb_publishable_Ga__D5zJQwzvVXNayBZ4Tw_IGkQaX0L'
+    );
+  }
+  return _sb;
+}
+
+// Stable anonymous user ID persisted in localStorage (not project data)
+function getUserId() {
+  var id = localStorage.getItem('wbd_uid');
+  if(!id) {
+    id = 'u_' + Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2);
+    localStorage.setItem('wbd_uid', id);
+  }
+  return id;
+}
+
+function pmShowStatus(msg, isError) {
+  var el = g('pmSaveMsg');
+  el.style.color = isError ? '#9c0006' : '#375623';
+  el.textContent = msg;
+}
+
+function pmSetLoading(loading) {
+  var btn = g('pmSaveBtn');
+  if(btn) { btn.disabled = loading; btn.textContent = loading ? 'Saving...' : '\uD83D\uDCBE Save'; }
+}
+
+async function pmGetAll() {
+  var uid = getUserId();
+  var { data, error } = await getSB()
+    .from('projects')
+    .select('*')
+    .eq('user_id', uid)
+    .order('created_at', { ascending: false });
+  if(error) { console.error('Supabase fetch error:', error); return []; }
+  return data || [];
+}
+
+function openProjectManager() {
+  g('pmSaveName').value = g('projName').value || g('beamMark').value || '';
+  g('pmSaveMsg').textContent = '';
+  g('pmOverlay').style.display = 'flex';
+  g('pmList').innerHTML = '<div class="pm-empty" style="color:#888">Loading projects...</div>';
+  setTimeout(function() { g('pmSaveName').focus(); }, 80);
+  pmGetAll().then(renderPmList).catch(function(e) {
+    g('pmList').innerHTML = '<div class="pm-empty" style="color:#9c0006">\u26A0 Could not load projects: ' + e.message + '</div>';
+  });
+}
+
+function closeProjectManager() {
+  g('pmOverlay').style.display = 'none';
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function renderPmList(list) {
+  var el = g('pmList');
+  if(!list || list.length === 0) {
+    el.innerHTML = '<div class="pm-empty">\u{1F4C1} No saved projects yet.<br><span style="font-size:12px">Enter a name above and click Save.</span></div>';
+    return;
+  }
+  el.innerHTML = list.map(function(p, i) {
+    var s = p.state;
+    var meta = [s.nom, s.bm?'Beam: '+s.bm:'', s.L+'ft span', s.wD+'D + '+s.wL+'L plf'].filter(Boolean).join(' \u00B7 ');
+    return '<div class="pm-item">'
+      + '<div class="pm-item-info">'
+      + '<div class="pm-item-name" title="'+escHtml(p.name)+'">'+escHtml(p.name)+'</div>'
+      + '<div class="pm-item-meta">'+meta+'</div>'
+      + '<div class="pm-item-meta" style="color:#bbb">Saved '+escHtml(p.saved)+'</div>'
+      + '</div>'
+      + '<button class="pm-btn pm-btn-load" onclick="loadProject(\'' + p.id + '\')">\u{1F4C2} Load</button>'
+      + '&nbsp;'
+      + '<button class="pm-btn pm-btn-del" onclick="deleteProject(\'' + p.id + '\', this)" title="Delete">\u{1F5D1}</button>'
+      + '</div>';
+  }).join('');
+}
+
+async function saveProject() {
+  var name = g('pmSaveName').value.trim();
+  if(!name) { pmShowStatus('Please enter a project name.', true); return; }
+  pmSetLoading(true);
+  pmShowStatus('Saving...', false);
+  var uid = getUserId();
+  var now = new Date();
+  var saved = now.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})
+            + ' ' + now.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
+  var row = { user_id: uid, name: name, saved: saved, state: getCurrentState() };
+
+  // Upsert (insert or overwrite if same user_id + name)
+  var { error } = await getSB()
+    .from('projects')
+    .upsert(row, { onConflict: 'user_id,name' });
+
+  pmSetLoading(false);
+  if(error) {
+    pmShowStatus('\u26A0 Save failed: ' + error.message, true);
+    return;
+  }
+  pmShowStatus('\u2713 Saved \u201C' + name + '\u201D', false);
+  pmGetAll().then(renderPmList);
+}
+
+async function loadProject(id) {
+  if(!confirm('Load this project?\n\nYour current unsaved changes will be replaced.')) return;
+  var uid = getUserId();
+  var { data, error } = await getSB()
+    .from('projects')
+    .select('*')
+    .eq('user_id', uid)
+    .eq('id', id)
+    .single();
+  if(error || !data) { alert('Could not load project: ' + (error ? error.message : 'not found')); return; }
+  applyState(data.state);
+  buildSupportRows();
+  recalc();
+  closeProjectManager();
+}
+
+async function deleteProject(id, btnEl) {
+  if(!confirm('Delete this project? This cannot be undone.')) return;
+  if(btnEl) { btnEl.disabled = true; btnEl.textContent = '...'; }
+  var uid = getUserId();
+  var { error } = await getSB()
+    .from('projects')
+    .delete()
+    .eq('user_id', uid)
+    .eq('id', id);
+  if(error) { alert('Delete failed: ' + error.message); return; }
+  pmGetAll().then(renderPmList);
+}
+
+async function exportAllProjects() {
+  var list = await pmGetAll();
+  if(!list || list.length === 0) { alert('No saved projects to export.'); return; }
+  var json = JSON.stringify({app:'WoodBeamDesign',version:2,projects:list}, null, 2);
+  var blob = new Blob([json], {type:'application/json'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'wood-beam-projects-'+new Date().toISOString().slice(0,10)+'.json';
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(a.href);
+}
+
+async function importProjects(evt) {
+  var file = evt.target.files[0]; if(!file) return;
+  var reader = new FileReader();
+  reader.onload = async function(e) {
+    try {
+      var data = JSON.parse(e.target.result);
+      if(!data.projects || !Array.isArray(data.projects)) throw new Error('Invalid format');
+      var uid = getUserId();
+      var now = new Date();
+      var saved = now.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+      var rows = data.projects
+        .filter(function(p){ return p.name && p.state; })
+        .map(function(p){ return { user_id:uid, name:p.name, saved:p.saved||saved, state:p.state }; });
+      if(rows.length === 0) throw new Error('No valid projects found in file');
+      var { error } = await getSB()
+        .from('projects')
+        .upsert(rows, { onConflict: 'user_id,name', ignoreDuplicates: true });
+      if(error) throw new Error(error.message);
+      pmShowStatus('\u2713 Imported ' + rows.length + ' project' + (rows.length!==1?'s':''), false);
+      pmGetAll().then(renderPmList);
+    } catch(err) {
+      alert('Import failed: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+  evt.target.value = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if(e.key === 'Escape' && g('pmOverlay') && g('pmOverlay').style.display !== 'none') closeProjectManager();
+});
+
+
+function getCurrentState() {
+  return {
+    L:v('spanL'), wD:v('wD'), wL:v('wL'), wLr:v('wLr'), wW:v('wW'), wE:v('wE'), wS:v('wS'),
+    dLL:v('dLL'), dTot:v('dTot'), lc:g('lcMethod').value,
+    nom:g('nomSize').value, plies:v('plies'), rdv:g('rdvKey').value,
+    CM:v('CM'), Ct:v('Ct'), CF:v('CF'), Cr:v('Cr'), CL:v('CL'), CV:v('CV'), Cb:v('Cb'), lb:v('lb'),
+    redux:g('useShearRedux').checked?1:0,
+    cdov:g('cdOverride').checked?1:0, cdoval:g('cdOverrideVal').value,
+    s2l:supports[1].loc, s2t:supports[1].type, s2a:supports[1].active?1:0,
+    s3l:supports[2].loc, s3t:supports[2].type, s3a:supports[2].active?1:0,
+    s4l:supports[3].loc, s4t:supports[3].type, s4a:supports[3].active?1:0,
+    pn:g('projName').value, bm:g('beamMark').value, en:g('engName').value, pd:g('projDate').value
+  };
+}
+
+function applyState(s) {
+  var sv = function(id, key) { if(s[key] !== undefined && s[key] !== '') g(id).value = s[key]; };
+  sv('spanL','L'); sv('wD','wD'); sv('wL','wL'); sv('wLr','wLr');
+  sv('wW','wW'); sv('wE','wE'); sv('wS','wS');
+  sv('dLL','dLL'); sv('dTot','dTot');
+  if(s.lc) g('lcMethod').value = s.lc;
+  if(s.nom) { g('nomSize').value = s.nom; updateSectionProps(); }
+  sv('plies','plies'); updateSectionProps();
+  if(s.rdv) { g('rdvKey').value = s.rdv; updateRdv(); }
+  sv('CM','CM'); sv('Ct','Ct'); sv('CF','CF'); sv('Cr','Cr');
+  sv('CL','CL'); sv('CV','CV'); sv('Cb','Cb'); sv('lb','lb');
+  g('useShearRedux').checked = s.redux === 1 || s.redux === '1';
+  g('cdOverride').checked    = s.cdov  === 1 || s.cdov  === '1';
+  if(s.cdoval) g('cdOverrideVal').value = s.cdoval;
+  if(s.s2l !== undefined) supports[1].loc    = parseFloat(s.s2l) || 0;
+  if(s.s2t !== undefined) supports[1].type   = s.s2t;
+  if(s.s2a !== undefined) supports[1].active = s.s2a === 1 || s.s2a === '1';
+  if(s.s3l !== undefined) supports[2].loc    = parseFloat(s.s3l) || 0;
+  if(s.s3t !== undefined) supports[2].type   = s.s3t;
+  if(s.s3a !== undefined) supports[2].active = s.s3a === 1 || s.s3a === '1';
+  if(s.s4l !== undefined) supports[3].loc    = parseFloat(s.s4l) || 0;
+  if(s.s4t !== undefined) supports[3].type   = s.s4t;
+  if(s.s4a !== undefined) supports[3].active = s.s4a === 1 || s.s4a === '1';
+  sv('projName','pn'); sv('beamMark','bm'); sv('engName','en'); sv('projDate','pd');
+}
+
+function openProjectManager() {
+  g('pmSaveName').value = g('projName').value || g('beamMark').value || '';
+  g('pmSaveMsg').textContent = '';
+  renderPmList();
+  g('pmOverlay').style.display = 'flex';
+  setTimeout(function() { g('pmSaveName').focus(); }, 80);
+}
+function closeProjectManager() {
+  g('pmOverlay').style.display = 'none';
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function renderPmList() {
+  var list = pmGetAll();
+  var el = g('pmList');
+  if(list.length === 0) {
+    el.innerHTML = '<div class="pm-empty">&#128193; No saved projects yet.<br><span style="font-size:12px">Enter a name above and click Save.</span></div>';
+    return;
+  }
+  el.innerHTML = list.map(function(p, i) {
+    var s = p.state;
+    var meta = [s.nom, s.bm?'Beam: '+s.bm:'', s.L+'ft span', s.wD+'D + '+s.wL+'L plf'].filter(Boolean).join(' · ');
+    return '<div class="pm-item">'
+      + '<div class="pm-item-info">'
+      + '<div class="pm-item-name" title="'+escHtml(p.name)+'">'+escHtml(p.name)+'</div>'
+      + '<div class="pm-item-meta">'+meta+'</div>'
+      + '<div class="pm-item-meta" style="color:#bbb">Saved '+p.saved+'</div>'
+      + '</div>'
+      + '<button class="pm-btn pm-btn-load" onclick="loadProject('+i+')">&#128194; Load</button>'
+      + '&nbsp;'
+      + '<button class="pm-btn pm-btn-del" onclick="deleteProject('+i+')" title="Delete">&#x1F5D1;</button>'
+      + '</div>';
+  }).join('');
+}
+
+document.addEventListener('keydown', function(e) {
+  if(e.key === 'Escape' && g('pmOverlay').style.display !== 'none') closeProjectManager();
+});
+
+
+</script>
+
+<!-- Project Manager Modal -->
+<div id="pmOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center" onclick="if(event.target===this)closeProjectManager()">
+  <div style="background:#fff;border-radius:10px;width:min(520px,96vw);max-height:90vh;display:flex;flex-direction:column;box-shadow:0 8px 40px rgba(0,0,0,0.25);overflow:hidden">
+    <!-- Modal header -->
+    <div style="background:#1f4e79;color:#fff;padding:14px 18px;display:flex;align-items:center;gap:10px">
+      <span style="font-size:18px">&#128193;</span>
+      <span style="font-weight:700;font-size:14px;flex:1">Project Manager</span>
+      <button onclick="closeProjectManager()" style="background:rgba(255,255,255,0.15);border:none;color:#fff;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:16px">&times;</button>
+    </div>
+    <!-- Save current -->
+    <div style="padding:14px 18px;border-bottom:1px solid #dde3ec;background:#f8fafd">
+      <div style="font-size:12px;font-weight:700;color:#1f4e79;margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px">Save current design</div>
+      <div style="display:flex;gap:8px">
+        <input id="pmSaveName" type="text" placeholder="Project name (e.g. B-1 Master Bedroom)" style="flex:1;padding:8px 10px;border:1px solid #c8d6e5;border-radius:5px;font-size:13px;outline:none">
+        <button id="pmSaveBtn" onclick="saveProject()" style="background:#375623;color:#fff;border:none;border-radius:5px;padding:8px 16px;font-size:13px;cursor:pointer;font-weight:700;white-space:nowrap">&#x1F4BE; Save</button>
+      </div>
+      <div id="pmSaveMsg" style="font-size:11px;margin-top:5px;min-height:16px;color:#375623"></div>
+    </div>
+    <!-- Project list -->
+    <div style="flex:1;overflow-y:auto;padding:14px 18px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+        <div style="font-size:12px;font-weight:700;color:#1f4e79;text-transform:uppercase;letter-spacing:.4px">Saved projects</div>
+        <div style="display:flex;gap:6px">
+          <button onclick="exportAllProjects()" style="background:#e3f0ff;border:1px solid #2e75b6;color:#1f4e79;border-radius:4px;padding:4px 10px;font-size:11px;cursor:pointer">&#11014; Export all</button>
+          <label style="background:#e3f0ff;border:1px solid #2e75b6;color:#1f4e79;border-radius:4px;padding:4px 10px;font-size:11px;cursor:pointer">
+            &#11015; Import <input type="file" accept=".json" onchange="importProjects(event)" style="display:none">
+          </label>
+        </div>
+      </div>
+      <div id="pmList"></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
